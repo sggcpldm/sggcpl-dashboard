@@ -105,6 +105,64 @@
     </tr>
     <tr>
 
+<footer>
+  <p>Last updated on <span id="lastUpdated"></span></p>
+</footer>
+
+<script>
+  document.getElementById("lastUpdated").textContent = new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' });
+</script>
+
+<td>
+  <a href="https://docs.google.com/spreadsheets/d/1MJEKbHc5YyVzkYLbp55Qkw4oRy1Lmoni/edit?usp=sharing" target="_blank">Open Report</a>
+  &nbsp;|&nbsp;
+  <a href="#" onclick="navigator.clipboard.writeText('https://docs.google.com/spreadsheets/d/1MJEKbHc5YyVzkYLbp55Qkw4oRy1Lmoni/edit?usp=sharing'); alert('Link copied!')">Copy Link</a>
+</td>
+
+<div style="text-align:right; margin: 20px 5% 0;">
+  <button onclick="window.print()" style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">🖨️ Print / Save PDF</button>
+</div>
+
+
+<tr>
+  <td>Check List</td>
+  <td>Branch-wise checklist and verification report.</td>
+  <td><a href="..." target="_blank">Open Report</a></td>
+  <td><span style="color:green; font-weight:bold;">Active</span></td>
+</tr>
+
+a:hover {
+  text-decoration: underline;
+  color: #002b80;
+  transition: color 0.2s ease-in-out;
+}
+
+
+<div style="text-align:center; margin: 20px;">
+  <input type="text" id="searchBox" placeholder="Search reports..." style="padding:8px; width:50%; border-radius:6px; border:1px solid #ccc;">
+</div>
+
+<script>
+  const searchBox = document.getElementById('searchBox');
+  searchBox.addEventListener('keyup', function() {
+    const filter = searchBox.value.toLowerCase();
+    const rows = document.querySelectorAll('table tr');
+    rows.forEach((row, index) => {
+      if (index === 0) return; // skip header
+      row.style.display = row.textContent.toLowerCase().includes(filter) ? '' : 'none';
+    });
+  });
+</script>
+
+th {
+  position: sticky;
+  top: 0;
+  background-color: #004aad;
+  color: white;
+  z-index: 1;
+}
+
+
 
 
 

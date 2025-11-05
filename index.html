@@ -21,7 +21,7 @@
     table {
       border-collapse: collapse;
       width: 90%;
-      margin: 30px auto;
+      margin: 20px auto;
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -36,17 +36,37 @@
       background-color: #004aad;
       color: white;
       font-size: 16px;
+      position: sticky; /* sticky headers */
+      top: 0;
+      z-index: 1;
     }
-    tr:hover {
-      background-color: #f1f5ff;
-    }
+    tr:hover { background-color: #f1f5ff; }
     a {
       color: #004aad;
       text-decoration: none;
       font-weight: 600;
+      transition: color 0.2s ease-in-out;
     }
     a:hover {
       text-decoration: underline;
+      color: #002b80;
+    }
+    input#searchBox {
+      padding: 8px;
+      width: 50%;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin: 20px auto;
+      display: block;
+    }
+    button.printBtn {
+      background: #004aad;
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 0 5% 20px 0;
     }
     footer {
       text-align: center;
@@ -58,10 +78,13 @@
   </style>
 </head>
 <body>
+
   <header>
     <h1>Sree Gowri Ganesha Chits Private Limited</h1>
     <p><strong>Online File Management Dashboard</strong></p>
   </header>
+
+  <input type="text" id="searchBox" placeholder="Search reports...">
 
   <table>
     <tr>
@@ -72,109 +95,91 @@
     <tr>
       <td>New Group & Tickets (Staff Commitment Report)</td>
       <td>Track staff commitments for new groups and tickets.</td>
-      <td><a href="https://docs.google.com/spreadsheets/d/1MJEKbHc5YyVzkYLbp55Qkw4oRy1Lmoni/edit?usp=sharing&ouid=112028232785678364758&rtpof=true&sd=true" target="_blank">Open Report</a></td>
+      <td>
+        <a href="https://docs.google.com/spreadsheets/d/1MJEKbHc5YyVzkYLbp55Qkw4oRy1Lmoni/edit?usp=sharing" target="_blank">Open Report</a>
+        &nbsp;|&nbsp;
+        <a href="#" onclick="navigator.clipboard.writeText('https://docs.google.com/spreadsheets/d/1MJEKbHc5YyVzkYLbp55Qkw4oRy1Lmoni/edit?usp=sharing'); alert('Link copied!')">Copy Link</a>
+      </td>
     </tr>
-    <td>New Group & Tickets (Agents Commitment Report)</td>
-<td>Agent-wise commitment report for new group creation and tickets.</td>
-<td><a href="https://docs.google.com/spreadsheets/d/1eb99jPyDtqkE4Isd-UEmwE1PkYQk9Ljb/edit?usp=sharing" target="_blank">Open Report</a></td>
-
+    <tr>
+      <td>New Group & Tickets (Agents Commitment Report)</td>
+      <td>Agent-wise commitment report for new group creation and tickets.</td>
+      <td>
+        <a href="https://docs.google.com/spreadsheets/d/1eb99jPyDtqkE4Isd-UEmwE1PkYQk9Ljb/edit?usp=sharing" target="_blank">Open Report</a>
+        &nbsp;|&nbsp;
+        <a href="#" onclick="navigator.clipboard.writeText('https://docs.google.com/spreadsheets/d/1eb99jPyDtqkE4Isd-UEmwE1PkYQk9Ljb/edit?usp=sharing'); alert('Link copied!')">Copy Link</a>
+      </td>
+    </tr>
     <tr>
       <td>Vacancy Tickets (Staff & Agents Commitment Report)</td>
       <td>Vacant ticket commitments by staff and agents.</td>
-      <td><a href="https://docs.google.com/spreadsheets/d/1_CT3iBN8ggzP3_pCQlu_OhVCF6JX8T8g/edit?usp=sharing&ouid=112028232785678364758&rtpof=true&sd=true">Open Report</a></td>
+      <td>
+        <a href="https://docs.google.com/spreadsheets/d/1_CT3iBN8ggzP3_pCQlu_OhVCF6JX8T8g/edit?usp=sharing" target="_blank">Open Report</a>
+        &nbsp;|&nbsp;
+        <a href="#" onclick="navigator.clipboard.writeText('https://docs.google.com/spreadsheets/d/1_CT3iBN8ggzP3_pCQlu_OhVCF6JX8T8g/edit?usp=sharing'); alert('Link copied!')">Copy Link</a>
+      </td>
     </tr>
     <tr>
       <td>Bid Payable (Manager Commitment Report)</td>
       <td>Manager bid payable tracking and summary.</td>
-      <td><a href="https://docs.google.com/spreadsheets/d/1cneQUxoYdo1Eita5BTQH1yWegvWmBivp/edit?usp=sharing&ouid=112028232785678364758&rtpof=true&sd=true">Open Report</a></td>
+      <td>
+        <a href="https://docs.google.com/spreadsheets/d/1cneQUxoYdo1Eita5BTQH1yWegvWmBivp/edit?usp=sharing" target="_blank">Open Report</a>
+        &nbsp;|&nbsp;
+        <a href="#" onclick="navigator.clipboard.writeText('https://docs.google.com/spreadsheets/d/1cneQUxoYdo1Eita5BTQH1yWegvWmBivp/edit?usp=sharing'); alert('Link copied!')">Copy Link</a>
+      </td>
     </tr>
     <tr>
       <td>SF Report (Manager & Legal Officer Commitment Report)</td>
       <td>SF and legal officer commitment report.</td>
-      <td><a href="https://docs.google.com/spreadsheets/d/1vzLn7DIZ1L1XYZ-qm8lz_FJoFglvFkQ_/edit?usp=sharing&ouid=112028232785678364758&rtpof=true&sd=true">Open Report</a></td>
+      <td>
+        <a href="https://docs.google.com/spreadsheets/d/1vzLn7DIZ1L1XYZ-qm8lz_FJoFglvFkQ_/edit?usp=sharing" target="_blank">Open Report</a>
+        &nbsp;|&nbsp;
+        <a href="#" onclick="navigator.clipboard.writeText('https://docs.google.com/spreadsheets/d/1vzLn7DIZ1L1XYZ-qm8lz_FJoFglvFkQ_/edit?usp=sharing'); alert('Link copied!')">Copy Link</a>
+      </td>
     </tr>
     <tr>
       <td>Collection Agent wise Dues Statement</td>
       <td>Allotment report and collectable dues statement.</td>
-      <td><a href="https://docs.google.com/spreadsheets/d/1CNix6Z7vUFeRL_FOMRvtz-CxKJbS2bue/edit?usp=sharing&ouid=112028232785678364758&rtpof=true&sd=true">Open Report</a></td>
+      <td>
+        <a href="https://docs.google.com/spreadsheets/d/1CNix6Z7vUFeRL_FOMRvtz-CxKJbS2bue/edit?usp=sharing" target="_blank">Open Report</a>
+        &nbsp;|&nbsp;
+        <a href="#" onclick="navigator.clipboard.writeText('https://docs.google.com/spreadsheets/d/1CNix6Z7vUFeRL_FOMRvtz-CxKJbS2bue/edit?usp=sharing'); alert('Link copied!')">Copy Link</a>
+      </td>
     </tr>
     <tr>
       <td>Check List</td>
       <td>Branch-wise checklist and verification report.</td>
-      <td><a href="https://docs.google.com/spreadsheets/d/1MmA4JFpOszw8tX81hK32SXsMi3SZVOKi/edit?usp=sharing&ouid=112028232785678364758&rtpof=true&sd=true">Open Report</a></td>
+      <td>
+        <a href="https://docs.google.com/spreadsheets/d/1MmA4JFpOszw8tX81hK32SXsMi3SZVOKi/edit?usp=sharing" target="_blank">Open Report</a>
+        &nbsp;|&nbsp;
+        <a href="#" onclick="navigator.clipboard.writeText('https://docs.google.com/spreadsheets/d/1MmA4JFpOszw8tX81hK32SXsMi3SZVOKi/edit?usp=sharing'); alert('Link copied!')">Copy Link</a>
+      </td>
     </tr>
-    <tr>
+  </table>
 
-<footer>
-  <p>Last updated on <span id="lastUpdated"></span></p>
-</footer>
+  <div style="text-align:right; margin: 20px 5% 0;">
+    <button class="printBtn" onclick="window.print()">🖨️ Print / Save PDF</button>
+  </div>
 
-<script>
-  document.getElementById("lastUpdated").textContent = new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' });
-</script>
+  <footer>
+    <p>Last updated on <span id="lastUpdated"></span></p>
+  </footer>
 
-<td>
-  <a href="https://docs.google.com/spreadsheets/d/1MJEKbHc5YyVzkYLbp55Qkw4oRy1Lmoni/edit?usp=sharing" target="_blank">Open Report</a>
-  &nbsp;|&nbsp;
-  <a href="#" onclick="navigator.clipboard.writeText('https://docs.google.com/spreadsheets/d/1MJEKbHc5YyVzkYLbp55Qkw4oRy1Lmoni/edit?usp=sharing'); alert('Link copied!')">Copy Link</a>
-</td>
-
-<div style="text-align:right; margin: 20px 5% 0;">
-  <button onclick="window.print()" style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">🖨️ Print / Save PDF</button>
-</div>
-
-
-<tr>
-  <td>Check List</td>
-  <td>Branch-wise checklist and verification report.</td>
-  <td><a href="..." target="_blank">Open Report</a></td>
-  <td><span style="color:green; font-weight:bold;">Active</span></td>
-</tr>
-
-a:hover {
-  text-decoration: underline;
-  color: #002b80;
-  transition: color 0.2s ease-in-out;
-}
-
-
-<div style="text-align:center; margin: 20px;">
-  <input type="text" id="searchBox" placeholder="Search reports..." style="padding:8px; width:50%; border-radius:6px; border:1px solid #ccc;">
-</div>
-
-<script>
-  const searchBox = document.getElementById('searchBox');
-  searchBox.addEventListener('keyup', function() {
-    const filter = searchBox.value.toLowerCase();
-    const rows = document.querySelectorAll('table tr');
-    rows.forEach((row, index) => {
-      if (index === 0) return; // skip header
-      row.style.display = row.textContent.toLowerCase().includes(filter) ? '' : 'none';
+  <script>
+    // Search functionality
+    const searchBox = document.getElementById('searchBox');
+    searchBox.addEventListener('keyup', function() {
+      const filter = searchBox.value.toLowerCase();
+      const rows = document.querySelectorAll('table tr');
+      rows.forEach((row, index) => {
+        if (index === 0) return; // skip header
+        row.style.display = row.textContent.toLowerCase().includes(filter) ? '' : 'none';
+      });
     });
-  });
-</script>
 
-th {
-  position: sticky;
-  top: 0;
-  background-color: #004aad;
-  color: white;
-  z-index: 1;
-}
+    // Set last updated timestamp
+    document.getElementById("lastUpdated").textContent = new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' });
+  </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</body>
+</html>

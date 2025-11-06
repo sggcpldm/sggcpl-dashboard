@@ -73,32 +73,103 @@
     <tr>
       <td>Weekly Commitment Report</td>
       <td>Track weekly targets for your branch.</td>
-      <td>
-        <a href="https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing" target="_blank">Open Report</a>
-      </td>
+      <td><a id="weeklyReport" href="#" target="_blank">Open Report</a></td>
     </tr>
     <tr>
       <td>Monthly Commitment Report</td>
       <td>Track monthly targets for your branch.</td>
-      <td><a href="#" target="_blank">Open Report</a></td>
+      <td><a id="monthlyReport" href="#" target="_blank">Open Report</a></td>
     </tr>
     <tr>
       <td>Annual Balance Sheet</td>
       <td>Financial summary for the year.</td>
-      <td><a href="#" target="_blank">Open Report</a></td>
+      <td><a id="annualReport" href="#" target="_blank">Open Report</a></td>
     </tr>
   </table>
 
   <button class="logout" onclick="logout()">Logout</button>
 
   <script>
-    // Show branch name from sessionStorage
+    // Branch-specific Google Sheet links
+    const branchReports = {
+      // Karnataka Branches
+      anekal: {
+        weekly: "https://docs.google.com/spreadsheets/d/ANEKAL_WEEKLY_LINK",
+        monthly: "https://docs.google.com/spreadsheets/d/ANEKAL_MONTHLY_LINK",
+        annual: "https://docs.google.com/spreadsheets/d/ANEKAL_ANNUAL_LINK"
+      },
+      centralize: {
+        weekly: "https://docs.google.com/spreadsheets/d/CENTRALIZE_WEEKLY_LINK",
+        monthly: "https://docs.google.com/spreadsheets/d/CENTRALIZE_MONTHLY_LINK",
+        annual: "https://docs.google.com/spreadsheets/d/CENTRALIZE_ANNUAL_LINK"
+      },
+      chanrayapatna: {
+        weekly: "https://docs.google.com/spreadsheets/d/CHANRAYAPATNA_WEEKLY_LINK",
+        monthly: "https://docs.google.com/spreadsheets/d/CHANRAYAPATNA_MONTHLY_LINK",
+        annual: "https://docs.google.com/spreadsheets/d/CHANRAYAPATNA_ANNUAL_LINK"
+      },
+      davanagere: {
+        weekly: "https://docs.google.com/spreadsheets/d/DAVANAGERE_WEEKLY_LINK",
+        monthly: "https://docs.google.com/spreadsheets/d/DAVANAGERE_MONTHLY_LINK",
+        annual: "https://docs.google.com/spreadsheets/d/DAVANAGERE_ANNUAL_LINK"
+      },
+      harihara: {
+        weekly: "https://docs.google.com/spreadsheets/d/HARIHARA_WEEKLY_LINK",
+        monthly: "https://docs.google.com/spreadsheets/d/HARIHARA_MONTHLY_LINK",
+        annual: "https://docs.google.com/spreadsheets/d/HARIHARA_ANNUAL_LINK"
+      },
+      hassan: {
+        weekly: "https://docs.google.com/spreadsheets/d/HASSAN_WEEKLY_LINK",
+        monthly: "https://docs.google.com/spreadsheets/d/HASSAN_MONTHLY_LINK",
+        annual: "https://docs.google.com/spreadsheets/d/HASSAN_ANNUAL_LINK"
+      },
+      mysore: {
+        weekly: "https://docs.google.com/spreadsheets/d/MYSORE_WEEKLY_LINK",
+        monthly: "https://docs.google.com/spreadsheets/d/MYSORE_MONTHLY_LINK",
+        annual: "https://docs.google.com/spreadsheets/d/MYSORE_ANNUAL_LINK"
+      },
+      vijayanagar: {
+        weekly: "https://docs.google.com/spreadsheets/d/VIJAYANAGAR_WEEKLY_LINK",
+        monthly: "https://docs.google.com/spreadsheets/d/VIJAYANAGAR_MONTHLY_LINK",
+        annual: "https://docs.google.com/spreadsheets/d/VIJAYANAGAR_ANNUAL_LINK"
+      },
+      gulbarga: {
+        weekly: "https://docs.google.com/spreadsheets/d/GULBARGA_WEEKLY_LINK",
+        monthly: "https://docs.google.com/spreadsheets/d/GULBARGA_MONTHLY_LINK",
+        annual: "https://docs.google.com/spreadsheets/d/GULBARGA_ANNUAL_LINK"
+      },
+      // Tamil Nadu Branches
+      salem: {
+        weekly: "https://docs.google.com/spreadsheets/d/SALEM_WEEKLY_LINK",
+        monthly: "https://docs.google.com/spreadsheets/d/SALEM_MONTHLY_LINK",
+        annual: "https://docs.google.com/spreadsheets/d/SALEM_ANNUAL_LINK"
+      },
+      krishnagiri: {
+        weekly: "https://docs.google.com/spreadsheets/d/KRISHNAGIRI_WEEKLY_LINK",
+        monthly: "https://docs.google.com/spreadsheets/d/KRISHNAGIRI_MONTHLY_LINK",
+        annual: "https://docs.google.com/spreadsheets/d/KRISHNAGIRI_ANNUAL_LINK"
+      },
+      hosur: {
+        weekly: "https://docs.google.com/spreadsheets/d/HOSUR_WEEKLY_LINK",
+        monthly: "https://docs.google.com/spreadsheets/d/HOSUR_MONTHLY_LINK",
+        annual: "https://docs.google.com/spreadsheets/d/HOSUR_ANNUAL_LINK"
+      }
+    };
+
+    // Show branch name and update links dynamically
     const branchKey = sessionStorage.getItem("loggedBranch");
-    if(!branchKey) {
+    if (!branchKey) {
       alert("No branch logged in! Redirecting to main page.");
       window.location.href = "index.html";
     } else {
-      document.getElementById("branchName").textContent = "Welcome, " + branchKey.charAt(0).toUpperCase() + branchKey.slice(1) + " Branch!";
+      const branchNameFormatted = branchKey.charAt(0).toUpperCase() + branchKey.slice(1);
+      document.getElementById("branchName").textContent = "Welcome, " + branchNameFormatted + " Branch!";
+
+      if (branchReports[branchKey]) {
+        document.getElementById("weeklyReport").href = branchReports[branchKey].weekly;
+        document.getElementById("monthlyReport").href = branchReports[branchKey].monthly;
+        document.getElementById("annualReport").href = branchReports[branchKey].annual;
+      }
     }
 
     // Logout function

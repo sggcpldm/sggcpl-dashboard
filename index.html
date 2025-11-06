@@ -508,43 +508,10 @@ function loginHO() {
 </section>
 <!-- ===== End Branch Financial Reporting Portal Section ===== -->
 <script>
-  function validateLogin() {
-    const branch = document.getElementById("branchSelect").value;
-    const email = document.getElementById("userEmail").value.trim();
-    const password = document.getElementById("userPassword").value.trim();
-
-    const credentials = {
-      anekal: { email: "sggcpl.ank@gmail.com", password: "anekal123" },
-      centralize: { email: "sggcpl.cb@gmail.com", password: "central123" },
-      chanrayapatna: { email: "sggcpl.crp1@gmail.com", password: "crp123" },
-      davanagere: { email: "sggcpl.dav@gmail.com", password: "dav123" },
-      harihara: { email: "sggcpl.hrr@gmail.com", password: "hari123" },
-      hassan: { email: "sggcpl.hassan@gmail.com", password: "hassan123" },
-      mysore: { email: "sggcpl.mys@gmail.com", password: "mys123" },
-      vijayanagar: { email: "sggcpl.vjn@gmail.com", password: "vjn123" },
-      gulbarga: { email: "sggcpl.glb1@gmail.com", password: "glb123" },
-      salem: { email: "salem@sggctn.com", password: "salem123" },
-      krishnagiri: { email: "krishnagiri@sggctn.com", password: "kri123" },
-      hosur: { email: "hosur@sggctn.com", password: "hosur123" }
-    };
-
-    if (!branch || !email || !password) {
-      alert("Please select branch and enter email and password!");
-      return;
-    }
-
-    const valid = credentials[branch];
-    if (valid && email === valid.email && password === valid.password) {
-      sessionStorage.setItem("loggedBranch", branch);
-      window.location.href = "branch-dashboard.html";
-    } else {
-      alert("Invalid login credentials! Please check and try again.");
-    }
-  }
-</script>
-
+ 
 </body>
 </html>
+
 
 
 

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Branch Dashboard - SGGCPL</title>
+  <style>
+    body {
+      font-family: "Bell MT", serif;
+      background-color: #f7f9fc;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #002b80;
+      color: white;
+      padding: 20px;
+    }
+    h1, h2 {
+      margin: 0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 90%;
+      margin: 20px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    th, td {
+      text-align: left;
+      padding: 14px;
+      border-bottom: 1px solid #e6e6e6;
+    }
+    th {
+      background-color: #004aad;
+      color: white;
+      font-size: 16px;
+    }
+    tr:hover { background-color: #f1f5ff; }
+    button {
+      background-color: #004aad;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    button:hover { background-color: #002b80; }
+    .logout {
+      background-color: #ff4d4d;
+    }
+    .logout:hover { background-color: #cc0000; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Sree Gowri Ganesha Chits Private Limited</h1>
+    <h2>Branch Dashboard</h2>
+    <p id="branchName">Welcome, Branch!</p>
+  </header>
+
+  <table>
+    <tr>
+      <th>Report Name</th>
+      <th>Description</th>
+      <th>Open Link</th>
+    </tr>
+    <tr>
+      <td>Weekly Commitment Report</td>
+      <td>Track weekly targets for your branch.</td>
+      <td><a href="#" target="_blank">Open Report</a></td>
+    </tr>
+    <tr>
+      <td>Monthly Commitment Report</td>
+      <td>Track monthly targets for your branch.</td>
+      <td><a href="#" target="_blank">Open Report</a></td>
+    </tr>
+    <tr>
+      <td>Annual Balance Sheet</td>
+      <td>Financial summary for the year.</td>
+      <td><a href="#" target="_blank">Open Report</a></td>
+    </tr>
+  </table>
+
+  <button class="logout" onclick="logout()">Logout</button>
+
+  <script>
+    // Show branch name from sessionStorage
+    const branchKey = sessionStorage.getItem("loggedBranch");
+    if(!branchKey) {
+      alert("No branch logged in! Redirecting to main page.");
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("branchName").textContent = "Welcome, " + branchKey.charAt(0).toUpperCase() + branchKey.slice(1) + " Branch!";
+    }
+
+    // Logout function
+    function logout() {
+      sessionStorage.removeItem("loggedBranch");
+      window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>

@@ -200,6 +200,30 @@ h1 {
 </div>
 
   <h2>Branch Login Portal</h2>
+
+<div class="login-box">
+  <label>Branch:</label>
+  <select id="branchSelect">
+    <option value="">-- Select Branch --</option>
+    <option value="anekal">Anekal Branch</option>
+    <option value="centralize">Centralize Branch</option>
+    <option value="chanrayapatna">Chanrayapatna Branch</option>
+    <option value="davanagere">Davanagere Branch</option>
+    <option value="harihara">Harihara Branch</option>
+    <option value="hassan">Hassan Branch</option>
+    <option value="mysore">Mysore Branch</option>
+    <option value="vijayanagar">Vijayanagar Branch</option>
+    <option value="gulbarga">Gulbarga Branch</option>
+    <option value="salem">Salem Branch</option>
+    <option value="krishnagiri">Krishnagiri Branch</option>
+    <option value="hosur">Hosur Branch</option>
+  </select>
+
+  <input type="text" id="userEmail" placeholder="Email ID">
+  <input type="password" id="userPassword" placeholder="Password">
+  <button onclick="validateLogin()">Login</button>
+</div>
+
   <div class="branch-cards">
 
     <!-- Karnataka Branches -->
@@ -258,6 +282,32 @@ h1 {
 </div>
 
 <style>
+  .login-box {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 320px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.login-box input, .login-box select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.login-box button {
+  background-color: #004aad;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.login-box button:hover { background-color: #002b80; }
+
 .branch-portal { width: 90%; margin: 30px auto; }
 .branch-portal h2 { color: #004aad; margin-bottom: 20px; }
 .branch-cards { display: flex; flex-wrap: wrap; gap: 15px; }
@@ -479,9 +529,45 @@ function loginHO() {
   </div>
 </section>
 <!-- ===== End Branch Financial Reporting Portal Section ===== -->
+<script>
+  function validateLogin() {
+    const branch = document.getElementById("branchSelect").value;
+    const email = document.getElementById("userEmail").value.trim();
+    const password = document.getElementById("userPassword").value.trim();
+
+    const credentials = {
+      anekal: { email: "sggcpl.ank@gmail.com", password: "anekal123" },
+      centralize: { email: "sggcpl.cb@gmail.com", password: "central123" },
+      chanrayapatna: { email: "sggcpl.crp1@gmail.com", password: "crp123" },
+      davanagere: { email: "sggcpl.dav@gmail.com", password: "dav123" },
+      harihara: { email: "sggcpl.hrr@gmail.com", password: "hari123" },
+      hassan: { email: "sggcpl.hassan@gmail.com", password: "hassan123" },
+      mysore: { email: "sggcpl.mys@gmail.com", password: "mys123" },
+      vijayanagar: { email: "sggcpl.vjn@gmail.com", password: "vjn123" },
+      gulbarga: { email: "sggcpl.glb1@gmail.com", password: "glb123" },
+      salem: { email: "salem@sggctn.com", password: "salem123" },
+      krishnagiri: { email: "krishnagiri@sggctn.com", password: "kri123" },
+      hosur: { email: "hosur@sggctn.com", password: "hosur123" }
+    };
+
+    if (!branch || !email || !password) {
+      alert("Please select branch and enter email and password!");
+      return;
+    }
+
+    const valid = credentials[branch];
+    if (valid && email === valid.email && password === valid.password) {
+      sessionStorage.setItem("loggedBranch", branch);
+      window.location.href = "branch-dashboard.html";
+    } else {
+      alert("Invalid login credentials! Please check and try again.");
+    }
+  }
+</script>
 
 </body>
 </html>
+
 
 
 

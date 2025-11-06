@@ -47,11 +47,12 @@
       padding: 10px 16px;
       border-radius: 6px;
       cursor: pointer;
-      margin: 10px;
+      margin: 0;
     }
     button:hover { background-color: #002b80; }
     .logout {
       background-color: #ff4d4d;
+      margin-top: 20px;
     }
     .logout:hover { background-color: #cc0000; }
   </style>
@@ -72,37 +73,56 @@
     </tr>
     <tr>
       <td>Weekly Commitment Report</td>
-      <td>All branches weekly report in one file</td>
-      <td><a href="#" id="weeklyReport" target="_blank"><button>Download</button></a></td>
+      <td>All branches weekly report</td>
+      <td><button onclick="downloadWeekly()">Download</button></td>
     </tr>
     <tr>
       <td>Monthly Commitment Report</td>
-      <td>All branches monthly report in one file</td>
-      <td><a href="#" id="monthlyReport" target="_blank"><button>Download</button></a></td>
+      <td>All branches monthly report</td>
+      <td><button onclick="downloadMonthly()">Download</button></td>
     </tr>
     <tr>
       <td>Annual Balance Sheet</td>
-      <td>All branches annual summary in one file</td>
-      <td><a href="#" id="annualReport" target="_blank"><button>Download</button></a></td>
+      <td>All branches annual summary</td>
+      <td><button onclick="downloadAnnual()">Download</button></td>
     </tr>
   </table>
 
   <button class="logout" onclick="logout()">Logout</button>
 
   <script>
-    // Add your HO report links here
-    const hoReports = {
-      weekly: "https://docs.google.com/spreadsheets/d/WEEKLY_REPORT_FILE_ID/edit?usp=sharing",
-      monthly: "https://docs.google.com/spreadsheets/d/MONTHLY_REPORT_FILE_ID/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/ANNUAL_REPORT_FILE_ID/edit?usp=sharing"
+    // Branch report links (replace with your actual Google Sheet links)
+    const branchReports = {
+      weekly: [
+        "https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", // CB
+        "https://docs.google.com/spreadsheets/d/WEEKLY_FILE_ID_ANEKAL/edit?usp=sharing" // Anekal
+        // Add more branch weekly files
+      ],
+      monthly: [
+        "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_CB/edit?usp=sharing",
+        "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_ANEKAL/edit?usp=sharing"
+        // Add more branch monthly files
+      ],
+      annual: [
+        "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_CB/edit?usp=sharing",
+        "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_ANEKAL/edit?usp=sharing"
+        // Add more branch annual files
+      ]
     };
 
-    document.getElementById("weeklyReport").href = hoReports.weekly;
-    document.getElementById("monthlyReport").href = hoReports.monthly;
-    document.getElementById("annualReport").href = hoReports.annual;
+    // Open all branch files in new tabs when clicked
+    function downloadWeekly() {
+      branchReports.weekly.forEach(url => window.open(url, "_blank"));
+    }
+    function downloadMonthly() {
+      branchReports.monthly.forEach(url => window.open(url, "_blank"));
+    }
+    function downloadAnnual() {
+      branchReports.annual.forEach(url => window.open(url, "_blank"));
+    }
 
     function logout() {
-      window.location.href = "ho-login.html"; // redirect to HO login page
+      window.location.href = "ho-login.html";
     }
   </script>
 

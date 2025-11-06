@@ -17,9 +17,7 @@
       color: white;
       padding: 20px;
     }
-    h1, h2 {
-      margin: 0;
-    }
+    h1, h2 { margin: 0; }
     table {
       border-collapse: collapse;
       width: 80%;
@@ -50,9 +48,7 @@
       margin: 10px;
     }
     button:hover { background-color: #002b80; }
-    .logout {
-      background-color: #ff4d4d;
-    }
+    .logout { background-color: #ff4d4d; }
     .logout:hover { background-color: #cc0000; }
   </style>
 </head>
@@ -72,17 +68,17 @@
     </tr>
     <tr>
       <td>Weekly Commitment Report</td>
-      <td>All branches weekly report</td>
+      <td>All branches weekly report in one file</td>
       <td><button onclick="downloadWeekly()">Download</button></td>
     </tr>
     <tr>
       <td>Monthly Commitment Report</td>
-      <td>All branches monthly report</td>
+      <td>All branches monthly report in one file</td>
       <td><button onclick="downloadMonthly()">Download</button></td>
     </tr>
     <tr>
       <td>Annual Balance Sheet</td>
-      <td>All branches annual summary</td>
+      <td>All branches annual summary in one file</td>
       <td><button onclick="downloadAnnual()">Download</button></td>
     </tr>
   </table>
@@ -90,38 +86,19 @@
   <button class="logout" onclick="logout()">Logout</button>
 
   <script>
-    // Branch report links
-    const branchReports = {
-      weekly: [
-        "https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", // CB
-        "https://docs.google.com/spreadsheets/d/WEEKLY_FILE_ID_ANEKAL/edit?usp=sharing" // Anekal
-        // add other branch weekly files here
-      ],
-      monthly: [
-        "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_CB/edit?usp=sharing",
-        "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_ANEKAL/edit?usp=sharing"
-        // add other branch monthly files
-      ],
-      annual: [
-        "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_CB/edit?usp=sharing",
-        "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_ANEKAL/edit?usp=sharing"
-        // add other branch annual files
-      ]
+    // Consolidated HO reports (replace with your actual file links)
+    const hoReports = {
+      weekly: "https://docs.google.com/spreadsheets/d/WEEKLY_REPORT_FILE_ID/edit?usp=sharing",
+      monthly: "https://docs.google.com/spreadsheets/d/MONTHLY_REPORT_FILE_ID/edit?usp=sharing",
+      annual: "https://docs.google.com/spreadsheets/d/ANNUAL_REPORT_FILE_ID/edit?usp=sharing"
     };
 
-    // Open all branch files in new tabs
-    function downloadWeekly() {
-      branchReports.weekly.forEach(url => window.open(url, "_blank"));
-    }
-    function downloadMonthly() {
-      branchReports.monthly.forEach(url => window.open(url, "_blank"));
-    }
-    function downloadAnnual() {
-      branchReports.annual.forEach(url => window.open(url, "_blank"));
-    }
+    function downloadWeekly() { window.open(hoReports.weekly, "_blank"); }
+    function downloadMonthly() { window.open(hoReports.monthly, "_blank"); }
+    function downloadAnnual() { window.open(hoReports.annual, "_blank"); }
 
     function logout() {
-      window.location.href = "ho-login.html"; // redirect to HO login page
+      window.location.href = "ho-login.html";
     }
   </script>
 

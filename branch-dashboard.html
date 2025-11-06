@@ -58,147 +58,74 @@
 </head>
 <body>
 
-<header>
-  <h1>Sree Gowri Ganesha Chits Private Limited</h1>
-  <h2>Branch Dashboard</h2>
-  <p id="branchName">Welcome, Branch!</p>
-</header>
+  <header>
+    <h1>Sree Gowri Ganesha Chits Private Limited</h1>
+    <h2>Branch Dashboard</h2>
+    <p id="branchName">Welcome, Branch!</p>
+  </header>
 
-<table id="reportTable">
-  <tr>
-    <th>Report Name</th>
-    <th>Description</th>
-    <th>Open Link</th>
-  </tr>
-</table>
+  <table>
+    <tr>
+      <th>Report Name</th>
+      <th>Description</th>
+      <th>Open Link</th>
+    </tr>
+    <tr>
+      <td>Weekly Commitment Report</td>
+      <td>Track weekly targets for your branch.</td>
+      <td><a href="#" id="weeklyReport" target="_blank">Open Report</a></td>
+    </tr>
+    <tr>
+      <td>Monthly Commitment Report</td>
+      <td>Track monthly targets for your branch.</td>
+      <td><a href="#" id="monthlyReport" target="_blank">Open Report</a></td>
+    </tr>
+    <tr>
+      <td>Annual Balance Sheet</td>
+      <td>Financial summary for the year.</td>
+      <td><a href="#" id="annualReport" target="_blank">Open Report</a></td>
+    </tr>
+  </table>
 
-<button class="logout" onclick="logout()">Logout</button>
+  <button class="logout" onclick="logout()">Logout</button>
 
-<script>
-  // Branch-specific Google Sheet links
-  const branchReports = {
-    anekal: {
-      weekly: "https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing&ouid=112028232785678364758&rtpof=true&sd=true",
-      monthly: "https://docs.google.com/spreadsheets/d/1xxxxxxxxxxxxxxxxx/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/1xxxxxxxxxxxxxxxxx/edit?usp=sharing"
-    },
-    centralize: {
-      weekly: "https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing&ouid=112028232785678364758&rtpof=true&sd=true",
-      monthly: "https://docs.google.com/spreadsheets/d/1yyyyyyyyyyyyyyyy/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/1yyyyyyyyyyyyyyyy/edit?usp=sharing"
-    },
-    salem: {
-      weekly: "https://docs.google.com/spreadsheets/d/1zzzzzzzzzzzzzzz/edit?usp=sharing",
-      monthly: "https://docs.google.com/spreadsheets/d/1zzzzzzzzzzzzzzz/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/1zzzzzzzzzzzzzzz/edit?usp=sharing"
-    }
-    // Add all other branches here
-  };
-
-  // Show branch name from sessionStorage
-  const branchKey = sessionStorage.getItem("loggedBranch");
-  if (!branchKey || !branchReports[branchKey]) {
-    alert("No branch logged in! Redirecting to main page.");
-    window.location.href = "index.html";
-  } else {
-    document.getElementById("branchName").textContent =
-      "Welcome, " + branchKey.charAt(0).toUpperCase() + branchKey.slice(1) + " Branch!";
-
-    const table = document.getElementById("reportTable");
-
-    const reports = [
-      { name: "Weekly Commitment Report", desc: "Track weekly targets for your branch.", link: branchReports[branchKey].weekly },
-      { name: "Monthly Commitment Report", desc: "Track monthly targets for your branch.", link: branchReports[branchKey].monthly },
-      { name: "Annual Balance Sheet", desc: "Financial summary for the year.", link: branchReports[branchKey].annual }
-    ];
-
-    reports.forEach(r => {
-      const row = table.insertRow();
-      row.innerHTML = `<td>${r.name}</td><td>${r.desc}</td><td><a href="${r.link}" target="_blank">Open Report</a></td>`;
-    });
-  }
-
-  function logout() {
-    sessionStorage.removeItem("loggedBranch");
-    window.location.href = "index.html";
-  }
-</script>
   <script>
-  // Branch-specific report links
-  const branchReports = {
-    // Karnataka Branches
-    anekal: {
-      weekly: "https://docs.google.com/spreadsheets/d/1MJEKbHc5YyVzkYLbp55Qkw4oRy1Lmoni/edit?usp=sharing",
-      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_ane_monthly/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_ane_annual/edit?usp=sharing"
-    },
-    centralize: {
-      weekly: "https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing",
-      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_cb_monthly/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_cb_annual/edit?usp=sharing"
-    },
-    chanrayapatna: {
-      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_crp_weekly/edit?usp=sharing",
-      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_crp_monthly/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_crp_annual/edit?usp=sharing"
-    },
-    davanagere: {
-      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_dav_weekly/edit?usp=sharing",
-      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_dav_monthly/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_dav_annual/edit?usp=sharing"
-    },
-    harihara: {
-      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_hari_weekly/edit?usp=sharing",
-      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_hari_monthly/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_hari_annual/edit?usp=sharing"
-    },
-    hassan: {
-      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_hassan_weekly/edit?usp=sharing",
-      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_hassan_monthly/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_hassan_annual/edit?usp=sharing"
-    },
-    mysore: {
-      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_mys_weekly/edit?usp=sharing",
-      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_mys_monthly/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_mys_annual/edit?usp=sharing"
-    },
-    vijayanagar: {
-      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_vjn_weekly/edit?usp=sharing",
-      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_vjn_monthly/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_vjn_annual/edit?usp=sharing"
-    },
-    gulbarga: {
-      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_glb_weekly/edit?usp=sharing",
-      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_glb_monthly/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_glb_annual/edit?usp=sharing"
-    },
+    // Branch-specific report links
+    const branchReports = {
+      anekal: {
+        weekly: "https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing",
+        monthly: "#",
+        annual: "#"
+      },
+      centralize: {
+        weekly: "https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing",
+        monthly: "#",
+        annual: "#"
+      }
+      // Add remaining branches here later
+    };
 
-    // Tamil Nadu Branches
-    salem: {
-      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_salem_weekly/edit?usp=sharing",
-      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_salem_monthly/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_salem_annual/edit?usp=sharing"
-    },
-    krishnagiri: {
-      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_kri_weekly/edit?usp=sharing",
-      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_kri_monthly/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_kri_annual/edit?usp=sharing"
-    },
-    hosur: {
-      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_hosur_weekly/edit?usp=sharing",
-      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_hosur_monthly/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_hosur_annual/edit?usp=sharing"
+    // Get branch from sessionStorage
+    const branchKey = sessionStorage.getItem("loggedBranch");
+    if(!branchKey || !branchReports[branchKey]) {
+      alert("No branch logged in! Redirecting to main page.");
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("branchName").textContent =
+        "Welcome, " + branchKey.charAt(0).toUpperCase() + branchKey.slice(1) + " Branch!";
+
+      // Set report links
+      document.getElementById("weeklyReport").href = branchReports[branchKey].weekly;
+      document.getElementById("monthlyReport").href = branchReports[branchKey].monthly;
+      document.getElementById("annualReport").href = branchReports[branchKey].annual;
     }
-  };
 
-  // Set report links dynamically
-  const branchKey = sessionStorage.getItem("loggedBranch");
-  if(branchKey && branchReports[branchKey]){
-    document.querySelectorAll("table tr:nth-child(2) td:nth-child(3) a")[0].href = branchReports[branchKey].weekly;
-    document.querySelectorAll("table tr:nth-child(3) td:nth-child(3) a")[0].href = branchReports[branchKey].monthly;
-    document.querySelectorAll("table tr:nth-child(4) td:nth-child(3) a")[0].href = branchReports[branchKey].annual;
-  }
-</script>
+    // Logout function
+    function logout() {
+      sessionStorage.removeItem("loggedBranch");
+      window.location.href = "index.html";
+    }
+  </script>
 
 </body>
 </html>

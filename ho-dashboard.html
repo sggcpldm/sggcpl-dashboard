@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Head Office Dashboard - SGGCPL</title>
+  <title>HO Dashboard - SGGCPL</title>
   <style>
     body {
       font-family: "Bell MT", serif;
@@ -22,7 +22,7 @@
     }
     table {
       border-collapse: collapse;
-      width: 80%;
+      width: 90%;
       margin: 20px auto;
       background: #fff;
       border-radius: 12px;
@@ -40,11 +40,17 @@
       font-size: 16px;
     }
     tr:hover { background-color: #f1f5ff; }
+    a {
+      color: #004aad;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover { text-decoration: underline; }
     button {
       background-color: #004aad;
       color: white;
       border: none;
-      padding: 10px 16px;
+      padding: 8px 14px;
       border-radius: 6px;
       cursor: pointer;
       margin: 10px;
@@ -61,48 +67,66 @@
   <header>
     <h1>Sree Gowri Ganesha Chits Private Limited</h1>
     <h2>Head Office Dashboard</h2>
-    <p>Welcome, Head Office!</p>
+    <p id="hoWelcome">Welcome, Head Office!</p>
   </header>
 
   <table>
     <tr>
       <th>Report Name</th>
       <th>Description</th>
-      <th>Download</th>
+      <th>Open Link</th>
     </tr>
     <tr>
-      <td>Weekly Commitment Report</td>
-      <td>All branches weekly report in one file</td>
-      <td><a href="#" id="weeklyReport" target="_blank"><button>Download</button></a></td>
+      <td>Weekly Consolidated Report</td>
+      <td>Weekly reports of all branches combined.</td>
+      <td>
+        <a href="https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing" target="_blank">Open Report</a>
+      </td>
     </tr>
     <tr>
-      <td>Monthly Commitment Report</td>
-      <td>All branches monthly report in one file</td>
-      <td><a href="#" id="monthlyReport" target="_blank"><button>Download</button></a></td>
+      <td>Monthly Consolidated Report</td>
+      <td>Monthly reports of all branches combined.</td>
+      <td>
+        <a href="#" target="_blank">Open Report</a>
+      </td>
     </tr>
     <tr>
-      <td>Annual Balance Sheet</td>
-      <td>All branches annual summary in one file</td>
-      <td><a href="#" id="annualReport" target="_blank"><button>Download</button></a></td>
+      <td>Annual Consolidated Report</td>
+      <td>Annual reports of all branches combined.</td>
+      <td>
+        <a href="#" target="_blank">Open Report</a>
+      </td>
     </tr>
   </table>
 
   <button class="logout" onclick="logout()">Logout</button>
 
   <script>
-    // Add your HO report links here
-    const hoReports = {
-      weekly: "https://docs.google.com/spreadsheets/d/WEEKLY_REPORT_FILE_ID/edit?usp=sharing",
-      monthly: "https://docs.google.com/spreadsheets/d/MONTHLY_REPORT_FILE_ID/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/ANNUAL_REPORT_FILE_ID/edit?usp=sharing"
+    // HO credentials
+    const ho = {
+      email: "sggcpldm@gmail.com",
+      password: "Zoominpro6@#"
     };
 
-    document.getElementById("weeklyReport").href = hoReports.weekly;
-    document.getElementById("monthlyReport").href = hoReports.monthly;
-    document.getElementById("annualReport").href = hoReports.annual;
+    // Check login status
+    const loggedHO = sessionStorage.getItem("loggedHO");
+    if(!loggedHO){
+      // Ask HO login
+      const email = prompt("Enter HO Email ID:");
+      const password = prompt("Enter HO Password:");
+      if(email === ho.email && password === ho.password){
+        alert("HO Login Successful! You now have access to all consolidated reports.");
+        sessionStorage.setItem("loggedHO", "true");
+      } else {
+        alert("Invalid HO login! Redirecting to main page.");
+        window.location.href = "index.html";
+      }
+    }
 
-    function logout() {
-      window.location.href = "ho-login.html"; // redirect to HO login page
+    // Logout function
+    function logout(){
+      sessionStorage.removeItem("loggedHO");
+      window.location.href = "index.html";
     }
   </script>
 

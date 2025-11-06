@@ -168,6 +168,15 @@
 </div>
 
 <div class="branch-portal">
+  <!-- Head Office Login Section -->
+<div class="ho-portal" style="width: 90%; margin: 30px auto; text-align:center;">
+  <h2>Head Office Login Portal</h2>
+  <div class="ho-card" style="display:inline-block; background-color:#FFD700; border:2px solid #004aad; border-radius:10px; padding:20px; box-shadow:0 2px 5px rgba(0,0,0,0.1);">
+    <p style="font-weight:bold; font-size:16px;">Head Office (HO)</p>
+    <button onclick="loginHO()" style="background-color:#004aad; color:white; border:none; padding:8px 12px; border-radius:6px; cursor:pointer;">Login</button>
+  </div>
+</div>
+
   <h2>Branch Login Portal</h2>
   <div class="branch-cards">
 
@@ -299,6 +308,26 @@ function loginBranch(branchKey) {
 
     // Set last updated timestamp
     document.getElementById("lastUpdated").textContent = new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' });
+
+    // Head Office credentials
+const ho = {
+  email: "ho@sggcpl.com",
+  password: "ho2025"
+};
+
+function loginHO() {
+  const email = prompt("Enter HO Email ID:");
+  const password = prompt("Enter Password:");
+
+  if(email === ho.email && password === ho.password){
+    alert("HO Login Successful! You have access to all branch reports.");
+    // You can redirect to HO dashboard page
+    window.location.href = "ho-dashboard.html"; // Create this page next
+  } else {
+    alert("Invalid HO login!");
+  }
+}
+
   </script>
 
 
@@ -425,6 +454,7 @@ function loginBranch(branchKey) {
 
 </body>
 </html>
+
 
 
 

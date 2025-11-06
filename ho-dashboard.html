@@ -17,7 +17,9 @@
       color: white;
       padding: 20px;
     }
-    h1, h2 { margin: 0; }
+    h1, h2 {
+      margin: 0;
+    }
     table {
       border-collapse: collapse;
       width: 80%;
@@ -45,10 +47,14 @@
       padding: 10px 16px;
       border-radius: 6px;
       cursor: pointer;
-      margin: 10px;
+      margin: 0;
     }
     button:hover { background-color: #002b80; }
-    .logout { background-color: #ff4d4d; }
+    .logout {
+      background-color: #ff4d4d;
+      margin-top: 20px;
+      padding: 10px 20px;
+    }
     .logout:hover { background-color: #cc0000; }
   </style>
 </head>
@@ -57,7 +63,7 @@
   <header>
     <h1>Sree Gowri Ganesha Chits Private Limited</h1>
     <h2>Head Office Dashboard</h2>
-    <p>Welcome, Head Office!</p>
+    <p id="welcomeText">Welcome, Head Office!</p>
   </header>
 
   <table>
@@ -86,18 +92,43 @@
   <button class="logout" onclick="logout()">Logout</button>
 
   <script>
-    // Consolidated HO reports (replace with your actual file links)
+    // Check if HO is logged in
+    const loggedHO = sessionStorage.getItem("loggedHO");
+    if(!loggedHO) {
+      alert("You are not logged in! Redirecting to login page.");
+      window.location.href = "ho-login.html";
+    } else {
+      document.getElementById("welcomeText").textContent = "Welcome, " + loggedHO + "!";
+    }
+
+    // HO consolidated report links (replace with your actual file URLs)
     const hoReports = {
-      weekly: "https://docs.google.com/spreadsheets/d/WEEKLY_REPORT_FILE_ID/edit?usp=sharing",
-      monthly: "https://docs.google.com/spreadsheets/d/MONTHLY_REPORT_FILE_ID/edit?usp=sharing",
-      annual: "https://docs.google.com/spreadsheets/d/ANNUAL_REPORT_FILE_ID/edit?usp=sharing"
+      weekly: [
+        "https://docs.google.com/spreadsheets/d/HO_WEEKLY_FILE_ID/edit?usp=sharing"
+        // Add more files if needed
+      ],
+      monthly: [
+        "https://docs.google.com/spreadsheets/d/HO_MONTHLY_FILE_ID/edit?usp=sharing"
+      ],
+      annual: [
+        "https://docs.google.com/spreadsheets/d/HO_ANNUAL_FILE_ID/edit?usp=sharing"
+      ]
     };
 
-    function downloadWeekly() { window.open(hoReports.weekly, "_blank"); }
-    function downloadMonthly() { window.open(hoReports.monthly, "_blank"); }
-    function downloadAnnual() { window.open(hoReports.annual, "_blank"); }
+    // Open all report files in new tabs
+    function downloadWeekly() {
+      hoReports.weekly.forEach(url => window.open(url, "_blank"));
+    }
+    function downloadMonthly() {
+      hoReports.monthly.forEach(url => window.open(url, "_blank"));
+    }
+    function downloadAnnual() {
+      hoReports.annual.forEach(url => window.open(url, "_blank"));
+    }
 
+    // Logout function
     function logout() {
+      sessionStorage.removeItem("loggedHO");
       window.location.href = "ho-login.html";
     }
   </script>

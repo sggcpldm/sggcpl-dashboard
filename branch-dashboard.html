@@ -122,6 +122,83 @@
     sessionStorage.removeItem("loggedBranch");
     window.location.href = "index.html";
   }
+  <script>
+  // Branch-specific report links
+  const branchReports = {
+    // Karnataka Branches
+    anekal: {
+      weekly: "https://docs.google.com/spreadsheets/d/1MJEKbHc5YyVzkYLbp55Qkw4oRy1Lmoni/edit?usp=sharing",
+      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_ane_monthly/edit?usp=sharing",
+      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_ane_annual/edit?usp=sharing"
+    },
+    centralize: {
+      weekly: "https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing",
+      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_cb_monthly/edit?usp=sharing",
+      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_cb_annual/edit?usp=sharing"
+    },
+    chanrayapatna: {
+      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_crp_weekly/edit?usp=sharing",
+      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_crp_monthly/edit?usp=sharing",
+      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_crp_annual/edit?usp=sharing"
+    },
+    davanagere: {
+      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_dav_weekly/edit?usp=sharing",
+      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_dav_monthly/edit?usp=sharing",
+      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_dav_annual/edit?usp=sharing"
+    },
+    harihara: {
+      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_hari_weekly/edit?usp=sharing",
+      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_hari_monthly/edit?usp=sharing",
+      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_hari_annual/edit?usp=sharing"
+    },
+    hassan: {
+      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_hassan_weekly/edit?usp=sharing",
+      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_hassan_monthly/edit?usp=sharing",
+      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_hassan_annual/edit?usp=sharing"
+    },
+    mysore: {
+      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_mys_weekly/edit?usp=sharing",
+      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_mys_monthly/edit?usp=sharing",
+      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_mys_annual/edit?usp=sharing"
+    },
+    vijayanagar: {
+      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_vjn_weekly/edit?usp=sharing",
+      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_vjn_monthly/edit?usp=sharing",
+      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_vjn_annual/edit?usp=sharing"
+    },
+    gulbarga: {
+      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_glb_weekly/edit?usp=sharing",
+      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_glb_monthly/edit?usp=sharing",
+      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_glb_annual/edit?usp=sharing"
+    },
+
+    // Tamil Nadu Branches
+    salem: {
+      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_salem_weekly/edit?usp=sharing",
+      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_salem_monthly/edit?usp=sharing",
+      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_salem_annual/edit?usp=sharing"
+    },
+    krishnagiri: {
+      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_kri_weekly/edit?usp=sharing",
+      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_kri_monthly/edit?usp=sharing",
+      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_kri_annual/edit?usp=sharing"
+    },
+    hosur: {
+      weekly: "https://docs.google.com/spreadsheets/d/xxxxxx_hosur_weekly/edit?usp=sharing",
+      monthly: "https://docs.google.com/spreadsheets/d/xxxxxx_hosur_monthly/edit?usp=sharing",
+      annual: "https://docs.google.com/spreadsheets/d/xxxxxx_hosur_annual/edit?usp=sharing"
+    }
+  };
+
+  // Set report links dynamically
+  const branchKey = sessionStorage.getItem("loggedBranch");
+  if(branchKey && branchReports[branchKey]){
+    document.querySelectorAll("table tr:nth-child(2) td:nth-child(3) a")[0].href = branchReports[branchKey].weekly;
+    document.querySelectorAll("table tr:nth-child(3) td:nth-child(3) a")[0].href = branchReports[branchKey].monthly;
+    document.querySelectorAll("table tr:nth-child(4) td:nth-child(3) a")[0].href = branchReports[branchKey].annual;
+  }
+</script>
+
 </script>
 
 </body>

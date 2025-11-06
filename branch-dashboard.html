@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Head Office Dashboard - SGGCPL</title>
+  <title>Branch Dashboard - SGGCPL</title>
   <style>
     body {
       font-family: "Bell MT", serif;
@@ -17,12 +17,10 @@
       color: white;
       padding: 20px;
     }
-    h1, h2 {
-      margin: 0;
-    }
+    h1, h2 { margin: 0; }
     table {
       border-collapse: collapse;
-      width: 80%;
+      width: 90%;
       margin: 20px auto;
       background: #fff;
       border-radius: 12px;
@@ -44,16 +42,13 @@
       background-color: #004aad;
       color: white;
       border: none;
-      padding: 10px 16px;
+      padding: 8px 14px;
       border-radius: 6px;
       cursor: pointer;
-      margin: 0;
+      margin: 10px;
     }
     button:hover { background-color: #002b80; }
-    .logout {
-      background-color: #ff4d4d;
-      margin-top: 20px;
-    }
+    .logout { background-color: #ff4d4d; }
     .logout:hover { background-color: #cc0000; }
   </style>
 </head>
@@ -61,68 +56,66 @@
 
   <header>
     <h1>Sree Gowri Ganesha Chits Private Limited</h1>
-    <h2>Head Office Dashboard</h2>
-    <p>Welcome, Head Office!</p>
+    <h2>Branch Dashboard</h2>
+    <p id="branchName">Welcome, Branch!</p>
   </header>
 
   <table>
     <tr>
       <th>Report Name</th>
       <th>Description</th>
-      <th>Download</th>
+      <th>Open Link</th>
     </tr>
     <tr>
       <td>Weekly Commitment Report</td>
-      <td>All branches weekly report</td>
-      <td><button onclick="downloadWeekly()">Download</button></td>
+      <td>Track weekly targets for your branch.</td>
+      <td><a id="weeklyReport" target="_blank">Open Report</a></td>
     </tr>
     <tr>
       <td>Monthly Commitment Report</td>
-      <td>All branches monthly report</td>
-      <td><button onclick="downloadMonthly()">Download</button></td>
+      <td>Track monthly targets for your branch.</td>
+      <td><a id="monthlyReport" target="_blank">Open Report</a></td>
     </tr>
     <tr>
       <td>Annual Balance Sheet</td>
-      <td>All branches annual summary</td>
-      <td><button onclick="downloadAnnual()">Download</button></td>
+      <td>Financial summary for the year.</td>
+      <td><a id="annualReport" target="_blank">Open Report</a></td>
     </tr>
   </table>
 
   <button class="logout" onclick="logout()">Logout</button>
 
   <script>
-    // Branch report links (replace with your actual Google Sheet links)
     const branchReports = {
-      weekly: [
-        "https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", // CB
-        "https://docs.google.com/spreadsheets/d/WEEKLY_FILE_ID_ANEKAL/edit?usp=sharing" // Anekal
-        // Add more branch weekly files
-      ],
-      monthly: [
-        "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_CB/edit?usp=sharing",
-        "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_ANEKAL/edit?usp=sharing"
-        // Add more branch monthly files
-      ],
-      annual: [
-        "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_CB/edit?usp=sharing",
-        "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_ANEKAL/edit?usp=sharing"
-        // Add more branch annual files
-      ]
+      anekal: {
+        weekly: "https://docs.google.com/spreadsheets/d/WEEKLY_FILE_ID_ANEKAL/edit?usp=sharing",
+        monthly: "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_ANEKAL/edit?usp=sharing",
+        annual: "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_ANEKAL/edit?usp=sharing"
+      },
+      centralize: {
+        weekly: "https://docs.google.com/spreadsheets/d/WEEKLY_FILE_ID_CB/edit?usp=sharing",
+        monthly: "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_CB/edit?usp=sharing",
+        annual: "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_CB/edit?usp=sharing"
+      }
+      // Add more branches here
     };
 
-    // Open all branch files in new tabs when clicked
-    function downloadWeekly() {
-      branchReports.weekly.forEach(url => window.open(url, "_blank"));
-    }
-    function downloadMonthly() {
-      branchReports.monthly.forEach(url => window.open(url, "_blank"));
-    }
-    function downloadAnnual() {
-      branchReports.annual.forEach(url => window.open(url, "_blank"));
+    const branchKey = sessionStorage.getItem("loggedBranch");
+
+    if (!branchKey || !branchReports[branchKey]) {
+      alert("No branch logged in! Redirecting to main page.");
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("branchName").textContent =
+        "Welcome, " + branchKey.charAt(0).toUpperCase() + branchKey.slice(1) + " Branch!";
+      document.getElementById("weeklyReport").href = branchReports[branchKey].weekly;
+      document.getElementById("monthlyReport").href = branchReports[branchKey].monthly;
+      document.getElementById("annualReport").href = branchReports[branchKey].annual;
     }
 
     function logout() {
-      window.location.href = "ho-login.html";
+      sessionStorage.removeItem("loggedBranch");
+      window.location.href = "index.html";
     }
   </script>
 

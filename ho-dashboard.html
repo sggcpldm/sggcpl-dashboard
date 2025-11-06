@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HO Dashboard - SGGCPL</title>
+  <title>Head Office Dashboard - SGGCPL</title>
   <style>
     body {
       font-family: "Bell MT", serif;
@@ -22,7 +22,7 @@
     }
     table {
       border-collapse: collapse;
-      width: 90%;
+      width: 80%;
       margin: 20px auto;
       background: #fff;
       border-radius: 12px;
@@ -40,17 +40,11 @@
       font-size: 16px;
     }
     tr:hover { background-color: #f1f5ff; }
-    a {
-      color: #004aad;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    a:hover { text-decoration: underline; }
     button {
       background-color: #004aad;
       color: white;
       border: none;
-      padding: 8px 14px;
+      padding: 10px 16px;
       border-radius: 6px;
       cursor: pointer;
       margin: 10px;
@@ -67,66 +61,67 @@
   <header>
     <h1>Sree Gowri Ganesha Chits Private Limited</h1>
     <h2>Head Office Dashboard</h2>
-    <p id="hoWelcome">Welcome, Head Office!</p>
+    <p>Welcome, Head Office!</p>
   </header>
 
   <table>
     <tr>
       <th>Report Name</th>
       <th>Description</th>
-      <th>Open Link</th>
+      <th>Download</th>
     </tr>
     <tr>
-      <td>Weekly Consolidated Report</td>
-      <td>Weekly reports of all branches combined.</td>
-      <td>
-        <a href="https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing" target="_blank">Open Report</a>
-      </td>
+      <td>Weekly Commitment Report</td>
+      <td>All branches weekly report</td>
+      <td><button onclick="downloadWeekly()">Download</button></td>
     </tr>
     <tr>
-      <td>Monthly Consolidated Report</td>
-      <td>Monthly reports of all branches combined.</td>
-      <td>
-        <a href="#" target="_blank">Open Report</a>
-      </td>
+      <td>Monthly Commitment Report</td>
+      <td>All branches monthly report</td>
+      <td><button onclick="downloadMonthly()">Download</button></td>
     </tr>
     <tr>
-      <td>Annual Consolidated Report</td>
-      <td>Annual reports of all branches combined.</td>
-      <td>
-        <a href="#" target="_blank">Open Report</a>
-      </td>
+      <td>Annual Balance Sheet</td>
+      <td>All branches annual summary</td>
+      <td><button onclick="downloadAnnual()">Download</button></td>
     </tr>
   </table>
 
   <button class="logout" onclick="logout()">Logout</button>
 
   <script>
-    // HO credentials
-    const ho = {
-      email: "sggcpldm@gmail.com",
-      password: "Zoominpro6@#"
+    // Branch report links
+    const branchReports = {
+      weekly: [
+        "https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", // CB
+        "https://docs.google.com/spreadsheets/d/WEEKLY_FILE_ID_ANEKAL/edit?usp=sharing" // Anekal
+        // add other branch weekly files here
+      ],
+      monthly: [
+        "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_CB/edit?usp=sharing",
+        "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_ANEKAL/edit?usp=sharing"
+        // add other branch monthly files
+      ],
+      annual: [
+        "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_CB/edit?usp=sharing",
+        "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_ANEKAL/edit?usp=sharing"
+        // add other branch annual files
+      ]
     };
 
-    // Check login status
-    const loggedHO = sessionStorage.getItem("loggedHO");
-    if(!loggedHO){
-      // Ask HO login
-      const email = prompt("Enter HO Email ID:");
-      const password = prompt("Enter HO Password:");
-      if(email === ho.email && password === ho.password){
-        alert("HO Login Successful! You now have access to all consolidated reports.");
-        sessionStorage.setItem("loggedHO", "true");
-      } else {
-        alert("Invalid HO login! Redirecting to main page.");
-        window.location.href = "index.html";
-      }
+    // Open all branch files in new tabs
+    function downloadWeekly() {
+      branchReports.weekly.forEach(url => window.open(url, "_blank"));
+    }
+    function downloadMonthly() {
+      branchReports.monthly.forEach(url => window.open(url, "_blank"));
+    }
+    function downloadAnnual() {
+      branchReports.annual.forEach(url => window.open(url, "_blank"));
     }
 
-    // Logout function
-    function logout(){
-      sessionStorage.removeItem("loggedHO");
-      window.location.href = "index.html";
+    function logout() {
+      window.location.href = "ho-login.html"; // redirect to HO login page
     }
   </script>
 

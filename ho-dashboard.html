@@ -63,7 +63,7 @@
   <header>
     <h1>Sree Gowri Ganesha Chits Private Limited</h1>
     <h2>Head Office Dashboard</h2>
-    <p id="welcomeText">Welcome, Head Office!</p>
+    <p>Welcome, Head Office!</p>
   </header>
 
   <table>
@@ -92,30 +92,26 @@
   <button class="logout" onclick="logout()">Logout</button>
 
   <script>
-    // Check if HO is logged in
-    const loggedHO = sessionStorage.getItem("loggedHO");
-    if(!loggedHO) {
-      alert("You are not logged in! Redirecting to login page.");
-      window.location.href = "ho-login.html";
-    } else {
-      document.getElementById("welcomeText").textContent = "Welcome, " + loggedHO + "!";
-    }
-
-    // HO consolidated report links (replace with your actual file URLs)
+    // Consolidated HO report links (replace these with actual Google Sheet links)
     const hoReports = {
       weekly: [
-        "https://docs.google.com/spreadsheets/d/HO_WEEKLY_FILE_ID/edit?usp=sharing"
-        // Add more files if needed
+        "https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", // CB branch
+        "https://docs.google.com/spreadsheets/d/WEEKLY_FILE_ID_ANEKAL/edit?usp=sharing" // Anekal
+        // add other branch files here
       ],
       monthly: [
-        "https://docs.google.com/spreadsheets/d/HO_MONTHLY_FILE_ID/edit?usp=sharing"
+        "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_CB/edit?usp=sharing",
+        "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_ANEKAL/edit?usp=sharing"
+        // add other branch files here
       ],
       annual: [
-        "https://docs.google.com/spreadsheets/d/HO_ANNUAL_FILE_ID/edit?usp=sharing"
+        "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_CB/edit?usp=sharing",
+        "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_ANEKAL/edit?usp=sharing"
+        // add other branch files here
       ]
     };
 
-    // Open all report files in new tabs
+    // Functions to download all branch files for each report type
     function downloadWeekly() {
       hoReports.weekly.forEach(url => window.open(url, "_blank"));
     }
@@ -128,8 +124,8 @@
 
     // Logout function
     function logout() {
-      sessionStorage.removeItem("loggedHO");
-      window.location.href = "ho-login.html";
+      sessionStorage.removeItem("loggedHO"); // optional, if you track HO session
+      window.location.href = "index.html"; // return to main login page
     }
   </script>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HO Dashboard - SGGCPL</title>
+  <title>Head Office Dashboard - SGGCPL</title>
   <style>
     body {
       font-family: "Bell MT", serif;
@@ -17,7 +17,29 @@
       color: white;
       padding: 20px;
     }
-    h1, h2 { margin: 0; }
+    h1, h2 {
+      margin: 0;
+    }
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: 20px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    th, td {
+      text-align: left;
+      padding: 14px;
+      border-bottom: 1px solid #e6e6e6;
+    }
+    th {
+      background-color: #004aad;
+      color: white;
+      font-size: 16px;
+    }
+    tr:hover { background-color: #f1f5ff; }
     button {
       background-color: #004aad;
       color: white;
@@ -27,6 +49,11 @@
       cursor: pointer;
       margin: 10px;
     }
+    button:hover { background-color: #002b80; }
+    .logout {
+      background-color: #ff4d4d;
+    }
+    .logout:hover { background-color: #cc0000; }
   </style>
 </head>
 <body>
@@ -34,15 +61,48 @@
   <header>
     <h1>Sree Gowri Ganesha Chits Private Limited</h1>
     <h2>Head Office Dashboard</h2>
+    <p>Welcome, Head Office!</p>
   </header>
 
-  <p>Welcome, Head Office! You can now view and manage all branch reports.</p>
+  <table>
+    <tr>
+      <th>Report Name</th>
+      <th>Description</th>
+      <th>Download</th>
+    </tr>
+    <tr>
+      <td>Weekly Commitment Report</td>
+      <td>All branches weekly report in one file</td>
+      <td><a href="#" id="weeklyReport" target="_blank"><button>Download</button></a></td>
+    </tr>
+    <tr>
+      <td>Monthly Commitment Report</td>
+      <td>All branches monthly report in one file</td>
+      <td><a href="#" id="monthlyReport" target="_blank"><button>Download</button></a></td>
+    </tr>
+    <tr>
+      <td>Annual Balance Sheet</td>
+      <td>All branches annual summary in one file</td>
+      <td><a href="#" id="annualReport" target="_blank"><button>Download</button></a></td>
+    </tr>
+  </table>
 
-  <button onclick="logout()">Logout</button>
+  <button class="logout" onclick="logout()">Logout</button>
 
   <script>
+    // Add your HO report links here
+    const hoReports = {
+      weekly: "https://docs.google.com/spreadsheets/d/WEEKLY_REPORT_FILE_ID/edit?usp=sharing",
+      monthly: "https://docs.google.com/spreadsheets/d/MONTHLY_REPORT_FILE_ID/edit?usp=sharing",
+      annual: "https://docs.google.com/spreadsheets/d/ANNUAL_REPORT_FILE_ID/edit?usp=sharing"
+    };
+
+    document.getElementById("weeklyReport").href = hoReports.weekly;
+    document.getElementById("monthlyReport").href = hoReports.monthly;
+    document.getElementById("annualReport").href = hoReports.annual;
+
     function logout() {
-      window.location.href = "index.html";
+      window.location.href = "ho-login.html"; // redirect to HO login page
     }
   </script>
 

@@ -281,13 +281,18 @@ const branches = {
 function loginBranch(branchKey) {
   const email = prompt("Enter Email ID:");
   const password = prompt("Enter Password:");
-  if(branches[branchKey].email === email && branches[branchKey].password === password){
-    alert("Login Successful!");
-    window.open(branches[branchKey].sheet, "_blank");
+
+  if (branches[branchKey].email === email && branches[branchKey].password === password) {
+    // Store branch key in sessionStorage
+    sessionStorage.setItem("loggedBranch", branchKey);
+    
+    // Redirect to branch dashboard
+    window.location.href = "branch-dashboard.html";
   } else {
     alert("Invalid login! You cannot access other branch data.");
   }
 }
+
 </script>
 
   <footer>
@@ -454,6 +459,7 @@ function loginHO() {
 
 </body>
 </html>
+
 
 
 

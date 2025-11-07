@@ -1,41 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Branch Dashboard – Sree Gowri Ganesha Chits Private Limited</title>
-<style>
-  body { font-family: "Segoe UI", Arial, sans-serif; background-color: #f7f9fc; margin: 0; padding: 0; }
-  header { background-color: #002b80; color: white; padding: 30px 20px; text-align: center; border-bottom: 3px solid #004aad; }
-  header h1 { margin: 0; font-size: 36px; font-family: "Bell MT", "Segoe UI", Arial, sans-serif; font-weight: bold; }
-  header p { margin: 5px 0 0 0; font-size: 18px; font-weight: 500; font-family: "Segoe UI", Arial, sans-serif; }
-  .container { width: 90%; margin: 40px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); text-align: center; display:none; }
-  .login-box { width: 300px; margin: 80px auto; padding: 30px; background: #fff; border-radius: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); text-align:center; }
-  .login-box input { padding:8px; width:90%; margin:10px 0; border-radius:6px; border:1px solid #ccc; }
-  .login-box button { padding:10px 20px; background:#004aad; color:white; border:none; border-radius:6px; cursor:pointer; font-size:16px; }
-  h2 { color: #004aad; margin-bottom: 30px; font-size: 26px; font-weight: 600; font-family: "Segoe UI", Arial, sans-serif; }
-  .report-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-  .report-card { background-color: #f9fbff; border: 2px solid #004aad; border-radius: 10px; width: 260px; padding: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: all 0.3s ease; }
-  .report-card:hover { transform: translateY(-5px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-  .report-card p { font-weight: bold; color: #004aad; margin-bottom: 15px; font-size: 18px; font-family: "Segoe UI", Arial, sans-serif; }
-  .report-card button { background-color: #004aad; color: white; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 15px; transition: all 0.3s ease; font-family: "Segoe UI", Arial, sans-serif; }
-  .report-card button:hover { background-color: #002b80; transform: scale(1.05); }
-  .logout { margin-top: 30px; }
-  .logout button { background-color: #c62828; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: bold; transition: all 0.3s ease; font-family: "Segoe UI", Arial, sans-serif; }
-  .logout button:hover { background-color: #a51c1c; }
-  footer { text-align: center; padding: 15px; background-color: #f1f1f1; color: #444; font-size: 14px; margin-top: 50px; font-family: "Segoe UI", Arial, sans-serif; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Branch Dashboard – Sree Gowri Ganesha Chits Private Limited</title>
+  <style>
+    body { font-family: "Bell MT", "Segoe UI", Arial, sans-serif; background:#f7f9fc; margin:0; padding:0; }
+    header { background:#002b80; color:white; padding:30px 20px; text-align:center; border-bottom:3px solid #004aad; }
+    header h1 { margin:0; font-size:36px; font-weight:bold; }
+    header p { margin:5px 0 0 0; font-size:18px; font-weight:500; }
+    .container { width:90%; margin:40px auto; background:#fff; padding:30px; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); text-align:center; }
+    h2 { color:#004aad; margin-bottom:30px; font-size:26px; font-weight:600; }
+    .report-buttons { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
+    .report-card { background:#f9fbff; border:2px solid #004aad; border-radius:10px; width:260px; padding:25px; box-shadow:0 2px 5px rgba(0,0,0,0.1); transition:all 0.3s ease; }
+    .report-card:hover { transform:translateY(-5px); box-shadow:0 4px 12px rgba(0,0,0,0.15); }
+    .report-card p { font-weight:bold; color:#004aad; margin-bottom:15px; font-size:18px; }
+    .report-card button { background:#004aad; color:white; border:none; padding:10px 16px; border-radius:6px; cursor:pointer; font-size:15px; transition:all 0.3s ease; }
+    .report-card button:hover { background:#002b80; transform:scale(1.05); }
+    .logout { margin-top:30px; }
+    .logout button { background:#c62828; color:white; border:none; padding:10px 20px; border-radius:6px; cursor:pointer; font-size:16px; font-weight:bold; transition:all 0.3s ease; }
+    .logout button:hover { background:#a51c1c; }
+    footer { text-align:center; padding:15px; background:#f1f1f1; color:#444; font-size:14px; margin-top:50px; }
+  </style>
 </head>
 <body>
 
-<div class="login-box" id="loginBox">
-  <h2>Branch Login</h2>
-  <input type="email" id="email" placeholder="Enter email">
-  <input type="password" id="password" placeholder="Enter password">
-  <button onclick="login()">Login</button>
-</div>
+<header>
+  <h1>Sree Gowri Ganesha Chits Private Limited</h1>
+  <p id="branchName">Branch Reports Dashboard</p>
+</header>
 
-<div class="container" id="dashboard">
+<div class="container">
   <h2 id="branchHeader">Branch Reports</h2>
   <div class="report-buttons">
     <div class="report-card">
@@ -51,6 +46,7 @@
       <button disabled style="background-color: gray; cursor: not-allowed;">Not Available</button>
     </div>
   </div>
+
   <div class="logout">
     <button onclick="logout()">Logout</button>
   </div>
@@ -62,114 +58,37 @@
 
 <script>
   const branches = {
-  "sggcpl.ank@gmail.com": { 
-    key: "anekal", 
-    name: "Anekal Branch", 
-    weekly: "https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing", 
-    monthly: "https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing", 
-    password: "password1" 
-  },
-  "sggcpl.cb@gmail.com": { 
-    key: "centralize", 
-    name: "Centralize Branch", 
-    weekly: "https://docs.google.com/spreadsheets/d/centralize-weekly-link", 
-    monthly: "https://docs.google.com/spreadsheets/d/centralize-monthly-link", 
-    password: "password2" 
-  },
-  "sggcpl.crp1@gmail.com": { 
-    key: "chanrayapatna", 
-    name: "Channarayapatna Branch", 
-    weekly: "https://docs.google.com/spreadsheets/d/18GYgMLMZqcWTRJSDVDXM4W04J1tFuwi9/edit?usp=sharing", 
-    monthly: "https://docs.google.com/spreadsheets/d/chanrayapatna-monthly-link", 
-    password: "password3" 
-  },
-  "sggcpl.dav@gmail.com": { 
-    key: "davanagere", 
-    name: "Davanagere Branch", 
-    weekly: "https://docs.google.com/spreadsheets/d/davanagere-weekly-link", 
-    monthly: "https://docs.google.com/spreadsheets/d/davanagere-monthly-link", 
-    password: "password4" 
-  },
-  "sggcpl.hrr@gmail.com": { 
-    key: "harihara", 
-    name: "Harihara Branch", 
-    weekly: "https://docs.google.com/spreadsheets/d/harihara-weekly-link", 
-    monthly: "https://docs.google.com/spreadsheets/d/harihara-monthly-link", 
-    password: "password5" 
-  },
-  "sggcpl.hassan@gmail.com": { 
-    key: "hassan", 
-    name: "Hassan Branch", 
-    weekly: "https://docs.google.com/spreadsheets/d/hassan-weekly-link", 
-    monthly: "https://docs.google.com/spreadsheets/d/hassan-monthly-link", 
-    password: "password6" 
-  },
-  "sggcpl.mys@gmail.com": { 
-    key: "mysore", 
-    name: "Mysore Branch", 
-    weekly: "https://docs.google.com/spreadsheets/d/mysore-weekly-link", 
-    monthly: "https://docs.google.com/spreadsheets/d/mysore-monthly-link", 
-    password: "password7" 
-  },
-  "sggcpl.vjn@gmail.com": { 
-    key: "vijayanagar", 
-    name: "Vijayanagar Branch", 
-    weekly: "https://docs.google.com/spreadsheets/d/vijayanagar-weekly-link", 
-    monthly: "https://docs.google.com/spreadsheets/d/vijayanagar-monthly-link", 
-    password: "password8" 
-  },
-  "sggcpl.glb1@gmail.com": { 
-    key: "gulbarga", 
-    name: "Gulbarga Branch", 
-    weekly: "https://docs.google.com/spreadsheets/d/gulbarga-weekly-link", 
-    monthly: "https://docs.google.com/spreadsheets/d/gulbarga-monthly-link", 
-    password: "password9" 
-  },
-  "salem@sggctn.com": { 
-    key: "salem", 
-    name: "Salem Branch", 
-    weekly: "https://docs.google.com/spreadsheets/d/salem-weekly-link", 
-    monthly: "https://docs.google.com/spreadsheets/d/salem-monthly-link", 
-    password: "password10" 
-  },
-  "krishnagiri@sggctn.com": { 
-    key: "krishnagiri", 
-    name: "Krishnagiri Branch", 
-    weekly: "https://docs.google.com/spreadsheets/d/krishnagiri-weekly-link", 
-    monthly: "https://docs.google.com/spreadsheets/d/krishnagiri-monthly-link", 
-    password: "password11" 
-  },
-  "hosur@sggctn.com": { 
-    key: "hosur", 
-    name: "Hosur Branch", 
-    weekly: "https://docs.google.com/spreadsheets/d/hosur-weekly-link", 
-    monthly: "https://docs.google.com/spreadsheets/d/hosur-monthly-link", 
-    password: "password12" 
-  }
-};
+    "anekal": { name: "Anekal Branch", weekly: "https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing", monthly: "https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing" },
+    "centralize": { name: "Centralize Branch", weekly: "https://docs.google.com/spreadsheets/d/centralize-weekly-link", monthly: "https://docs.google.com/spreadsheets/d/centralize-monthly-link" },
+    "chanrayapatna": { name: "Channarayapatna Branch", weekly: "https://docs.google.com/spreadsheets/d/chanrayapatna-weekly-link", monthly: "https://docs.google.com/spreadsheets/d/chanrayapatna-monthly-link" },
+    "davanagere": { name: "Davanagere Branch", weekly: "https://docs.google.com/spreadsheets/d/davanagere-weekly-link", monthly: "https://docs.google.com/spreadsheets/d/davanagere-monthly-link" },
+    "harihara": { name: "Harihara Branch", weekly: "https://docs.google.com/spreadsheets/d/harihara-weekly-link", monthly: "https://docs.google.com/spreadsheets/d/harihara-monthly-link" },
+    "hassan": { name: "Hassan Branch", weekly: "https://docs.google.com/spreadsheets/d/hassan-weekly-link", monthly: "https://docs.google.com/spreadsheets/d/hassan-monthly-link" },
+    "mysore": { name: "Mysore Branch", weekly: "https://docs.google.com/spreadsheets/d/mysore-weekly-link", monthly: "https://docs.google.com/spreadsheets/d/mysore-monthly-link" },
+    "vijayanagar": { name: "Vijayanagar Branch", weekly: "https://docs.google.com/spreadsheets/d/vijayanagar-weekly-link", monthly: "https://docs.google.com/spreadsheets/d/vijayanagar-monthly-link" },
+    "gulbarga": { name: "Gulbarga Branch", weekly: "https://docs.google.com/spreadsheets/d/gulbarga-weekly-link", monthly: "https://docs.google.com/spreadsheets/d/gulbarga-monthly-link" },
+    "salem": { name: "Salem Branch", weekly: "https://docs.google.com/spreadsheets/d/salem-weekly-link", monthly: "https://docs.google.com/spreadsheets/d/salem-monthly-link" },
+    "krishnagiri": { name: "Krishnagiri Branch", weekly: "https://docs.google.com/spreadsheets/d/krishnagiri-weekly-link", monthly: "https://docs.google.com/spreadsheets/d/krishnagiri-monthly-link" },
+    "hosur": { name: "Hosur Branch", weekly: "https://docs.google.com/spreadsheets/d/hosur-weekly-link", monthly: "https://docs.google.com/spreadsheets/d/hosur-monthly-link" }
+  };
 
-function login() {
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
-
-  if(branches[email] && branches[email].password === password) {
-    const branch = branches[email];
+  // Get logged branch from sessionStorage
+  const branchKey = sessionStorage.getItem("loggedBranch");
+  if(!branchKey || !branches[branchKey]){
+    alert("Invalid branch login. Redirecting to login page.");
+    window.location.href = "index.html";
+  } else {
+    const branch = branches[branchKey];
+    document.getElementById("branchName").textContent = branch.name + " Reports Dashboard";
     document.getElementById("branchHeader").textContent = branch.name + " Reports";
     document.getElementById("weeklyBtn").onclick = () => window.open(branch.weekly, "_blank");
     document.getElementById("monthlyBtn").onclick = () => window.open(branch.monthly, "_blank");
-    document.getElementById("loginBox").style.display = "none";
-    document.getElementById("dashboard").style.display = "block";
-  } else {
-    alert("Invalid email or password!");
   }
-}
 
-function logout() {
-  document.getElementById("dashboard").style.display = "none";
-  document.getElementById("loginBox").style.display = "block";
-  document.getElementById("email").value = "";
-  document.getElementById("password").value = "";
-}
+  function logout(){
+    sessionStorage.removeItem("loggedBranch");
+    window.location.href = "index.html";
+  }
 </script>
 
 </body>

@@ -91,47 +91,148 @@
   <button class="logout" onclick="logout()">Logout</button>
 
   <script>
-    // ===== UNIVERSAL DASHBOARD SCRIPT =====
+    // ===== BRANCH DASHBOARD SCRIPT =====
+
+    // Branch credentials and their specific Google Sheet links
+    const branches = {
+      "anekal": {
+        email: "sggcpl.ank@gmail.com",
+        password: "password1",
+        reports: {
+          weekly: "https://link-to-anekal-weekly-sheet",
+          monthly: "https://link-to-anekal-monthly-sheet",
+          annual: "https://link-to-anekal-annual-sheet"
+        }
+      },
+      "centralize": {
+        email: "sggcpl.cb@gmail.com",
+        password: "password2",
+        reports: {
+          weekly: "https://link-to-centralize-weekly-sheet",
+          monthly: "https://link-to-centralize-monthly-sheet",
+          annual: "https://link-to-centralize-annual-sheet"
+        }
+      },
+      "chanrayapatna": {
+        email: "sggcpl.crp1@gmail.com",
+        password: "password3",
+        reports: {
+          weekly: "https://link-to-chanrayapatna-weekly-sheet",
+          monthly: "https://link-to-chanrayapatna-monthly-sheet",
+          annual: "https://link-to-chanrayapatna-annual-sheet"
+        }
+      },
+      "davanagere": {
+        email: "sggcpl.dav@gmail.com",
+        password: "password4",
+        reports: {
+          weekly: "https://link-to-davanagere-weekly-sheet",
+          monthly: "https://link-to-davanagere-monthly-sheet",
+          annual: "https://link-to-davanagere-annual-sheet"
+        }
+      },
+      "harihara": {
+        email: "sggcpl.hrr@gmail.com",
+        password: "password5",
+        reports: {
+          weekly: "https://link-to-harihara-weekly-sheet",
+          monthly: "https://link-to-harihara-monthly-sheet",
+          annual: "https://link-to-harihara-annual-sheet"
+        }
+      },
+      "hassan": {
+        email: "sggcpl.hassan@gmail.com",
+        password: "password6",
+        reports: {
+          weekly: "https://link-to-hassan-weekly-sheet",
+          monthly: "https://link-to-hassan-monthly-sheet",
+          annual: "https://link-to-hassan-annual-sheet"
+        }
+      },
+      "mysore": {
+        email: "sggcpl.mys@gmail.com",
+        password: "password7",
+        reports: {
+          weekly: "https://link-to-mysore-weekly-sheet",
+          monthly: "https://link-to-mysore-monthly-sheet",
+          annual: "https://link-to-mysore-annual-sheet"
+        }
+      },
+      "vijayanagar": {
+        email: "sggcpl.vijayanagar@gmail.com",
+        password: "password8",
+        reports: {
+          weekly: "https://link-to-vijayanagar-weekly-sheet",
+          monthly: "https://link-to-vijayanagar-monthly-sheet",
+          annual: "https://link-to-vijayanagar-annual-sheet"
+        }
+      },
+      "gulbarga": {
+        email: "sggcpl.glb1@gmail.com",
+        password: "password9",
+        reports: {
+          weekly: "https://link-to-gulbarga-weekly-sheet",
+          monthly: "https://link-to-gulbarga-monthly-sheet",
+          annual: "https://link-to-gulbarga-annual-sheet"
+        }
+      },
+      "salem": {
+        email: "salem@sggctn.com",
+        password: "password10",
+        reports: {
+          weekly: "https://link-to-salem-weekly-sheet",
+          monthly: "https://link-to-salem-monthly-sheet",
+          annual: "https://link-to-salem-annual-sheet"
+        }
+      },
+      "krishnagiri": {
+        email: "krishnagiri@sggctn.com",
+        password: "password11",
+        reports: {
+          weekly: "https://link-to-krishnagiri-weekly-sheet",
+          monthly: "https://link-to-krishnagiri-monthly-sheet",
+          annual: "https://link-to-krishnagiri-annual-sheet"
+        }
+      },
+      "hosur": {
+        email: "hosur@sggctn.com",
+        password: "password12",
+        reports: {
+          weekly: "https://link-to-hosur-weekly-sheet",
+          monthly: "https://link-to-hosur-monthly-sheet",
+          annual: "https://link-to-hosur-annual-sheet"
+        }
+      }
+    };
 
     // 1️⃣ Get logged branch from sessionStorage
     const branchKey = sessionStorage.getItem("loggedBranch");
+
+    // 2️⃣ If no branch logged in, redirect to index.html for login
     if (!branchKey) {
       alert("No branch logged in! Redirecting to login page.");
-      window.location.href = "index.html"; // redirect to login
+      window.location.href = "index.html";
     } else {
-      document.getElementById("branchName").textContent =
-        "Welcome, " + branchKey.charAt(0).toUpperCase() + branchKey.slice(1) + " Branch!";
+      const branchData = branches[branchKey.toLowerCase()];
+      if (!branchData) {
+        alert("Branch not found! Redirecting to login page.");
+        sessionStorage.removeItem("loggedBranch");
+        window.location.href = "index.html";
+      } else {
+        // Display branch name
+        document.getElementById("branchName").textContent =
+          "Welcome, " + branchKey.charAt(0).toUpperCase() + branchKey.slice(1) + " Branch!";
+        // Set report links
+        document.getElementById("weeklyReport").href = branchData.reports.weekly;
+        document.getElementById("monthlyReport").href = branchData.reports.monthly;
+        document.getElementById("annualReport").href = branchData.reports.annual;
+      }
     }
 
-    // 2️⃣ Branch report links
-    const branchReports = {
-      anekal: { weekly: "#", monthly: "#", annual: "#" },
-      channarayapatna: { weekly: "#", monthly: "#", annual: "#" },
-      bangalore: { weekly: "#", monthly: "#", annual: "#" },
-      salem: { weekly: "#", monthly: "#", annual: "#" },
-      chennai: { weekly: "#", monthly: "#", annual: "#" },
-      mysore: { weekly: "#", monthly: "#", annual: "#" },
-      hubli: { weekly: "#", monthly: "#", annual: "#" },
-      tumkur: { weekly: "#", monthly: "#", annual: "#" },
-      coimbatore: { weekly: "#", monthly: "#", annual: "#" },
-      trichy: { weekly: "#", monthly: "#", annual: "#" },
-      madurai: { weekly: "#", monthly: "#", annual: "#" }
-      // ✅ Add more branches here, same format
-    };
-
-    // 3️⃣ Apply links dynamically
-    if (branchReports[branchKey.toLowerCase()]) {
-      document.getElementById("weeklyReport").href = branchReports[branchKey.toLowerCase()].weekly;
-      document.getElementById("monthlyReport").href = branchReports[branchKey.toLowerCase()].monthly;
-      document.getElementById("annualReport").href = branchReports[branchKey.toLowerCase()].annual;
-    } else {
-      alert("No reports available for this branch.");
-    }
-
-    // 4️⃣ Logout function
+    // 3️⃣ Logout function
     function logout() {
       sessionStorage.removeItem("loggedBranch");
-      window.location.href = "index.html"; // back to login
+      window.location.href = "index.html";
     }
   </script>
 

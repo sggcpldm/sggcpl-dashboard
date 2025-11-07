@@ -6,56 +6,105 @@
   <title>Head Office Dashboard - SGGCPL</title>
   <style>
     body {
-      font-family: "Bell MT", serif;
+      font-family: "Bell MT", "Segoe UI", serif;
       background-color: #f7f9fc;
       margin: 0;
       padding: 0;
       text-align: center;
     }
+
     header {
       background-color: #002b80;
       color: white;
-      padding: 20px;
+      padding: 30px 20px;
+      border-bottom: 3px solid #004aad;
     }
-    h1, h2 {
+
+    header h1 {
       margin: 0;
+      font-size: 34px;
+      font-weight: bold;
     }
+
+    header h2 {
+      margin: 5px 0 10px 0;
+      font-size: 22px;
+      font-weight: normal;
+    }
+
+    header p {
+      font-size: 16px;
+      margin: 0;
+      color: #e0e0e0;
+    }
+
     table {
       border-collapse: collapse;
-      width: 80%;
-      margin: 20px auto;
+      width: 85%;
+      margin: 40px auto;
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       overflow: hidden;
     }
+
     th, td {
       text-align: left;
-      padding: 14px;
+      padding: 14px 18px;
       border-bottom: 1px solid #e6e6e6;
+      font-size: 16px;
     }
+
     th {
       background-color: #004aad;
       color: white;
-      font-size: 16px;
+      font-weight: 600;
+      text-align: left;
     }
+
     tr:hover { background-color: #f1f5ff; }
+
     button {
       background-color: #004aad;
       color: white;
       border: none;
-      padding: 10px 16px;
+      padding: 8px 14px;
       border-radius: 6px;
       cursor: pointer;
-      margin: 0;
+      font-size: 15px;
+      transition: all 0.3s ease;
     }
-    button:hover { background-color: #002b80; }
+
+    button:hover {
+      background-color: #002b80;
+      transform: scale(1.05);
+    }
+
     .logout {
-      background-color: #ff4d4d;
-      margin-top: 20px;
-      padding: 10px 20px;
+      background-color: #c62828;
+      margin-top: 30px;
+      padding: 10px 24px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
-    .logout:hover { background-color: #cc0000; }
+
+    .logout:hover {
+      background-color: #a51c1c;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #f1f1f1;
+      color: #444;
+      font-size: 14px;
+      margin-top: 40px;
+    }
   </style>
 </head>
 <body>
@@ -70,64 +119,10 @@
     <tr>
       <th>Report Name</th>
       <th>Description</th>
-      <th>Download</th>
+      <th>Action</th>
     </tr>
     <tr>
       <td>Weekly Commitment Report</td>
-      <td>All branches weekly report in one file</td>
-      <td><button onclick="downloadWeekly()">Download</button></td>
-    </tr>
-    <tr>
-      <td>Monthly Commitment Report</td>
-      <td>All branches monthly report in one file</td>
-      <td><button onclick="downloadMonthly()">Download</button></td>
-    </tr>
-    <tr>
-      <td>Annual Balance Sheet</td>
-      <td>All branches annual summary in one file</td>
-      <td><button onclick="downloadAnnual()">Download</button></td>
-    </tr>
-  </table>
-
-  <button class="logout" onclick="logout()">Logout</button>
-
-  <script>
-    // Consolidated HO report links (replace these with actual Google Sheet links)
-    const hoReports = {
-      weekly: [
-        "https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", // CB branch
-        "https://docs.google.com/spreadsheets/d/WEEKLY_FILE_ID_ANEKAL/edit?usp=sharing" // Anekal
-        // add other branch files here
-      ],
-      monthly: [
-        "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_CB/edit?usp=sharing",
-        "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_ANEKAL/edit?usp=sharing"
-        // add other branch files here
-      ],
-      annual: [
-        "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_CB/edit?usp=sharing",
-        "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_ANEKAL/edit?usp=sharing"
-        // add other branch files here
-      ]
-    };
-
-    // Functions to download all branch files for each report type
-    function downloadWeekly() {
-      hoReports.weekly.forEach(url => window.open(url, "_blank"));
-    }
-    function downloadMonthly() {
-      hoReports.monthly.forEach(url => window.open(url, "_blank"));
-    }
-    function downloadAnnual() {
-      hoReports.annual.forEach(url => window.open(url, "_blank"));
-    }
-
-    // Logout function
-    function logout() {
-      sessionStorage.removeItem("loggedHO"); // optional, if you track HO session
-      window.location.href = "index.html"; // return to main login page
-    }
-  </script>
-
-</body>
-</html>
+      <td>Consolidated weekly report from all branches.</td>
+      <td><button onclick="downloadWeekly()">Open All</button></td>
+    </tr

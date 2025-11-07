@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SGGCPL – Branch Reports Dashboard</title>
+  <title>Anekal Branch Dashboard – Sree Gowri Ganesha Chits Private Limited</title>
   <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
@@ -17,13 +17,13 @@
       color: white;
       padding: 30px 20px;
       text-align: center;
-      font-family: "Bell MT", "Segoe UI", Arial, sans-serif;
       border-bottom: 3px solid #004aad;
     }
 
     header h1 {
       margin: 0;
       font-size: 36px;
+      font-family: "Bell MT", "Segoe UI", Arial, sans-serif;
       font-weight: bold;
     }
 
@@ -33,71 +33,86 @@
       font-weight: 500;
     }
 
-    .notice {
-      width: 80%;
-      background: #fff8e5;
-      border-left: 6px solid #ffcc00;
-      color: #333;
-      padding: 12px;
-      margin: 30px auto 20px;
-      border-radius: 8px;
-      font-size: 16px;
+    .container {
+      width: 90%;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       text-align: center;
     }
 
-    table {
-      border-collapse: collapse;
-      width: 90%;
-      margin: 20px auto;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      overflow: hidden;
-    }
-
-    th, td {
-      text-align: left;
-      padding: 14px;
-      border-bottom: 1px solid #e6e6e6;
-    }
-
-    th {
-      background-color: #004aad;
-      color: white;
-      font-size: 16px;
-      position: sticky;
-      top: 0;
-      z-index: 1;
-    }
-
-    tr:hover { background-color: #f1f5ff; }
-
-    a {
+    h2 {
       color: #004aad;
-      text-decoration: none;
+      margin-bottom: 30px;
+      font-size: 26px;
       font-weight: 600;
-      transition: color 0.2s ease-in-out;
     }
 
-    a:hover {
-      text-decoration: underline;
-      color: #002b80;
+    .report-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
     }
 
-    button {
+    .report-card {
+      background-color: #f9fbff;
+      border: 2px solid #004aad;
+      border-radius: 10px;
+      width: 260px;
+      padding: 25px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .report-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .report-card p {
+      font-weight: bold;
+      color: #004aad;
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+
+    .report-card button {
       background-color: #004aad;
       color: white;
       border: none;
       padding: 10px 16px;
       border-radius: 6px;
       cursor: pointer;
-      display: block;
-      margin: 30px auto;
       font-size: 15px;
+      transition: all 0.3s ease;
     }
 
-    button:hover {
+    .report-card button:hover {
       background-color: #002b80;
+      transform: scale(1.05);
+    }
+
+    .logout {
+      margin-top: 30px;
+    }
+
+    .logout button {
+      background-color: #c62828;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .logout button:hover {
+      background-color: #a51c1c;
     }
 
     footer {
@@ -106,97 +121,45 @@
       background-color: #f1f1f1;
       color: #444;
       font-size: 14px;
-      margin-top: 30px;
+      margin-top: 50px;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>Sree Gowri Ganesha Chits Private Limited</h1>
-  <p><strong>Branch Reports Management Dashboard</strong></p>
-</header>
+  <header>
+    <h1>Sree Gowri Ganesha Chits Private Limited</h1>
+    <p>Anekal Branch Reports Dashboard</p>
+  </header>
 
-<div class="notice">
-  📌 Submit all reports every Saturday before 6:00 PM and at month-end by all branches.
-</div>
+  <div class="container">
+    <h2>Anekal Branch Reports</h2>
 
-<div id="branchContent">
-  <!-- JS will inject content here -->
-</div>
+    <div class="report-buttons">
+      <div class="report-card">
+        <p>Weekly Report</p>
+        <button onclick="window.open('https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing','_blank')">Open</button>
+      </div>
 
-<footer>
-  Last updated on 7 Nov 2025, 6:32 PM
-</footer>
+      <div class="report-card">
+        <p>Monthly Report</p>
+        <button onclick="window.open('https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing','_blank')">Open</button>
+      </div>
 
-<script>
-const branchesReports = {
-  anekal: {
-    weekly:"https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing",
-    monthly:"https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing",
-    annual:"#"
-  },
-  centralize: { weekly:"https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", monthly:"#", annual:"#"},
-  chanrayapatna: { weekly:"https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", monthly:"#", annual:"#"},
-  davanagere: { weekly:"#", monthly:"#", annual:"#"},
-  harihara: { weekly:"#", monthly:"#", annual:"#"},
-  hassan: { weekly:"#", monthly:"#", annual:"#"},
-  mysore: { weekly:"#", monthly:"#", annual:"#"},
-  vijayanagar: { weekly:"#", monthly:"#", annual:"#"},
-  gulbarga: { weekly:"#", monthly:"#", annual:"#"},
-  salem: { weekly:"#", monthly:"#", annual:"#"},
-  krishnagiri: { weekly:"#", monthly:"#", annual:"#"},
-  hosur: { weekly:"#", monthly:"#", annual:"#"}
-};
+      <div class="report-card">
+        <p>Annual Report</p>
+        <button disabled style="background-color: gray; cursor: not-allowed;">Not Available</button>
+      </div>
+    </div>
 
-const branchKey = sessionStorage.getItem("loggedBranch");
+    <div class="logout">
+      <button onclick="window.location.href='index.html'">Logout</button>
+    </div>
+  </div>
 
-if(!branchKey || !branchesReports[branchKey]) {
-  document.getElementById('branchContent').innerHTML = `
-    <p style="text-align:center; margin-top:40px;">
-      ⚠️ No branch logged in. Please <a href="index.html">login here</a>.
-    </p>
-  `;
-} else {
-  const report = branchesReports[branchKey];
-  const branchName = branchKey.charAt(0).toUpperCase() + branchKey.slice(1);
-
-  document.getElementById('branchContent').innerHTML = `
-    <table>
-      <thead>
-        <tr>
-          <th>Report Name</th>
-          <th>Description</th>
-          <th>Open Link</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Weekly Report</td>
-          <td>Weekly performance and financial summary.</td>
-          <td>${report.weekly !== "#" ? `<a href="${report.weekly}" target="_blank">Open Report</a>` : "Not Available"}</td>
-        </tr>
-        <tr>
-          <td>Monthly Report</td>
-          <td>Branch-wide monthly report overview.</td>
-          <td>${report.monthly !== "#" ? `<a href="${report.monthly}" target="_blank">Open Report</a>` : "Not Available"}</td>
-        </tr>
-        <tr>
-          <td>Annual Report</td>
-          <td>Comprehensive annual branch report.</td>
-          <td>${report.annual !== "#" ? `<a href="${report.annual}" target="_blank">Open Report</a>` : "Not Available"}</td>
-        </tr>
-      </tbody>
-    </table>
-    <button onclick="logout()">Logout</button>
-  `;
-}
-
-function logout() {
-  sessionStorage.removeItem("loggedBranch");
-  window.location.href = "index.html";
-}
-</script>
+  <footer>
+    © 2025 Sree Gowri Ganesha Chits Private Limited. All Rights Reserved.
+  </footer>
 
 </body>
 </html>

@@ -125,4 +125,58 @@
       <td>Weekly Commitment Report</td>
       <td>Consolidated weekly report from all branches.</td>
       <td><button onclick="downloadWeekly()">Open All</button></td>
-    </tr
+    </tr>
+    <tr>
+      <td>Monthly Commitment Report</td>
+      <td>Consolidated monthly report from all branches.</td>
+      <td><button onclick="downloadMonthly()">Open All</button></td>
+    </tr>
+    <tr>
+      <td>Annual Balance Sheet</td>
+      <td>Summary of annual performance and collections.</td>
+      <td><button onclick="downloadAnnual()">Open All</button></td>
+    </tr>
+  </table>
+
+  <button class="logout" onclick="logout()">Logout</button>
+
+  <footer>
+    © 2025 Sree Gowri Ganesha Chits Private Limited. All Rights Reserved.
+  </footer>
+
+  <script>
+    // Replace these with your actual report links
+    const hoReports = {
+      weekly: [
+        "https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing",
+        "https://docs.google.com/spreadsheets/d/WEEKLY_FILE_ID_ANEKAL/edit?usp=sharing"
+      ],
+      monthly: [
+        "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_CB/edit?usp=sharing",
+        "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_ANEKAL/edit?usp=sharing"
+      ],
+      annual: [
+        "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_CB/edit?usp=sharing",
+        "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_ANEKAL/edit?usp=sharing"
+      ]
+    };
+
+    function downloadWeekly() {
+      hoReports.weekly.forEach(url => window.open(url, "_blank"));
+    }
+
+    function downloadMonthly() {
+      hoReports.monthly.forEach(url => window.open(url, "_blank"));
+    }
+
+    function downloadAnnual() {
+      hoReports.annual.forEach(url => window.open(url, "_blank"));
+    }
+
+    function logout() {
+      window.location.href = "index.html";
+    }
+  </script>
+
+</body>
+</html>

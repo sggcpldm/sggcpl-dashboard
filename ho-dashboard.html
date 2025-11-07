@@ -40,7 +40,7 @@
 
     table {
       border-collapse: collapse;
-      width: 85%;
+      width: 90%;
       margin: 40px auto;
       background: #fff;
       border-radius: 12px;
@@ -112,29 +112,15 @@
   <header>
     <h1>Sree Gowri Ganesha Chits Private Limited</h1>
     <h2>Head Office Dashboard</h2>
-    <p>Welcome, Head Office!</p>
+    <p>Centralized Reports Overview for All Branches</p>
   </header>
 
-  <table>
+  <table id="reportsTable">
     <tr>
-      <th>Report Name</th>
-      <th>Description</th>
-      <th>Action</th>
-    </tr>
-    <tr>
-      <td>Weekly Commitment Report</td>
-      <td>Consolidated weekly report from all branches.</td>
-      <td><button onclick="downloadWeekly()">Open All</button></td>
-    </tr>
-    <tr>
-      <td>Monthly Commitment Report</td>
-      <td>Consolidated monthly report from all branches.</td>
-      <td><button onclick="downloadMonthly()">Open All</button></td>
-    </tr>
-    <tr>
-      <td>Annual Balance Sheet</td>
-      <td>Summary of annual performance and collections.</td>
-      <td><button onclick="downloadAnnual()">Open All</button></td>
+      <th>Branch Name</th>
+      <th>Weekly Report</th>
+      <th>Monthly Report</th>
+      <th>Annual Report</th>
     </tr>
   </table>
 
@@ -145,34 +131,49 @@
   </footer>
 
   <script>
-    // Replace these with your actual report links
-    const hoReports = {
-      weekly: [
-        "https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing",
-        "https://docs.google.com/spreadsheets/d/WEEKLY_FILE_ID_ANEKAL/edit?usp=sharing"
-      ],
-      monthly: [
-        "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_CB/edit?usp=sharing",
-        "https://docs.google.com/spreadsheets/d/MONTHLY_FILE_ID_ANEKAL/edit?usp=sharing"
-      ],
-      annual: [
-        "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_CB/edit?usp=sharing",
-        "https://docs.google.com/spreadsheets/d/ANNUAL_FILE_ID_ANEKAL/edit?usp=sharing"
-      ]
+    // --- Branch Report Links ---
+    const branchesReports = {
+      anekal: {
+        weekly: "https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing",
+        monthly: "https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing",
+        annual: "#"
+      },
+      centralize: {
+        weekly: "https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing",
+        monthly: "#",
+        annual: "#"
+      },
+      channarayapatna: {
+        weekly: "https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing",
+        monthly: "#",
+        annual: "#"
+      },
+      davanagere: { weekly: "#", monthly: "#", annual: "#" },
+      harihara: { weekly: "#", monthly: "#", annual: "#" },
+      hassan: { weekly: "#", monthly: "#", annual: "#" },
+      mysore: { weekly: "#", monthly: "#", annual: "#" },
+      vijayanagar: { weekly: "#", monthly: "#", annual: "#" },
+      gulbarga: { weekly: "#", monthly: "#", annual: "#" },
+      salem: { weekly: "#", monthly: "#", annual: "#" },
+      krishnagiri: { weekly: "#", monthly: "#", annual: "#" },
+      hosur: { weekly: "#", monthly: "#", annual: "#" }
     };
 
-    function downloadWeekly() {
-      hoReports.weekly.forEach(url => window.open(url, "_blank"));
-    }
+    // --- Populate Table Dynamically ---
+    const table = document.getElementById("reportsTable");
 
-    function downloadMonthly() {
-      hoReports.monthly.forEach(url => window.open(url, "_blank"));
-    }
+    Object.entries(branchesReports).forEach(([branch, report]) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td style="font-weight:600; text-transform:capitalize;">${branch}</td>
+        <td>${report.weekly !== "#" ? `<a href="${report.weekly}" target="_blank"><button>Open</button></a>` : "Not Available"}</td>
+        <td>${report.monthly !== "#" ? `<a href="${report.monthly}" target="_blank"><button>Open</button></a>` : "Not Available"}</td>
+        <td>${report.annual !== "#" ? `<a href="${report.annual}" target="_blank"><button>Open</button></a>` : "Not Available"}</td>
+      `;
+      table.appendChild(row);
+    });
 
-    function downloadAnnual() {
-      hoReports.annual.forEach(url => window.open(url, "_blank"));
-    }
-
+    // --- Logout Function ---
     function logout() {
       window.location.href = "index.html";
     }

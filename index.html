@@ -11,7 +11,7 @@
       margin: 0;
       padding: 0;
     }
-    
+
     header {
       background-color: #002b80;
       color: white;
@@ -89,6 +89,12 @@
       border-radius: 6px;
       cursor: pointer;
       margin: 0 5% 20px 0;
+      transition: all 0.3s ease;
+    }
+
+    button.printBtn:hover {
+      filter: brightness(85%);
+      transform: translateY(-2px);
     }
 
     footer {
@@ -100,490 +106,83 @@
     }
 
     /* Branch Cards */
-    .branch-portal { width: 90%; margin: 30px auto; }
-    .branch-portal h2 { color: #004aad; margin-bottom: 20px; }
-    .branch-cards { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+    .branch-portal {
+      width: 90%;
+      margin: 30px auto;
+    }
+
+    .branch-portal h2 {
+      color: #004aad;
+      margin-bottom: 20px;
+    }
+
+    .branch-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+
     .branch-card {
       flex: 1 1 200px;
-      border: 2px solid #004aad;
       border-radius: 10px;
       padding: 20px;
       text-align: center;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .branch-card p { font-weight: bold; margin-bottom: 10px; font-size:16px; }
-    .branch-card button {
-      background-color: #004aad;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 6px;
+      border: 2px solid;
+      transition: all 0.3s ease;
       cursor: pointer;
     }
-    .branch-card button:hover { background-color: #002b80; }
-   .branch-card button {
-  background-color: #004aad;
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-}
 
-/* Add this below for hover effect */
-.branch-card button {
-  transition: all 0.3s ease;
-}
-
-.branch-card button:hover {
-  filter: brightness(85%);
-  transform: translateY(-2px);
-  cursor: pointer;
-}
-  
-  </style>
-</head>
-<body>
-
-
-<header>
-  <h1>Sree Gowri Ganesha Chits Private Limited</h1>
-  <p><strong>Online Reports Management Dashboard</strong></p>
-</header>
-
-<input type="text" id="searchBox" placeholder="Search reports...">
-
-<table>
-  <tr>
-    <th>Report Name</th>
-    <th>Description</th>
-    <th>Open Link</th>
-  </tr>
-    <tr>
-      <td>New Group & Tickets (Staff Commitment Report)</td>
-      <td>Track staff commitments for new groups and tickets.</td>
-      <td>
-        <a href="https://docs.google.com/spreadsheets/d/1MJEKbHc5YyVzkYLbp55Qkw4oRy1Lmoni/edit?usp=sharing" target="_blank">Open Report</a>
-        &nbsp;|&nbsp;
-        <a href="#" onclick="navigator.clipboard.writeText('https://docs.google.com/spreadsheets/d/1MJEKbHc5YyVzkYLbp55Qkw4oRy1Lmoni/edit?usp=sharing'); alert('Link copied!')">Copy Link</a>
-      </td>
-    </tr>
-    <tr>
-      <td>New Group & Tickets (Agents Commitment Report)</td>
-      <td>Agent-wise commitment report for new group creation and tickets.</td>
-      <td>
-        <a href="https://docs.google.com/spreadsheets/d/1eb99jPyDtqkE4Isd-UEmwE1PkYQk9Ljb/edit?usp=sharing" target="_blank">Open Report</a>
-        &nbsp;|&nbsp;
-        <a href="#" onclick="navigator.clipboard.writeText('https://docs.google.com/spreadsheets/d/1eb99jPyDtqkE4Isd-UEmwE1PkYQk9Ljb/edit?usp=sharing'); alert('Link copied!')">Copy Link</a>
-      </td>
-    </tr>
-    <tr>
-      <td>Vacancy Tickets (Staff & Agents Commitment Report)</td>
-      <td>Vacant ticket commitments by staff and agents.</td>
-      <td>
-        <a href="https://docs.google.com/spreadsheets/d/1_CT3iBN8ggzP3_pCQlu_OhVCF6JX8T8g/edit?usp=sharing" target="_blank">Open Report</a>
-        &nbsp;|&nbsp;
-        <a href="#" onclick="navigator.clipboard.writeText('https://docs.google.com/spreadsheets/d/1_CT3iBN8ggzP3_pCQlu_OhVCF6JX8T8g/edit?usp=sharing'); alert('Link copied!')">Copy Link</a>
-      </td>
-    </tr>
-    <tr>
-      <td>Bid Payable (Manager Commitment Report)</td>
-      <td>Manager bid payable tracking and summary.</td>
-      <td>
-        <a href="https://docs.google.com/spreadsheets/d/1cneQUxoYdo1Eita5BTQH1yWegvWmBivp/edit?usp=sharing" target="_blank">Open Report</a>
-        &nbsp;|&nbsp;
-        <a href="#" onclick="navigator.clipboard.writeText('https://docs.google.com/spreadsheets/d/1cneQUxoYdo1Eita5BTQH1yWegvWmBivp/edit?usp=sharing'); alert('Link copied!')">Copy Link</a>
-      </td>
-    </tr>
-    <tr>
-      <td>SF Report (Manager & Legal Officer Commitment Report)</td>
-      <td>SF and legal officer commitment report.</td>
-      <td>
-        <a href="https://docs.google.com/spreadsheets/d/1vzLn7DIZ1L1XYZ-qm8lz_FJoFglvFkQ_/edit?usp=sharing" target="_blank">Open Report</a>
-        &nbsp;|&nbsp;
-        <a href="#" onclick="navigator.clipboard.writeText('https://docs.google.com/spreadsheets/d/1vzLn7DIZ1L1XYZ-qm8lz_FJoFglvFkQ_/edit?usp=sharing'); alert('Link copied!')">Copy Link</a>
-      </td>
-    </tr>
-    <tr>
-      <td>Collection Agent wise Dues Statement</td>
-      <td>Allotment report and collectable dues statement.</td>
-      <td>
-        <a href="https://docs.google.com/spreadsheets/d/1CNix6Z7vUFeRL_FOMRvtz-CxKJbS2bue/edit?usp=sharing" target="_blank">Open Report</a>
-        &nbsp;|&nbsp;
-        <a href="#" onclick="navigator.clipboard.writeText('https://docs.google.com/spreadsheets/d/1CNix6Z7vUFeRL_FOMRvtz-CxKJbS2bue/edit?usp=sharing'); alert('Link copied!')">Copy Link</a>
-      </td>
-    </tr>
-    <tr>
-      <td>Check List</td>
-      <td>Branch-wise checklist and verification report.</td>
-      <td>
-        <a href="https://docs.google.com/spreadsheets/d/1MmA4JFpOszw8tX81hK32SXsMi3SZVOKi/edit?usp=sharing" target="_blank">Open Report</a>
-        &nbsp;|&nbsp;
-        <a href="#" onclick="navigator.clipboard.writeText('https://docs.google.com/spreadsheets/d/1MmA4JFpOszw8tX81hK32SXsMi3SZVOKi/edit?usp=sharing'); alert('Link copied!')">Copy Link</a>
-      </td>
-    </tr>
-  </table>
-
-  <div style="text-align:right; margin: 20px 5% 0;">
-    <button class="printBtn" onclick="window.print()">🖨️ Print / Save PDF</button>
-  </div>
-</section>
-
-<!-- Branch Financial Reporting Portal Section -->
-<section class="branch-portal">
-  <h2>Branch Financial Reporting Portal</h2>
-  <p style="font-size:16px; color:#333; margin-bottom: 30px;">
-    Reports must be submitted <strong>Weekly, Monthly & Annually</strong> by all branches.
-  </p>
-
-  <div class="branch-cards">
-    <!-- Karnataka Branches -->
-    <div class="branch-card" data-branch="anekal">
-      <h3>Anekal Branch</h3>
-      <p>sggcpl.ank@gmail.com</p>
-      <button onclick="loginBranch('anekal')">Login</button>
-    </div>
-
-    <div class="branch-card" data-branch="centralize">
-      <h3>Centralize Branch</h3>
-      <p>sggcpl.cb@gmail.com</p>
-      <button onclick="loginBranch('centralize')">Login</button>
-    </div>
-
-    <div class="branch-card" data-branch="chanrayapatna">
-      <h3>Channarayapatna</h3>
-      <p>sggcpl.crp1@gmail.com</p>
-      <button onclick="loginBranch('chanrayapatna')">Login</button>
-    </div>
-
-    <div class="branch-card" data-branch="davanagere">
-      <h3>Davanagere Branch</h3>
-      <p>sggcpl.dav@gmail.com</p>
-      <button onclick="loginBranch('davanagere')">Login</button>
-    </div>
-
-    <div class="branch-card" data-branch="harihara">
-      <h3>Harihara Branch</h3>
-      <p>sggcpl.hrr@gmail.com</p>
-      <button onclick="loginBranch('harihara')">Login</button>
-    </div>
-
-    <div class="branch-card" data-branch="hassan">
-      <h3>Hassan Branch</h3>
-      <p>sggcpl.hassan@gmail.com</p>
-      <button onclick="loginBranch('hassan')">Login</button>
-    </div>
-
-    <div class="branch-card" data-branch="mysore">
-      <h3>Mysore Branch</h3>
-      <p>sggcpl.mys@gmail.com</p>
-      <button onclick="loginBranch('mysore')">Login</button>
-    </div>
-
-    <div class="branch-card" data-branch="vijayanagar">
-      <h3>Vijayanagar Branch</h3>
-      <p>sggcpl.vjn@gmail.com</p>
-      <button onclick="loginBranch('vijayanagar')">Login</button>
-    </div>
-
-    <div class="branch-card" data-branch="gulbarga">
-      <h3>Gulbarga Branch</h3>
-      <p>sggcpl.glb1@gmail.com</p>
-      <button onclick="loginBranch('gulbarga')">Login</button>
-    </div>
-
-    <!-- Tamil Nadu Branches -->
-    <div class="branch-card" data-branch="salem" style="border-color:#ff6600;">
-      <h3 style="color:#ff6600;">Salem Branch</h3>
-      <p>salem@sggctn.com</p>
-      <button onclick="loginBranch('salem')" style="background:#ff6600;">Login</button>
-    </div>
-
-    <div class="branch-card" data-branch="krishnagiri" style="border-color:#ff6600;">
-      <h3 style="color:#ff6600;">Krishnagiri Branch</h3>
-      <p>krishnagiri@sggctn.com</p>
-      <button onclick="loginBranch('krishnagiri')" style="background:#ff6600;">Login</button>
-    </div>
-
-    <div class="branch-card" data-branch="hosur" style="border-color:#ff6600;">
-      <h3 style="color:#ff6600;">Hosur Branch</h3>
-      <p>hosur@sggctn.com</p>
-      <button onclick="loginBranch('hosur')" style="background:#ff6600;">Login</button>
-    </div>
-  </div>
-  
-</section>
-<section style="text-align: center; margin: 60px auto; width: 90%;">
-  <h2 style="color:#004aad; font-size: 26px; margin-bottom: 20px;">Branch Financial Reporting Portal</h2>
-  <p style="font-size:16px; color:#333; margin-bottom: 30px;">
-    Reports must be submitted <strong>Weekly, Monthly & Annually</strong> by all branches.
-  </p>
-
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-
-    <!-- Karnataka Branches -->
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px; text-align:center;">
-      <h3 style="color:#004aad;">Anekal Branch</h3>
-      <p style="color:#444;">sggcpl.ank@gmail.com</p>
-      <button onclick="loginBranch('anekal')" style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">Login</button>
-    </div>
-
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px; text-align:center;">
-      <h3 style="color:#004aad;">Centralize Branch</h3>
-      <p style="color:#444;">sggcpl.cb@gmail.com</p>
-      <button onclick="loginBranch('centralize')" style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">Login</button>
-    </div>
-
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px; text-align:center;">
-      <h3 style="color:#004aad;">Channarayapatna</h3>
-      <p style="color:#444;">sggcpl.crp1@gmail.com</p>
-      <button onclick="loginBranch('chanrayapatna')" style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">Login</button>
-    </div>
-
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px; text-align:center;">
-      <h3 style="color:#004aad;">Davanagere Branch</h3>
-      <p style="color:#444;">sggcpl.dav@gmail.com</p>
-      <button onclick="loginBranch('davanagere')" style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">Login</button>
-    </div>
-
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px; text-align:center;">
-      <h3 style="color:#004aad;">Harihara Branch</h3>
-      <p style="color:#444;">sggcpl.hrr@gmail.com</p>
-      <button onclick="loginBranch('harihara')" style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">Login</button>
-    </div>
-
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px; text-align:center;">
-      <h3 style="color:#004aad;">Hassan Branch</h3>
-      <p style="color:#444;">sggcpl.hassan@gmail.com</p>
-      <button onclick="loginBranch('hassan')" style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">Login</button>
-    </div>
-
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px; text-align:center;">
-      <h3 style="color:#004aad;">Mysore Branch</h3>
-      <p style="color:#444;">sggcpl.mys@gmail.com</p>
-      <button onclick="loginBranch('mysore')" style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">Login</button>
-    </div>
-
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px; text-align:center;">
-      <h3 style="color:#004aad;">Vijayanagar Branch</h3>
-      <p style="color:#444;">sggcpl.vjn@gmail.com</p>
-      <button onclick="loginBranch('vijayanagar')" style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">Login</button>
-    </div>
-
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px; text-align:center;">
-      <h3 style="color:#004aad;">Gulbarga Branch</h3>
-      <p style="color:#444;">sggcpl.glb1@gmail.com</p>
-      <button onclick="loginBranch('gulbarga')" style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">Login</button>
-    </div>
-
-    <!-- Tamil Nadu Branches -->
-    <div style="background:#fff1e6; border:1px solid #ff6600; border-radius:10px; padding:20px; width:260px; text-align:center;">
-      <h3 style="color:#ff6600;">Salem Branch</h3>
-      <p style="color:#444;">salem@sggctn.com</p>
-      <button onclick="loginBranch('salem')" style="background:#ff6600; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">Login</button>
-    </div>
-
-    <div style="background:#fff1e6; border:1px solid #ff6600; border-radius:10px; padding:20px; width:260px; text-align:center;">
-      <h3 style="color:#ff6600;">Krishnagiri Branch</h3>
-      <p style="color:#444;">krishnagiri@sggctn.com</p>
-      <button onclick="loginBranch('krishnagiri')" style="background:#ff6600; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">Login</button>
-    </div>
-
-    <div style="background:#fff1e6; border:1px solid #ff6600; border-radius:10px; padding:20px; width:260px; text-align:center;">
-      <h3 style="color:#ff6600;">Hosur Branch</h3>
-      <p style="color:#444;">hosur@sggctn.com</p>
-      <button onclick="loginBranch('hosur')" style="background:#ff6600; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">Login</button>
-    </div>
-
-  </div>
-</section>
-
-<footer>
-  <p>Last updated on <span id="lastUpdated"></span></p>
-</footer>
-
-<script>
-  const branches = {
-    "anekal": { email: "sggcpl.ank@gmail.com", password: "password1", sheet: "https://link-to-anekal-sheet" },
-    "centralize": { email: "sggcpl.cb@gmail.com", password: "password2", sheet: "https://link-to-centralize-sheet" },
-    "chanrayapatna": { email: "sggcpl.crp1@gmail.com", password: "password3", sheet: "https://link-to-chanrayapatna-sheet" },
-    "davanagere": { email: "sggcpl.dav@gmail.com", password: "password4", sheet: "https://link-to-davanagere-sheet" },
-    "harihara": { email: "sggcpl.hrr@gmail.com", password: "password5", sheet: "https://link-to-harihara-sheet" },
-    "hassan": { email: "sggcpl.hassan@gmail.com", password: "password6", sheet: "https://link-to-hassan-sheet" },
-    "mysore": { email: "sggcpl.mys@gmail.com", password: "password7", sheet: "https://link-to-mysore-sheet" },
-    "vijayanagar": { email: "sggcpl.vjn@gmail.com", password: "password8", sheet: "https://link-to-vijayanagar-sheet" },
-    "gulbarga": { email: "sggcpl.glb1@gmail.com", password: "password9", sheet: "https://link-to-gulbarga-sheet" },
-    "salem": { email: "salem@sggctn.com", password: "password10", sheet: "https://link-to-salem-sheet" },
-    "krishnagiri": { email: "krishnagiri@sggctn.com", password: "password11", sheet: "https://link-to-krishnagiri-sheet" },
-    "hosur": { email: "hosur@sggctn.com", password: "password12", sheet: "https://link-to-hosur-sheet" }
-  };
-
-  function loginBranch(branchKey){
-    const email = prompt("Enter Email ID:");
-    const password = prompt("Enter Password:");
-
-    if(branches[branchKey].email === email && branches[branchKey].password === password){
-      sessionStorage.setItem("loggedBranch", branchKey);
-      window.location.href = "branch-dashboard.html";
-    } else {
-      alert("Invalid login! You cannot access other branch data.");
+    .branch-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
-  }
 
-  const ho = { email: "sggcpldm@gmail.com", password: "Zoominpro6@#" };
-  function loginHO() {
-    const email = prompt("Enter HO Email ID:");
-    const password = prompt("Enter Password:");
-    if(email === ho.email && password === ho.password){
-      alert("HO Login Successful! You have access to all branch reports.");
-      window.location.href = "ho-dashboard.html";
-    } else {
-      alert("Invalid HO login!");
+    .branch-card h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
     }
-  }
 
-  // Search Functionality
-  const searchBox = document.getElementById('searchBox');
-  searchBox.addEventListener('keyup', function(){
-    const filter = searchBox.value.toLowerCase();
-    document.querySelectorAll('table tr').forEach((row, index)=>{
-      if(index === 0) return;
-      row.style.display = row.textContent.toLowerCase().includes(filter) ? '' : 'none';
-    });
-  });
+    .branch-card p {
+      font-weight: bold;
+      margin-bottom: 12px;
+      color: #444;
+    }
 
-  document.getElementById("lastUpdated").textContent = new Date().toLocaleString('en-IN', { dateStyle:'medium', timeStyle:'short' });
-</script>
+    .branch-card button {
+      background-color: inherit;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-</body>
-</html>
+    .branch-card button:hover {
+      filter: brightness(85%);
+      transform: translateY(-2px);
+    }
 
-  <!-- ===== Branch Financial Reporting Portal Section ===== -->
-<section style="text-align: center; margin: 60px auto; width: 90%;">
-  <h2 style="color:#004aad; font-size: 26px; margin-bottom: 20px;">Branch Financial Reporting Portal</h2>
-  <p style="font-size:16px; color:#333; margin-bottom: 30px;">
-    Reports must be submitted <strong>Weekly, Monthly & Annually</strong> by all branches.
-  </p>
+    /* Branch Colors */
+    .karnataka {
+      background-color: #eaf2ff;
+      border-color: #004aad;
+      color: #004aad;
+    }
 
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-    <!-- Karnataka Branches -->
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px;">
-      <h3 style="color:#004aad;">Anekal</h3>
-      <p style="color:#444;">sggcpl.ank@gmail.com</p>
-      <button onclick="alert('Login for Anekal')" 
-        style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">
-        Login
-      </button>
-    </div>
+    .karnataka button {
+      background-color: #004aad;
+    }
 
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px;">
-      <h3 style="color:#004aad;">Centralize Branch</h3>
-      <p style="color:#444;">sggcpl.cb@gmail.com</p>
-      <button onclick="alert('Login for Centralize Branch')" 
-        style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">
-        Login
-      </button>
-    </div>
+    .tn {
+      background-color: #fff1e6;
+      border-color: #ff6600;
+      color: #ff6600;
+    }
 
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px;">
-      <h3 style="color:#004aad;">Channarayapatna</h3>
-      <p style="color:#444;">sggcpl.crp1@gmail.com</p>
-      <button onclick="alert('Login for Channarayapatna')" 
-        style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">
-        Login
-      </button>
-    </div>
-
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px;">
-      <h3 style="color:#004aad;">Davanagere Branch</h3>
-      <p style="color:#444;">sggcpl.dav@gmail.com</p>
-      <button onclick="alert('Login for Davanagere Branch')" 
-        style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">
-        Login
-      </button>
-    </div>
-
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px;">
-      <h3 style="color:#004aad;">Harihara Branch</h3>
-      <p style="color:#444;">sggcpl.hrr@gmail.com</p>
-      <button onclick="alert('Login for Harihara Branch')" 
-        style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">
-        Login
-      </button>
-    </div>
-
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px;">
-      <h3 style="color:#004aad;">Hassan Branch</h3>
-      <p style="color:#444;">sggcpl.hassan@gmail.com</p>
-      <button onclick="alert('Login for Hassan Branch')" 
-        style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">
-        Login
-      </button>
-    </div>
-
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px;">
-      <h3 style="color:#004aad;">Mysore Branch</h3>
-      <p style="color:#444;">sggcpl.mys@gmail.com</p>
-      <button onclick="alert('Login for Mysore Branch')" 
-        style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">
-        Login
-      </button>
-    </div>
-
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px;">
-      <h3 style="color:#004aad;">Vijayanagar Branch</h3>
-      <p style="color:#444;">sggcpl.vjn@gmail.com</p>
-      <button onclick="alert('Login for Vijayanagar Branch')" 
-        style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">
-        Login
-      </button>
-    </div>
-
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px;">
-      <h3 style="color:#004aad;">Gulbarga Branch</h3>
-      <p style="color:#444;">sggcpl.glb1@gmail.com</p>
-      <button onclick="alert('Login for Gulbarga Branch')" 
-        style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">
-        Login
-      </button>
-    </div>
-
-    <!-- Tamil Nadu -->
-    <div style="background:#fff1e6; border:1px solid #ff6600; border-radius:10px; padding:20px; width:260px;">
-      <h3 style="color:#ff6600;">Salem Branch</h3>
-      <p style="color:#444;">salem@sggctn.com</p>
-      <button onclick="alert('Login for Salem Branch')" 
-        style="background:#ff6600; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">
-        Login
-      </button>
-    </div>
-
-    <div style="background:#fff1e6; border:1px solid #ff6600; border-radius:10px; padding:20px; width:260px;">
-      <h3 style="color:#ff6600;">Krishnagiri Branch</h3>
-      <p style="color:#444;">krishnagiri@sggctn.com</p>
-      <button onclick="alert('Login for Krishnagiri Branch')" 
-        style="background:#ff6600; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">
-        Login
-      </button>
-    </div>
-
-    <div style="background:#fff1e6; border:1px solid #ff6600; border-radius:10px; padding:20px; width:260px;">
-      <h3 style="color:#ff6600;">Hosur Branch</h3>
-      <p style="color:#444;">hosur@sggctn.com</p>
-      <button onclick="alert('Login for Hosur Branch')" 
-        style="background:#ff6600; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">
-        Login
-      </button>
-    </div>
-  </div>
-</section>
-<!-- ===== End Branch Financial Reporting Portal Section ===== -->
-<script>
- 
-
-
-
-
-
-
-
-
+    .tn button {
+      background-color: #ff6600;
+    }
+  </st

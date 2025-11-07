@@ -5,17 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Branch Dashboard - SGGCPL</title>
 <style>
-  body { font-family:"Bell MT", serif; background:#f7f9fc; margin:0; padding:0; text-align:center; }
-  header { background:#002b80; color:white; padding:20px; }
-  h1,h2 { margin:0; }
-  table { border-collapse: collapse; width:90%; margin:20px auto; background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); overflow:hidden; }
-  th,td { text-align:left; padding:14px; border-bottom:1px solid #e6e6e6; }
-  th { background:#004aad; color:white; font-size:16px; }
-  tr:hover { background:#f1f5ff; }
-  a button { background:#004aad; color:white; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; }
-  a button:hover { background:#002b80; }
-  .logout { background:#ff4d4d; padding:10px 20px; margin-top:20px; }
-  .logout:hover { background:#cc0000; }
+body { font-family:"Bell MT", serif; background:#f7f9fc; margin:0; padding:0; text-align:center; }
+header { background:#002b80; color:white; padding:20px; }
+h1,h2 { margin:0; }
+table { border-collapse: collapse; width:90%; margin:20px auto; background:#fff; border-radius:12px; box-shadow:0 2px 6px rgba(0,0,0,0.1); overflow:hidden; }
+th,td { text-align:left; padding:14px; border-bottom:1px solid #e6e6e6; }
+th { background:#004aad; color:white; font-size:16px; }
+tr:hover { background:#f1f5ff; }
+a button { background:#004aad; color:white; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; }
+a button:hover { background:#002b80; }
+.logout { background:#ff4d4d; padding:10px 20px; margin-top:20px; }
+.logout:hover { background:#cc0000; }
 </style>
 </head>
 <body>
@@ -52,87 +52,38 @@
 <button class="logout" onclick="logout()">Logout</button>
 
 <script>
-// ===== Branch Credentials & Reports =====
-const branches = {
-  anekal: {
-    email: "sggcpl.ank@gmail.com",
-    password: "password1",
-    reports: { weekly:"#", monthly:"#", annual:"#"}
-  },
-  centralize: {
-    email: "sggcpl.cb@gmail.com",
-    password: "password2",
-    reports: { weekly:"#", monthly:"#", annual:"#"}
-  },
-  channarayapatna: {
-    email: "sggcpl.crp1@gmail.com",
-    password: "password3",
-    reports: { weekly:"#", monthly:"#", annual:"#"}
-  },
-  davanagere: {
-    email: "sggcpl.dav@gmail.com",
-    password: "password4",
-    reports: { weekly:"#", monthly:"#", annual:"#"}
-  },
-  harihara: {
-    email: "sggcpl.hrr@gmail.com",
-    password: "password5",
-    reports: { weekly:"#", monthly:"#", annual:"#"}
-  },
-  hassan: {
-    email: "sggcpl.hassan@gmail.com",
-    password: "password6",
-    reports: { weekly:"#", monthly:"#", annual:"#"}
-  },
-  mysore: {
-    email: "sggcpl.mys@gmail.com",
-    password: "password7",
-    reports: { weekly:"#", monthly:"#", annual:"#"}
-  },
-  vijayanagar: {
-    email: "sggcpl.vijayanagar@gmail.com",
-    password: "password8",
-    reports: { weekly:"#", monthly:"#", annual:"#"}
-  },
-  gulbarga: {
-    email: "sggcpl.glb1@gmail.com",
-    password: "password9",
-    reports: { weekly:"#", monthly:"#", annual:"#"}
-  },
-  salem: {
-    email: "salem@sggctn.com",
-    password: "password10",
-    reports: { weekly:"#", monthly:"#", annual:"#"}
-  },
-  krishnagiri: {
-    email: "krishnagiri@sggctn.com",
-    password: "password11",
-    reports: { weekly:"#", monthly:"#", annual:"#"}
-  },
-  hosur: {
-    email: "hosur@sggctn.com",
-    password: "password12",
-    reports: { weekly:"#", monthly:"#", annual:"#"}
-  }
+// ===== Branch Reports =====
+const branchesReports = {
+  anekal: { weekly:"https://docs.google.com/spreadsheets/d/YOUR_ANEKAL_WEEKLY_ID/edit?usp=sharing", monthly:"#", annual:"#"},
+  central: { weekly:"#", monthly:"#", annual:"#"},
+  channarayapatna: { weekly:"#", monthly:"#", annual:"#"},
+  bangalore: { weekly:"#", monthly:"#", annual:"#"},
+  salem: { weekly:"#", monthly:"#", annual:"#"},
+  chennai: { weekly:"#", monthly:"#", annual:"#"},
+  mysore: { weekly:"#", monthly:"#", annual:"#"},
+  hubli: { weekly:"#", monthly:"#", annual:"#"},
+  tumkur: { weekly:"#", monthly:"#", annual:"#"},
+  coimbatore: { weekly:"#", monthly:"#", annual:"#"},
+  trichy: { weekly:"#", monthly:"#", annual:"#"},
+  madurai: { weekly:"#", monthly:"#", annual:"#"}
 };
 
-// ===== Check if branch is logged in =====
+// ===== Load logged branch =====
 const branchKey = sessionStorage.getItem("loggedBranch");
 
-if (!branchKey || !branches[branchKey]) {
+if(!branchKey || !branchesReports[branchKey]){
   alert("No branch logged in! Redirecting to login page.");
   window.location.href = "index.html";
 } else {
-  document.getElementById("branchName").textContent =
-    "Welcome, " + branchKey.charAt(0).toUpperCase() + branchKey.slice(1) + " Branch!";
-
-  document.getElementById("weeklyReport").href = branches[branchKey].reports.weekly;
-  document.getElementById("monthlyReport").href = branches[branchKey].reports.monthly;
-  document.getElementById("annualReport").href = branches[branchKey].reports.annual;
+  document.getElementById("branchName").textContent = "Welcome, " + branchKey.charAt(0).toUpperCase() + branchKey.slice(1) + " Branch!";
+  
+  document.getElementById("weeklyReport").href = branchesReports[branchKey].weekly;
+  document.getElementById("monthlyReport").href = branchesReports[branchKey].monthly;
+  document.getElementById("annualReport").href = branchesReports[branchKey].annual;
 }
 
 // ===== Logout =====
-function logout() {
+function logout(){
   sessionStorage.removeItem("loggedBranch");
   window.location.href = "index.html";
 }

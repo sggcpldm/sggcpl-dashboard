@@ -5,6 +5,56 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SGGCPL – Reports Management Dashboard</title>
   <style>
+    /* Your existing CSS styles here */
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Sree Gowri Ganesha Chits Private Limited</h1>
+    <p>Online Reports Management Dashboard</p>
+  </header>
+
+  <div class="login-box" style="text-align:center; margin-top:50px;">
+    <input type="email" id="email" placeholder="Enter your email" style="padding:8px; width:250px;"><br><br>
+    <input type="password" id="password" placeholder="Enter your password" style="padding:8px; width:250px;"><br><br>
+    <button onclick="login()" style="padding:10px 20px; background:#004aad; color:white; border:none; border-radius:6px; cursor:pointer;">Login</button>
+  </div>
+
+  <script>
+    function login() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      // Branches credentials
+      const branches = {
+        "sggcpl.ank@gmail.com": { key:"anekal", pass:"password1" },
+        "sggcpl.cb@gmail.com": { key:"centralize", pass:"password2" },
+        "sggcpl.crp1@gmail.com": { key:"channarayapatna", pass:"password3" },
+        "sggcpl.dav@gmail.com": { key:"davanagere", pass:"password4" },
+        "sggcpl.hrr@gmail.com": { key:"harihara", pass:"password5" },
+        "sggcpl.hassan@gmail.com": { key:"hassan", pass:"password6" },
+        "sggcpl.mys@gmail.com": { key:"mysore", pass:"password7" },
+        "sggcpl.vjn@gmail.com": { key:"vijayanagar", pass:"password8" },
+        "sggcpl.glb1@gmail.com": { key:"gulbarga", pass:"password9" },
+        "salem@sggctn.com": { key:"salem", pass:"password10" },
+        "krishnagiri@sggctn.com": { key:"krishnagiri", pass:"password11" },
+        "hosur@sggctn.com": { key:"hosur", pass:"password12" }
+      };
+
+      if(branches[email] && branches[email].pass === password) {
+        sessionStorage.setItem("loggedBranch", branches[email].key);
+        window.location.href = "branch-dashboard.html";
+      } else {
+        alert("Invalid email or password!");
+      }
+    }
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SGGCPL – Reports Management Dashboard</title>
+  <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
       background-color: #f7f9fc;
@@ -473,5 +523,6 @@
 
 </body>
 </html>
+
 
 

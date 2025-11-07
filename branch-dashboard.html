@@ -28,4 +28,155 @@
     max-width: 1000px;
     margin: 40px auto;
     background: #ffffff;
-    padding: 25px 40px
+    padding: 25px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .notice {
+    background-color: #fff8e5;
+    color: #333;
+    border-left: 6px solid #ffcc00;
+    padding: 12px;
+    margin-bottom: 25px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 6px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  th, td {
+    text-align: left;
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  th {
+    background-color: #004aad;
+    color: white;
+    font-weight: 600;
+  }
+
+  tr:hover {
+    background-color: #f1f5ff;
+  }
+
+  a {
+    color: #004aad;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  button {
+    background-color: #004aad;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: inline-block;
+  }
+
+  button:hover {
+    background-color: #003580;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #555;
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Sree Gowri Ganesha Chits Private Limited<br>Branch Reports Dashboard</h1>
+</header>
+
+<div class="dashboard" id="branchContent">
+  <!-- JS will inject branch data here -->
+</div>
+
+<footer>
+  Last updated on 7 Nov 2025, 6:32 PM
+</footer>
+
+<script>
+const branchesReports = {
+  anekal: { weekly:"https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing", monthly:"https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing", annual:"#"},
+  centralize: { weekly:"https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", monthly:"#", annual:"#"},
+  chanrayapatna: { weekly:"https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", monthly:"#", annual:"#"},
+  davanagere: { weekly:"#", monthly:"#", annual:"#"},
+  harihara: { weekly:"#", monthly:"#", annual:"#"},
+  hassan: { weekly:"#", monthly:"#", annual:"#"},
+  mysore: { weekly:"#", monthly:"#", annual:"#"},
+  vijayanagar: { weekly:"#", monthly:"#", annual:"#"},
+  gulbarga: { weekly:"#", monthly:"#", annual:"#"},
+  salem: { weekly:"#", monthly:"#", annual:"#"},
+  krishnagiri: { weekly:"#", monthly:"#", annual:"#"},
+  hosur: { weekly:"#", monthly:"#", annual:"#"}
+};
+
+const branchKey = sessionStorage.getItem("loggedBranch");
+
+if(!branchKey || !branchesReports[branchKey]){
+  document.getElementById('branchContent').innerHTML = `
+    <p>⚠️ No branch logged in. Please <a href="index.html">login here</a>.</p>
+  `;
+} else {
+  const report = branchesReports[branchKey];
+  const branchName = branchKey.charAt(0).toUpperCase() + branchKey.slice(1);
+
+  document.getElementById('branchContent').innerHTML = `
+    <div class="notice">📌 Submit all reports every Saturday before 6:00 PM and at month-end by all branches.</div>
+    <h2>${branchName} Branch Reports</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Report Name</th>
+          <th>Description</th>
+          <th>Open Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Weekly Report</td>
+          <td>Weekly performance and financial summary.</td>
+          <td>${report.weekly !== "#" ? `<a href="${report.weekly}" target="_blank">Open</a>` : "Not Available"}</td>
+        </tr>
+        <tr>
+          <td>Monthly Report</td>
+          <td>Branch-wide monthly report overview.</td>
+          <td>${report.monthly !== "#" ? `<a href="${report.monthly}" target="_blank">Open</a>` : "Not Available"}</td>
+        </tr>
+        <tr>
+          <td>Annual Report</td>
+          <td>Comprehensive annual branch report.</td>
+          <td>${report.annual !== "#" ? `<a href="${report.annual}" target="_blank">Open</a>` : "Not Available"}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button onclick="logout()">Logout</button>
+  `;
+}
+
+function logout(){
+  sessionStorage.removeItem("loggedBranch");
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

@@ -99,8 +99,29 @@
       font-size: 14px;
     }
 
+    /* Branch Cards */
+    .branch-portal { width: 90%; margin: 30px auto; }
+    .branch-portal h2 { color: #004aad; margin-bottom: 20px; }
+    .branch-cards { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+    .branch-card {
+      flex: 1 1 200px;
+      border: 2px solid #004aad;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .branch-card p { font-weight: bold; margin-bottom: 10px; font-size:16px; }
+    .branch-card button {
+      background-color: #004aad;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .branch-card button:hover { background-color: #002b80; }
     <style>
-  /* Branch Cards */
   .branch-card {
     flex: 1 1 200px;
     border: 2px solid #004aad;
@@ -112,65 +133,22 @@
     cursor: pointer;
   }
 
-  .branch-card:hover {
-    background-color: #f1f5ff;
-    transform: translateY(-5px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-  }
-
-  .branch-card h3 {
-    margin: 0 0 10px 0;
-    font-size: 18px;
-  }
-
-  .branch-card p {
-    font-weight: bold;
-    margin-bottom: 10px;
-    font-size: 16px;
-  }
-
   .branch-card button {
-    background-color: #004aad !important;
+    background-color: #004aad;
     color: white;
     border: none;
     padding: 8px 12px;
     border-radius: 6px;
     transition: all 0.3s ease;
-    cursor: pointer;
   }
 
   .branch-card button:hover {
     filter: brightness(85%);
     transform: translateY(-2px);
   }
+
+  /* --- Add hover effect code here --- */
 </style>
-<section style="text-align:center; margin:40px auto; width:90%;">
-  <h2 style="color:#004aad; margin-bottom:20px;">Branch-Wise Reporting Portal</h2>
-  <p>Reports must be submitted <strong>Weekly, Monthly & Annually</strong> by all branches.</p>
-
-  <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px; text-align:center;">
-      <h3 style="color:#004aad;">Anekal Branch</h3>
-      <p>sggcpl.ank@gmail.com</p>
-      <button style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">Login</button>
-    </div>
-
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px; text-align:center;">
-      <h3 style="color:#004aad;">Centralize Branch</h3>
-      <p>sggcpl.cb@gmail.com</p>
-      <button style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">Login</button>
-    </div>
-
-    <div style="background:#eaf2ff; border:1px solid #004aad; border-radius:10px; padding:20px; width:260px; text-align:center;">
-      <h3 style="color:#004aad;">Channarayapatna</h3>
-      <p>sggcpl.crp1@gmail.com</p>
-      <button style="background:#004aad; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">Login</button>
-    </div>
-
-    <!-- Add other branches similarly -->
-  </div>
-</section>
-
 
   </style>
 </head>
@@ -269,7 +247,7 @@
 </table>
   
 <section style="text-align: center; margin: 60px auto; width: 90%;">
-  <h2 style="color:#004aad; font-size: 26px; margin-bottom: 20px;">Branch-Wise Reporting Portal</h2>
+  <h2 style="color:#004aad; font-size: 26px; margin-bottom: 20px;">Branch Financial Reporting Portal</h2>
   <p style="font-size:16px; color:#333; margin-bottom: 30px;">
     Reports must be submitted <strong>Weekly, Monthly & Annually</strong> by all branches.
   </p>
@@ -352,7 +330,7 @@
   
 </section>
 <section style="text-align: center; margin: 60px auto; width: 90%;">
-  <h2 style="color:#004aad; font-size: 26px; margin-bottom: 20px;">Branch Financial Reporting Portal</h2>
+  <h2 style="color:#004aad; font-size: 26px; margin-bottom: 20px;">Branch-Wise Reporting Portal</h2>
   <p style="font-size:16px; color:#333; margin-bottom: 30px;">
     Reports must be submitted <strong>Weekly, Monthly & Annually</strong> by all branches.
   </p>
@@ -618,10 +596,6 @@
 <!-- ===== End Branch Financial Reporting Portal Section ===== -->
 <script>
  
-
-
-
-
 
 
 

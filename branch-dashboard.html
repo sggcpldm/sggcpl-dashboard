@@ -61,11 +61,91 @@
 </footer>
 
 <script>
-const branches = {
-  "sggcpl.ank@gmail.com": { key: "anekal", name: "Anekal Branch", weekly: "https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing", monthly: "https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing", password:"password1" },
-  "sggcpl.cb@gmail.com": { key: "centralize", name: "Centralize Branch", weekly: "https://docs.google.com/spreadsheets/d/centralize-weekly-link", monthly: "https://docs.google.com/spreadsheets/d/centralize-monthly-link", password:"password2" },
-  "sggcpl.crp1@gmail.com": { key: "chanrayapatna", name: "chanrayapatna Branch", weekly: "https://docs.google.com/spreadsheets/d/18GYgMLMZqcWTRJSDVDXM4W04J1tFuwi9/edit?usp=sharing", monthly: "https://docs.google.com/spreadsheets/d/mysore-monthly-link", password:"password3" }
-  // Add other branches here
+  const branches = {
+  "sggcpl.ank@gmail.com": { 
+    key: "anekal", 
+    name: "Anekal Branch", 
+    weekly: "https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing", 
+    monthly: "https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing", 
+    password: "password1" 
+  },
+  "sggcpl.cb@gmail.com": { 
+    key: "centralize", 
+    name: "Centralize Branch", 
+    weekly: "https://docs.google.com/spreadsheets/d/centralize-weekly-link", 
+    monthly: "https://docs.google.com/spreadsheets/d/centralize-monthly-link", 
+    password: "password2" 
+  },
+  "sggcpl.crp1@gmail.com": { 
+    key: "chanrayapatna", 
+    name: "Channarayapatna Branch", 
+    weekly: "https://docs.google.com/spreadsheets/d/chanrayapatna-weekly-link", 
+    monthly: "https://docs.google.com/spreadsheets/d/chanrayapatna-monthly-link", 
+    password: "password3" 
+  },
+  "sggcpl.dav@gmail.com": { 
+    key: "davanagere", 
+    name: "Davanagere Branch", 
+    weekly: "https://docs.google.com/spreadsheets/d/davanagere-weekly-link", 
+    monthly: "https://docs.google.com/spreadsheets/d/davanagere-monthly-link", 
+    password: "password4" 
+  },
+  "sggcpl.hrr@gmail.com": { 
+    key: "harihara", 
+    name: "Harihara Branch", 
+    weekly: "https://docs.google.com/spreadsheets/d/harihara-weekly-link", 
+    monthly: "https://docs.google.com/spreadsheets/d/harihara-monthly-link", 
+    password: "password5" 
+  },
+  "sggcpl.hassan@gmail.com": { 
+    key: "hassan", 
+    name: "Hassan Branch", 
+    weekly: "https://docs.google.com/spreadsheets/d/hassan-weekly-link", 
+    monthly: "https://docs.google.com/spreadsheets/d/hassan-monthly-link", 
+    password: "password6" 
+  },
+  "sggcpl.mys@gmail.com": { 
+    key: "mysore", 
+    name: "Mysore Branch", 
+    weekly: "https://docs.google.com/spreadsheets/d/mysore-weekly-link", 
+    monthly: "https://docs.google.com/spreadsheets/d/mysore-monthly-link", 
+    password: "password7" 
+  },
+  "sggcpl.vjn@gmail.com": { 
+    key: "vijayanagar", 
+    name: "Vijayanagar Branch", 
+    weekly: "https://docs.google.com/spreadsheets/d/vijayanagar-weekly-link", 
+    monthly: "https://docs.google.com/spreadsheets/d/vijayanagar-monthly-link", 
+    password: "password8" 
+  },
+  "sggcpl.glb1@gmail.com": { 
+    key: "gulbarga", 
+    name: "Gulbarga Branch", 
+    weekly: "https://docs.google.com/spreadsheets/d/gulbarga-weekly-link", 
+    monthly: "https://docs.google.com/spreadsheets/d/gulbarga-monthly-link", 
+    password: "password9" 
+  },
+  "salem@sggctn.com": { 
+    key: "salem", 
+    name: "Salem Branch", 
+    weekly: "https://docs.google.com/spreadsheets/d/salem-weekly-link", 
+    monthly: "https://docs.google.com/spreadsheets/d/salem-monthly-link", 
+    password: "password10" 
+  },
+  "krishnagiri@sggctn.com": { 
+    key: "krishnagiri", 
+    name: "Krishnagiri Branch", 
+    weekly: "https://docs.google.com/spreadsheets/d/krishnagiri-weekly-link", 
+    monthly: "https://docs.google.com/spreadsheets/d/krishnagiri-monthly-link", 
+    password: "password11" 
+  },
+  "hosur@sggctn.com": { 
+    key: "hosur", 
+    name: "Hosur Branch", 
+    weekly: "https://docs.google.com/spreadsheets/d/hosur-weekly-link", 
+    monthly: "https://docs.google.com/spreadsheets/d/hosur-monthly-link", 
+    password: "password12" 
+  }
 };
 
 function login() {

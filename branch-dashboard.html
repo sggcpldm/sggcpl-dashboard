@@ -3,65 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Branch Dashboard – SGGCPL</title>
+<title>SGGCPL – Branch Dashboard</title>
 <style>
-  body { font-family: Arial, sans-serif; background:#f7f9fc; margin:0; padding:0; }
-  header { background:#002b80; color:white; padding:20px; text-align:center; }
-  h1 { margin:0; }
-  .dashboard { max-width:600px; margin:40px auto; background:#fff; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
-  a { color:#004aad; text-decoration:none; font-weight:bold; }
-  a:hover { text-decoration:underline; }
-  button { margin-top:20px; background:#004aad; color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer; }
-</style>
-</head>
-<body>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f7fb;
+    margin: 0;
+    padding: 0;
+  }
 
-<header>
-  <h1>Branch Dashboard</h1>
-</header>
+  header {
+    background-color: #004aad;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
 
-<div class="dashboard" id="branchContent">
-  <!-- Content will be injected by JS -->
-</div>
+  h1 {
+    margin: 0;
+    font-size: 24px;
+  }
 
-<script>
-const branchesReports = {
-  anekal: { weekly:"https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing", monthly:"https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing", annual:"#"},
-  centralize: { weekly:"https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", monthly:"#", annual:"#"},
-  chanrayapatna: { weekly:"https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", monthly:"#", annual:"#"},
-  davanagere: { weekly:"#", monthly:"#", annual:"#"},
-  harihara: { weekly:"#", monthly:"#", annual:"#"},
-  hassan: { weekly:"#", monthly:"#", annual:"#"},
-  mysore: { weekly:"#", monthly:"#", annual:"#"},
-  vijayanagar: { weekly:"#", monthly:"#", annual:"#"},
-  gulbarga: { weekly:"#", monthly:"#", annual:"#"},
-  salem: { weekly:"#", monthly:"#", annual:"#"},
-  krishnagiri: { weekly:"#", monthly:"#", annual:"#"},
-  hosur: { weekly:"#", monthly:"#", annual:"#"}
-};
-
-const branchKey = sessionStorage.getItem("loggedBranch");
-
-if(!branchKey || !branchesReports[branchKey]){
-  document.getElementById('branchContent').innerHTML = `<p>⚠️ No branch logged in. Please <a href="index.html">login here</a>.</p>`;
-} else {
-  const report = branchesReports[branchKey];
-  document.getElementById('branchContent').innerHTML = `
-    <h2>${branchKey.charAt(0).toUpperCase() + branchKey.slice(1)} Branch Reports</h2>
-    <ul>
-      <li>Weekly Report: ${report.weekly !== "#" ? `<a href="${report.weekly}" target="_blank">Open</a>` : "Not Available"}</li>
-      <li>Monthly Report: ${report.monthly !== "#" ? `<a href="${report.monthly}" target="_blank">Open</a>` : "Not Available"}</li>
-      <li>Annual Report: ${report.annual !== "#" ? `<a href="${report.annual}" target="_blank">Open</a>` : "Not Available"}</li>
-    </ul>
-    <button onclick="logout()">Logout</button>
-  `;
-}
-
-function logout(){
-  sessionStorage.removeItem("loggedBranch");
-  window.location.href = "index.html";
-}
-</script>
-
-</body>
-</html>
+  .dashboard {
+    max-width: 1000px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 25px 40px

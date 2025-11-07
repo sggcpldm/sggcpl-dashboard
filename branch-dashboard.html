@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anekal Branch Dashboard – Sree Gowri Ganesha Chits Private Limited</title>
+  <title>Branch Dashboard – Sree Gowri Ganesha Chits Private Limited</title>
   <style>
     body {
       font-family: "Segoe UI", Arial, sans-serif;
@@ -23,7 +23,6 @@
     header h1 {
       margin: 0;
       font-size: 36px;
-      font-family: "Bell MT", "Segoe UI", Arial, sans-serif;
       font-weight: bold;
     }
 
@@ -129,37 +128,79 @@
 
   <header>
     <h1>Sree Gowri Ganesha Chits Private Limited</h1>
-    <p>Anekal Branch Reports Dashboard</p>
+    <p id="branchName">Branch Reports Dashboard</p>
   </header>
 
   <div class="container">
-    <h2>Anekal Branch Reports</h2>
+    <h2 id="branchHeader">Branch Reports</h2>
 
     <div class="report-buttons">
       <div class="report-card">
         <p>Weekly Report</p>
-        <button onclick="window.open('https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing','_blank')">Open</button>
+        <button id="weeklyBtn">Open</button>
       </div>
 
       <div class="report-card">
         <p>Monthly Report</p>
-        <button onclick="window.open('https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing','_blank')">Open</button>
+        <button id="monthlyBtn">Open</button>
       </div>
 
       <div class="report-card">
         <p>Annual Report</p>
-        <button disabled style="background-color: gray; cursor: not-allowed;">Not Available</button>
+        <button id="annualBtn" disabled style="background-color: gray; cursor: not-allowed;">Not Available</button>
       </div>
     </div>
 
     <div class="logout">
-      <button onclick="window.location.href='index.html'">Logout</button>
+      <button onclick="logout()">Logout</button>
     </div>
   </div>
 
   <footer>
     © 2025 Sree Gowri Ganesha Chits Private Limited. All Rights Reserved.
   </footer>
+
+  <script>
+    const branch = sessionStorage.getItem("loggedBranch");
+    if (!branch) {
+      // If no branch is logged in, redirect to login
+      alert("Please login first!");
+      window.location.href = "index.html";
+    }
+
+    const branchReports = {
+      "anekal": {
+        name: "Anekal Branch",
+        weekly: "https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing",
+        monthly: "https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing"
+      },
+      "centralize": {
+        name: "Central Branch",
+        weekly: "https://docs.google.com/spreadsheets/d/CENTRAL_WEEKLY_LINK",
+        monthly: "https://docs.google.com/spreadsheets/d/CENTRAL_MONTHLY_LINK"
+      },
+      "mysore": {
+        name: "Mysore Branch",
+        weekly: "https://docs.google.com/spreadsheets/d/MYSORE_WEEKLY_LINK",
+        monthly: "https://docs.google.com/spreadsheets/d/MYSORE_MONTHLY_LINK"
+      },
+      // Add other branches here
+    };
+
+    const currentBranch = branchReports[branch];
+    if(currentBranch){
+      document.getElementById("branchName").textContent = currentBranch.name + " Reports Dashboard";
+      document.getElementById("branchHeader").textContent = currentBranch.name + " Reports";
+      document.getElementById("weeklyBtn").onclick = () => window.open(currentBranch.weekly,'_blank');
+      document.getElementById("monthlyBtn").onclick = () => window.open(currentBranch.monthly,'_blank');
+      // Annual remains disabled if not available
+    }
+
+    function logout(){
+      sessionStorage.removeItem("loggedBranch");
+      window.location.href = "index.html";
+    }
+  </script>
 
 </body>
 </html>

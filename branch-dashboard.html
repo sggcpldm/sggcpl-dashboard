@@ -1,98 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SGGCPL – Branch Dashboard</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f7fb;
-    margin: 0;
-    padding: 0;
-  }
-  header {
-    background-color: #004aad;
-    color: white;
-    text-align: center;
-    padding: 20px;
-  }
-  h1 {
-    margin: 0;
-    font-size: 24px;
-  }
-  .dashboard {
-    max-width: 1000px;
-    margin: 40px auto;
-    background: #ffffff;
-    padding: 25px 40px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-  .notice {
-    background-color: #fff8e5;
-    color: #333;
-    border-left: 6px solid #ffcc00;
-    padding: 12px;
-    margin-bottom: 25px;
-    font-size: 16px;
-    text-align: center;
-    border-radius: 6px;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  th, td {
-    text-align: left;
-    padding: 12px 15px;
-    border-bottom: 1px solid #ddd;
-  }
-  th {
-    background-color: #004aad;
-    color: white;
-    font-weight: 600;
-  }
-  tr:hover {
-    background-color: #f1f5ff;
-  }
-  a {
-    color: #004aad;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-  button {
-    background-color: #004aad;
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-  button:hover {
-    background-color: #003580;
-  }
-  footer {
-    text-align: center;
-    margin-top: 40px;
-    color: #555;
-    font-size: 13px;
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SGGCPL – Branch Reports Dashboard</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #f7f9fc;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #002b80;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      font-family: "Bell MT", "Segoe UI", Arial, sans-serif;
+      border-bottom: 3px solid #004aad;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    header p {
+      margin: 5px 0 0 0;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .notice {
+      width: 80%;
+      background: #fff8e5;
+      border-left: 6px solid #ffcc00;
+      color: #333;
+      padding: 12px;
+      margin: 30px auto 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 90%;
+      margin: 20px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 14px;
+      border-bottom: 1px solid #e6e6e6;
+    }
+
+    th {
+      background-color: #004aad;
+      color: white;
+      font-size: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    tr:hover { background-color: #f1f5ff; }
+
+    a {
+      color: #004aad;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease-in-out;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: #002b80;
+    }
+
+    button {
+      background-color: #004aad;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: block;
+      margin: 30px auto;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background-color: #002b80;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #f1f1f1;
+      color: #444;
+      font-size: 14px;
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
 
 <header>
-  <h1>Sree Gowri Ganesha Chits Private Limited<br>Branch Reports Dashboard</h1>
+  <h1>Sree Gowri Ganesha Chits Private Limited</h1>
+  <p><strong>Branch Reports Management Dashboard</strong></p>
 </header>
 
-<div class="dashboard" id="branchContent">
-  <!-- JS will inject branch data here -->
+<div class="notice">
+  📌 Submit all reports every Saturday before 6:00 PM and at month-end by all branches.
+</div>
+
+<div id="branchContent">
+  <!-- JS will inject content here -->
 </div>
 
 <footer>
@@ -101,7 +131,11 @@
 
 <script>
 const branchesReports = {
-  anekal: { weekly:"https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing", monthly:"https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing", annual:"#"},
+  anekal: {
+    weekly:"https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing",
+    monthly:"https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing",
+    annual:"#"
+  },
   centralize: { weekly:"https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", monthly:"#", annual:"#"},
   chanrayapatna: { weekly:"https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", monthly:"#", annual:"#"},
   davanagere: { weekly:"#", monthly:"#", annual:"#"},
@@ -117,17 +151,17 @@ const branchesReports = {
 
 const branchKey = sessionStorage.getItem("loggedBranch");
 
-if(!branchKey || !branchesReports[branchKey]){
+if(!branchKey || !branchesReports[branchKey]) {
   document.getElementById('branchContent').innerHTML = `
-    <p>⚠️ No branch logged in. Please <a href="index.html">login here</a>.</p>
+    <p style="text-align:center; margin-top:40px;">
+      ⚠️ No branch logged in. Please <a href="index.html">login here</a>.
+    </p>
   `;
 } else {
   const report = branchesReports[branchKey];
   const branchName = branchKey.charAt(0).toUpperCase() + branchKey.slice(1);
 
   document.getElementById('branchContent').innerHTML = `
-    <div class="notice">📌 Submit all reports every Saturday before 6:00 PM and at month-end by all branches.</div>
-    <h2>${branchName} Branch Reports</h2>
     <table>
       <thead>
         <tr>
@@ -140,17 +174,17 @@ if(!branchKey || !branchesReports[branchKey]){
         <tr>
           <td>Weekly Report</td>
           <td>Weekly performance and financial summary.</td>
-          <td>${report.weekly !== "#" ? `<a href="${report.weekly}" target="_blank">Open</a>` : "Not Available"}</td>
+          <td>${report.weekly !== "#" ? `<a href="${report.weekly}" target="_blank">Open Report</a>` : "Not Available"}</td>
         </tr>
         <tr>
           <td>Monthly Report</td>
           <td>Branch-wide monthly report overview.</td>
-          <td>${report.monthly !== "#" ? `<a href="${report.monthly}" target="_blank">Open</a>` : "Not Available"}</td>
+          <td>${report.monthly !== "#" ? `<a href="${report.monthly}" target="_blank">Open Report</a>` : "Not Available"}</td>
         </tr>
         <tr>
           <td>Annual Report</td>
           <td>Comprehensive annual branch report.</td>
-          <td>${report.annual !== "#" ? `<a href="${report.annual}" target="_blank">Open</a>` : "Not Available"}</td>
+          <td>${report.annual !== "#" ? `<a href="${report.annual}" target="_blank">Open Report</a>` : "Not Available"}</td>
         </tr>
       </tbody>
     </table>
@@ -158,7 +192,7 @@ if(!branchKey || !branchesReports[branchKey]){
   `;
 }
 
-function logout(){
+function logout() {
   sessionStorage.removeItem("loggedBranch");
   window.location.href = "index.html";
 }

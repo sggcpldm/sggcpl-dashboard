@@ -99,29 +99,8 @@
       font-size: 14px;
     }
 
-    /* Branch Cards */
-    .branch-portal { width: 90%; margin: 30px auto; }
-    .branch-portal h2 { color: #004aad; margin-bottom: 20px; }
-    .branch-cards { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
-    .branch-card {
-      flex: 1 1 200px;
-      border: 2px solid #004aad;
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .branch-card p { font-weight: bold; margin-bottom: 10px; font-size:16px; }
-    .branch-card button {
-      background-color: #004aad;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .branch-card button:hover { background-color: #002b80; }
     <style>
+  /* Branch Cards */
   .branch-card {
     flex: 1 1 200px;
     border: 2px solid #004aad;
@@ -133,22 +112,39 @@
     cursor: pointer;
   }
 
+  .branch-card:hover {
+    background-color: #f1f5ff;
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  }
+
+  .branch-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+  }
+
+  .branch-card p {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
   .branch-card button {
-    background-color: #004aad;
+    background-color: #004aad !important;
     color: white;
     border: none;
     padding: 8px 12px;
     border-radius: 6px;
     transition: all 0.3s ease;
+    cursor: pointer;
   }
 
   .branch-card button:hover {
     filter: brightness(85%);
     transform: translateY(-2px);
   }
-
-  /* --- Add hover effect code here --- */
 </style>
+
 
   </style>
 </head>
@@ -596,6 +592,7 @@
 <!-- ===== End Branch Financial Reporting Portal Section ===== -->
 <script>
  
+
 
 
 

@@ -25,34 +25,42 @@
     letter-spacing: 0.5px;
   }
   .container {
-    max-width: 600px;
+    max-width: 900px;
     margin: 50px auto;
     background: #fff;
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    text-align: center;
   }
-  .container h2 {
+  h2 {
     color: #002b80;
-    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 30px;
   }
-  ul {
-    list-style: none;
-    padding: 0;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  th, td {
+    padding: 14px;
+    border-bottom: 1px solid #ddd;
     text-align: left;
   }
-  ul li {
-    margin: 12px 0;
-    font-size: 16px;
+  th {
+    background-color: #004aad;
+    color: white;
   }
-  ul li a {
-    color: #004aad;
-    font-weight: bold;
+  td a {
+    background: #004aad;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
     text-decoration: none;
+    font-size: 14px;
   }
-  ul li a:hover {
-    text-decoration: underline;
+  td a:hover {
+    background: #003580;
   }
   button {
     background: #004aad;
@@ -63,6 +71,9 @@
     cursor: pointer;
     margin-top: 25px;
     font-size: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   button:hover {
     background: #003580;
@@ -83,7 +94,7 @@
 </header>
 
 <div class="container" id="branchContent">
-  <!-- Content will be loaded dynamically -->
+  <!-- Content injected by JavaScript -->
 </div>
 
 <footer>
@@ -91,38 +102,69 @@
 </footer>
 
 <script>
-const branchesReports = {
-  anekal: { weekly:"https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing", monthly:"https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing", annual:"#"},
-  centralize: { weekly:"https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", monthly:"#", annual:"#"},
-  chanrayapatna: { weekly:"https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", monthly:"#", annual:"#"},
-  davanagere: { weekly:"#", monthly:"#", annual:"#"},
-  harihara: { weekly:"#", monthly:"#", annual:"#"},
-  hassan: { weekly:"#", monthly:"#", annual:"#"},
-  mysore: { weekly:"#", monthly:"#", annual:"#"},
-  vijayanagar: { weekly:"#", monthly:"#", annual:"#"},
-  gulbarga: { weekly:"#", monthly:"#", annual:"#"},
-  salem: { weekly:"#", monthly:"#", annual:"#"},
-  krishnagiri: { weekly:"#", monthly:"#", annual:"#"},
-  hosur: { weekly:"#", monthly:"#", annual:"#" }
+const branchReports = {
+  anekal: {
+    reports: [
+      { name: "New Group & Tickets (Staff Commitment Report)", desc: "Track staff commitments for new groups and tickets.", link: "https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing" },
+      { name: "New Group & Tickets (Agents Commitment Report)", desc: "Agent-wise commitment report for new group creation and tickets.", link: "https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing" },
+      { name: "Vacancy Tickets (Staff & Agents Commitment Report)", desc: "Vacant ticket commitments by staff and agents.", link: "https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing" }
+    ]
+  },
+  centralize: { reports: [] },
+  chanrayapatna: { reports: [] },
+  davanagere: { reports: [] },
+  harihara: { reports: [] },
+  hassan: { reports: [] },
+  mysore: { reports: [] },
+  vijayanagar: { reports: [] },
+  gulbarga: { reports: [] },
+  salem: { reports: [] },
+  krishnagiri: { reports: [] },
+  hosur: { reports: [] }
 };
 
 const branchKey = sessionStorage.getItem("loggedBranch");
 
-if(!branchKey || !branchesReports[branchKey]) {
+if(!branchKey || !branchReports[branchKey]) {
   document.getElementById('branchContent').innerHTML = `
-    <p>⚠️ No branch logged in. Please <a href="index.html">login here</a>.</p>
+    <p style="text-align:center;">⚠️ No branch logged in. Please <a href="index.html">login here</a>.</p>
   `;
 } else {
-  const report = branchesReports[branchKey];
-  document.getElementById('branchContent').innerHTML = `
-    <h2>${branchKey.charAt(0).toUpperCase() + branchKey.slice(1)} Branch Reports</h2>
-    <ul>
-      <li><strong>Weekly Report:</strong> ${report.weekly !== "#" ? `<a href="${report.weekly}" target="_blank">Open</a>` : "Not Available"}</li>
-      <li><strong>Monthly Report:</strong> ${report.monthly !== "#" ? `<a href="${report.monthly}" target="_blank">Open</a>` : "Not Available"}</li>
-      <li><strong>Annual Report:</strong> ${report.annual !== "#" ? `<a href="${report.annual}" target="_blank">Open</a>` : "Not Available"}</li>
-    </ul>
-    <button onclick="logout()">Logout</button>
-  `;
+  const branch = branchReports[branchKey];
+  const reports = branch.reports;
+
+  if (reports.length === 0) {
+    document.getElementById('branchContent').innerHTML = `
+      <h2>${branchKey.charAt(0).toUpperCase() + branchKey.slice(1)} Branch Reports</h2>
+      <p style="text-align:center;">No reports available for this branch yet.</p>
+      <button onclick="logout()">Logout</button>
+    `;
+  } else {
+    let rows = reports.map(r => `
+      <tr>
+        <td>${r.name}</td>
+        <td>${r.desc}</td>
+        <td><a href="${r.link}" target="_blank">Open Report</a></td>
+      </tr>
+    `).join('');
+
+    document.getElementById('branchContent').innerHTML = `
+      <h2>${branchKey.charAt(0).toUpperCase() + branchKey.slice(1)} Branch Reports</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Report Name</th>
+            <th>Description</th>
+            <th>Open Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows}
+        </tbody>
+      </table>
+      <button onclick="logout()">Logout</button>
+    `;
+  }
 }
 
 function logout() {

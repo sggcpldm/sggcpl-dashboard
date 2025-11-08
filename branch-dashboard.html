@@ -1,75 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Branch Dashboard – SGGCPL</title>
-<style>
-  body { 
-    font-family: Arial, sans-serif; 
-    background:#f7f9fc; 
-    margin:0; 
-    padding:0; 
-  }
-  header { 
-    background:#002b80; 
-    color:white; 
-    padding:20px; 
-    text-align:center; 
-  }
-  h1 { 
-    margin:0; 
-  }
-  .dashboard { 
-    max-width:600px; 
-    margin:40px auto; 
-    background:#fff; 
-    padding:30px; 
-    border-radius:10px; 
-    box-shadow:0 2px 8px rgba(0,0,0,0.1);
-    text-align:center;
-  }
-  .branch-title {
-    font-size:22px; 
-    color:#004aad; 
-    margin-bottom:20px;
-  }
-  table {
-    width:100%;
-    border-collapse:collapse;
-    margin-bottom:25px;
-  }
-  th, td {
-    text-align:left;
-    padding:10px 12px;
-    border-bottom:1px solid #ddd;
-    font-size:15px;
-  }
-  th {
-    background:#004aad;
-    color:#fff;
-  }
-  a {
-    color:#004aad; 
-    text-decoration:none; 
-    font-weight:bold; 
-  }
-  a:hover {
-    text-decoration:underline;
-  }
-  button { 
-    background:#004aad; 
-    color:white; 
-    border:none; 
-    padding:10px 20px; 
-    border-radius:5px; 
-    cursor:pointer; 
-    font-size:15px;
-  }
-  button:hover { 
-    background:#003580; 
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SGGCPL – Branch Dashboard</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #f7f9fc;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #002b80;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+      font-family: "Bell MT", "Segoe UI", Arial, sans-serif;
+      border-bottom: 3px solid #004aad;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    header p {
+      margin: 5px 0 0 0;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    /* Branch Section */
+    .branch-portal {
+      width: 90%;
+      margin: 40px auto;
+      text-align: center;
+    }
+
+    .branch-portal h2 {
+      color: #004aad;
+      margin-bottom: 25px;
+      font-size: 26px;
+    }
+
+    .branch-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .branch-card {
+      flex: 1 1 250px;
+      border: 2px solid #004aad;
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: #fff;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .branch-card p {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .branch-card button {
+      background-color: #004aad;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .branch-card button:hover {
+      background-color: #002b80;
+      transform: translateY(-2px);
+    }
+
+    .branch-card:hover {
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #f1f1f1;
+      color: #444;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Sree Gowri Ganesha Chits Private Limited</h1>
+    <p>Branch Dashboard</p>
+  </header>
+
+  <section class="branch-portal">
+    <h2>Anekal Branch Reports</h2>
+    <div class="branch-cards">
+      <div class="branch-card">
+        <p>Weekly Report</p>
+        <button>Open</button>
+      </div>
+      <div class="branch-card">
+        <p>Monthly Report</p>
+        <button>Open</button>
+      </div>
+      <div class="branch-card">
+        <p>Annual Report</p>
+        <button disabled style="background-color: #ccc; cursor: not-allowed;">Not Available</button>
+      </div>
+      <div class="branch-card">
+        <p>Logout</p>
+        <button>Exit</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Sree Gowri Ganesha Chits Private Limited. All Rights Reserved.
+  </footer>
+
+
+
+
+  
 </head>
 <body>
 

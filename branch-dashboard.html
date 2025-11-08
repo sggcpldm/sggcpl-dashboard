@@ -103,78 +103,86 @@
 </head>
 <body>
 
-  <header>
-    <h1>Sree Gowri Ganesha Chits Private Limited</h1>
-    <p>Branch Dashboard</p>
-  </header>
+<header>
+  <h1>Sree Gowri Ganesha Chits Private Limited</h1>
+  <p>Branch Dashboard</p>
+</header>
+
 <section class="branch-portal">
-    <h2>Anekal Branch Reports</h2>
-    <div class="branch-cards">
-      <div class="branch-card">
-        <p>Weekly Report</p>
-        <button>Open</button>
-      </div>
-      <div class="branch-card">
-        <p>Monthly Report</p>
-        <button>Open</button>
-      </div>
-      <div class="branch-card">
-        <p>Annual Report</p>
-        <button disabled style="background-color: #ccc; cursor: not-allowed;">Not Available</button>
-      </div>
-      <div class="branch-card">
-        <p>Logout</p>
-        <button>Exit</button>
-      </div>
-    </div>
-  </section>
-  <footer>
-    &copy; 2025 Sree Gowri Ganesha Chits Private Limited. All Rights Reserved.
-  </footer>
+  <h2 id="branchTitle">Branch Reports</h2>
+  <div class="branch-cards" id="branchCards">
+    <!-- Dynamic report cards will appear here -->
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Sree Gowri Ganesha Chits Private Limited. All Rights Reserved.
+</footer>
 
 <script>
 const branchesReports = {
-  anekal: { 
-    weekly:"https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing", 
-    monthly:"https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing", 
-    annual:"#"
-  },
-  centralize: { weekly:"#", monthly:"#", annual:"#" },
-  chanrayapatna: { weekly:"https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", monthly:"#", annual:"#" },
-  davanagere: { weekly:"#", monthly:"#", annual:"#" },
-  harihara: { weekly:"#", monthly:"#", annual:"#" },
-  hassan: { weekly:"#", monthly:"#", annual:"#" },
-  mysore: { weekly:"#", monthly:"#", annual:"#" },
-  vijayanagar: { weekly:"#", monthly:"#", annual:"#" },
-  gulbarga: { weekly:"#", monthly:"#", annual:"#" },
-  salem: { weekly:"#", monthly:"#", annual:"#" },
-  krishnagiri: { weekly:"#", monthly:"#", annual:"#" },
-  hosur: { weekly:"#", monthly:"#", annual:"#" }
+  anekal: { weekly:"https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing", monthly:"https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing", annual:"#"},
+  centralize: { weekly:"#", monthly:"#", annual:"#"},
+  chanrayapatna: { weekly:"https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", monthly:"#", annual:"#"},
+  davanagere: { weekly:"#", monthly:"#", annual:"#"},
+  harihara: { weekly:"#", monthly:"#", annual:"#"},
+  hassan: { weekly:"#", monthly:"#", annual:"#"},
+  mysore: { weekly:"#", monthly:"#", annual:"#"},
+  vijayanagar: { weekly:"#", monthly:"#", annual:"#"},
+  gulbarga: { weekly:"#", monthly:"#", annual:"#"},
+  salem: { weekly:"#", monthly:"#", annual:"#"},
+  krishnagiri: { weekly:"#", monthly:"#", annual:"#"},
+  hosur: { weekly:"#", monthly:"#", annual:"#"}
 };
 
 const branchKey = sessionStorage.getItem("loggedBranch");
 
-if(!branchKey || !branchesReports[branchKey]){
-  document.getElementById('branchContent').innerHTML = `
-    <p style="font-size:16px;">⚠️ No branch logged in. Please <a href="index.html">login here</a>.</p>
-  `;
-} else {
-  const report = branchesReports[branchKey];
-  document.getElementById('branchContent').innerHTML = `
-    <div class="branch-title">${branchKey.charAt(0).toUpperCase() + branchKey.slice(1)} Branch Reports</div>
-    <table>
-      <tr><th>Report Type</th><th>Open Link</th></tr>
-      <tr><td>Weekly Report</td><td>${report.weekly !== "#" ? `<a href="${report.weekly}" target="_blank">Open</a>` : "Not Available"}</td></tr>
-      <tr><td>Monthly Report</td><td>${report.monthly !== "#" ? `<a href="${report.monthly}" target="_blank">Open</a>` : "Not Available"}</td></tr>
-      <tr><td>Annual Report</td><td>${report.annual !== "#" ? `<a href="${report.annual}" target="_blank">Open</a>` : "Not Available"}</td></tr>
-    </table>
-    <button onclick="logout()">Logout</button>
-  `;
+function createCard(reportType, link) {
+  const card = document.createElement("div");
+  card.className = "branch-card";
+
+  const p = document.createElement("p");
+  p.textContent = reportType;
+  card.appendChild(p);
+
+  const btn = document.createElement("button");
+  if(link !== "#") {
+    btn.textContent = "Open";
+    btn.onclick = () => window.open(link, "_blank");
+  } else {
+    btn.textContent = "Not Available";
+    btn.disabled = true;
+    btn.style.backgroundColor = "#ccc";
+    btn.style.cursor = "not-allowed";
+  }
+  card.appendChild(btn);
+  return card;
 }
 
-function logout(){
-  sessionStorage.removeItem("loggedBranch");
-  window.location.href = "index.html";
+const branchCardsDiv = document.getElementById("branchCards");
+const branchTitle = document.getElementById("branchTitle");
+
+if(!branchKey || !branchesReports[branchKey]) {
+  branchTitle.textContent = "No branch logged in";
+  branchCardsDiv.innerHTML = `<p style="font-size:16px;">⚠️ Please <a href="index.html">login here</a>.</p>`;
+} else {
+  branchTitle.textContent = branchKey.charAt(0).toUpperCase() + branchKey.slice(1) + " Branch Reports";
+
+  const report = branchesReports[branchKey];
+  branchCardsDiv.appendChild(createCard("Weekly Report", report.weekly));
+  branchCardsDiv.appendChild(createCard("Monthly Report", report.monthly));
+  branchCardsDiv.appendChild(createCard("Annual Report", report.annual));
+  branchCardsDiv.appendChild(createCard("Logout", "logout"));
+}
+
+// Special handling for Logout button
+const logoutBtn = Array.from(document.querySelectorAll(".branch-card button")).find(btn => btn.textContent === "Not Available" && btn.parentNode.querySelector("p").textContent === "Logout") || null;
+if(logoutBtn === null) {
+  const logoutCard = Array.from(document.querySelectorAll(".branch-card")).find(card => card.querySelector("p").textContent === "Logout");
+  if(logoutCard) logoutCard.querySelector("button").onclick = () => {
+    sessionStorage.removeItem("loggedBranch");
+    window.location.href = "index.html";
+  };
 }
 </script>
 

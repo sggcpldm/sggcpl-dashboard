@@ -463,19 +463,6 @@
       alert("Invalid HO login!");
     }
   }
-
-  // Search Functionality
-  const searchBox = document.getElementById('searchBox');
-  searchBox.addEventListener('keyup', function(){
-    const filter = searchBox.value.toLowerCase();
-    document.querySelectorAll('table tr').forEach((row, index)=>{
-      if(index === 0) return;
-      row.style.display = row.textContent.toLowerCase().includes(filter) ? '' : 'none';
-    });
-  });
-
-  document.getElementById("lastUpdated").textContent = new Date().toLocaleString('en-IN', { dateStyle:'medium', timeStyle:'short' });
-</script>
 <section style="text-align: center; margin: 60px auto; width: 90%;">
   <h2 style="color:#004aad; font-size: 26px; margin-bottom: 20px;">Branch Financial Reporting Portal</h2>
   <p style="font-size:16px; color:#333; margin-bottom: 30px;">
@@ -600,7 +587,21 @@
     background: #002b80;
   }
 </style>
+  // Search Functionality
+  const searchBox = document.getElementById('searchBox');
+  searchBox.addEventListener('keyup', function(){
+    const filter = searchBox.value.toLowerCase();
+    document.querySelectorAll('table tr').forEach((row, index)=>{
+      if(index === 0) return;
+      row.style.display = row.textContent.toLowerCase().includes(filter) ? '' : 'none';
+    });
+  });
+
+  document.getElementById("lastUpdated").textContent = new Date().toLocaleString('en-IN', { dateStyle:'medium', timeStyle:'short' });
+</script>
+
 
 </body>
 </html>
+
 

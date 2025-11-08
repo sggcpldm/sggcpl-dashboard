@@ -5,13 +5,75 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Branch Dashboard – SGGCPL</title>
 <style>
-  body { font-family: Arial, sans-serif; background:#f7f9fc; margin:0; padding:0; }
-  header { background:#002b80; color:white; padding:20px; text-align:center; }
-  h1 { margin:0; }
-  .dashboard { max-width:600px; margin:40px auto; background:#fff; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
-  a { color:#004aad; text-decoration:none; font-weight:bold; }
-  a:hover { text-decoration:underline; }
-  button { margin-top:20px; background:#004aad; color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #f0f4ff, #ffffff);
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  header {
+    background: #002b80;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+  header h1 {
+    margin: 0;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+  }
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  .container h2 {
+    color: #002b80;
+    margin-bottom: 20px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+  }
+  ul li {
+    margin: 12px 0;
+    font-size: 16px;
+  }
+  ul li a {
+    color: #004aad;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  ul li a:hover {
+    text-decoration: underline;
+  }
+  button {
+    background: #004aad;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 25px;
+    font-size: 15px;
+  }
+  button:hover {
+    background: #003580;
+  }
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #555;
+    margin-top: 40px;
+  }
 </style>
 </head>
 <body>
@@ -20,9 +82,13 @@
   <h1>Branch Dashboard</h1>
 </header>
 
-<div class="dashboard" id="branchContent">
-  <!-- Content will be injected by JS -->
+<div class="container" id="branchContent">
+  <!-- Content will be loaded dynamically -->
 </div>
+
+<footer>
+  © 2025 Sree Gowri Ganesha Chits Private Limited. All Rights Reserved.
+</footer>
 
 <script>
 const branchesReports = {
@@ -37,27 +103,29 @@ const branchesReports = {
   gulbarga: { weekly:"#", monthly:"#", annual:"#"},
   salem: { weekly:"#", monthly:"#", annual:"#"},
   krishnagiri: { weekly:"#", monthly:"#", annual:"#"},
-  hosur: { weekly:"#", monthly:"#", annual:"#"}
+  hosur: { weekly:"#", monthly:"#", annual:"#" }
 };
 
 const branchKey = sessionStorage.getItem("loggedBranch");
 
-if(!branchKey || !branchesReports[branchKey]){
-  document.getElementById('branchContent').innerHTML = `<p>⚠️ No branch logged in. Please <a href="index.html">login here</a>.</p>`;
+if(!branchKey || !branchesReports[branchKey]) {
+  document.getElementById('branchContent').innerHTML = `
+    <p>⚠️ No branch logged in. Please <a href="index.html">login here</a>.</p>
+  `;
 } else {
   const report = branchesReports[branchKey];
   document.getElementById('branchContent').innerHTML = `
     <h2>${branchKey.charAt(0).toUpperCase() + branchKey.slice(1)} Branch Reports</h2>
     <ul>
-      <li>Weekly Report: ${report.weekly !== "#" ? `<a href="${report.weekly}" target="_blank">Open</a>` : "Not Available"}</li>
-      <li>Monthly Report: ${report.monthly !== "#" ? `<a href="${report.monthly}" target="_blank">Open</a>` : "Not Available"}</li>
-      <li>Annual Report: ${report.annual !== "#" ? `<a href="${report.annual}" target="_blank">Open</a>` : "Not Available"}</li>
+      <li><strong>Weekly Report:</strong> ${report.weekly !== "#" ? `<a href="${report.weekly}" target="_blank">Open</a>` : "Not Available"}</li>
+      <li><strong>Monthly Report:</strong> ${report.monthly !== "#" ? `<a href="${report.monthly}" target="_blank">Open</a>` : "Not Available"}</li>
+      <li><strong>Annual Report:</strong> ${report.annual !== "#" ? `<a href="${report.annual}" target="_blank">Open</a>` : "Not Available"}</li>
     </ul>
     <button onclick="logout()">Logout</button>
   `;
 }
 
-function logout(){
+function logout() {
   sessionStorage.removeItem("loggedBranch");
   window.location.href = "index.html";
 }

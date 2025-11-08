@@ -418,11 +418,67 @@
       <p style="color:#444;">hosur@sggctn.com</p>
       <button onclick="loginBranch('hosur')" style="background:#ff6600; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">Login</button>
     </div>
-
-
-
     
-<section class="branch-portal">
+  </div>
+</section>
+
+
+<footer>
+  <p>Last updated on <span id="lastUpdated"></span></p>
+</footer>
+
+<script>
+  const branches = {
+    "anekal": { email: "sggcpl.ank@gmail.com", password: "password1", sheet: "https://link-to-anekal-sheet" },
+    "centralize": { email: "sggcpl.cb@gmail.com", password: "password2", sheet: "https://link-to-centralize-sheet" },
+    "chanrayapatna": { email: "sggcpl.crp1@gmail.com", password: "password3", sheet: "https://link-to-chanrayapatna-sheet" },
+    "davanagere": { email: "sggcpl.dav@gmail.com", password: "password4", sheet: "https://link-to-davanagere-sheet" },
+    "harihara": { email: "sggcpl.hrr@gmail.com", password: "password5", sheet: "https://link-to-harihara-sheet" },
+    "hassan": { email: "sggcpl.hassan@gmail.com", password: "password6", sheet: "https://link-to-hassan-sheet" },
+    "mysore": { email: "sggcpl.mys@gmail.com", password: "password7", sheet: "https://link-to-mysore-sheet" },
+    "vijayanagar": { email: "sggcpl.vjn@gmail.com", password: "password8", sheet: "https://link-to-vijayanagar-sheet" },
+    "gulbarga": { email: "sggcpl.glb1@gmail.com", password: "password9", sheet: "https://link-to-gulbarga-sheet" },
+    "salem": { email: "salem@sggctn.com", password: "password10", sheet: "https://link-to-salem-sheet" },
+    "krishnagiri": { email: "krishnagiri@sggctn.com", password: "password11", sheet: "https://link-to-krishnagiri-sheet" },
+    "hosur": { email: "hosur@sggctn.com", password: "password12", sheet: "https://link-to-hosur-sheet" }
+  };
+
+  function loginBranch(branchKey){
+    const email = prompt("Enter Email ID:");
+    const password = prompt("Enter Password:");
+
+    if(branches[branchKey].email === email && branches[branchKey].password === password){
+      sessionStorage.setItem("loggedBranch", branchKey);
+      window.location.href = "branch-dashboard.html";
+    } else {
+      alert("Invalid login! You cannot access other branch data.");
+    }
+  }
+
+  const ho = { email: "sggcpldm@gmail.com", password: "Zoominpro6@#" };
+  function loginHO() {
+    const email = prompt("Enter HO Email ID:");
+    const password = prompt("Enter Password:");
+    if(email === ho.email && password === ho.password){
+      alert("HO Login Successful! You have access to all branch reports.");
+      window.location.href = "ho-dashboard.html";
+    } else {
+      alert("Invalid HO login!");
+    }
+  }
+
+  // Search Functionality
+  const searchBox = document.getElementById('searchBox');
+  searchBox.addEventListener('keyup', function(){
+    const filter = searchBox.value.toLowerCase();
+    document.querySelectorAll('table tr').forEach((row, index)=>{
+      if(index === 0) return;
+      row.style.display = row.textContent.toLowerCase().includes(filter) ? '' : 'none';
+    });
+  });
+
+  document.getElementById("lastUpdated").textContent = new Date().toLocaleString('en-IN', { dateStyle:'medium', timeStyle:'short' });
+  <section class="branch-portal">
   <h2>Branch Financial Reporting Portal</h2>
 
   <div class="branch-container">
@@ -520,73 +576,11 @@
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 </style>
-
-
-
-    
-  </div>
-</section>
-
-
-<footer>
-  <p>Last updated on <span id="lastUpdated"></span></p>
-</footer>
-
-<script>
-  const branches = {
-    "anekal": { email: "sggcpl.ank@gmail.com", password: "password1", sheet: "https://link-to-anekal-sheet" },
-    "centralize": { email: "sggcpl.cb@gmail.com", password: "password2", sheet: "https://link-to-centralize-sheet" },
-    "chanrayapatna": { email: "sggcpl.crp1@gmail.com", password: "password3", sheet: "https://link-to-chanrayapatna-sheet" },
-    "davanagere": { email: "sggcpl.dav@gmail.com", password: "password4", sheet: "https://link-to-davanagere-sheet" },
-    "harihara": { email: "sggcpl.hrr@gmail.com", password: "password5", sheet: "https://link-to-harihara-sheet" },
-    "hassan": { email: "sggcpl.hassan@gmail.com", password: "password6", sheet: "https://link-to-hassan-sheet" },
-    "mysore": { email: "sggcpl.mys@gmail.com", password: "password7", sheet: "https://link-to-mysore-sheet" },
-    "vijayanagar": { email: "sggcpl.vjn@gmail.com", password: "password8", sheet: "https://link-to-vijayanagar-sheet" },
-    "gulbarga": { email: "sggcpl.glb1@gmail.com", password: "password9", sheet: "https://link-to-gulbarga-sheet" },
-    "salem": { email: "salem@sggctn.com", password: "password10", sheet: "https://link-to-salem-sheet" },
-    "krishnagiri": { email: "krishnagiri@sggctn.com", password: "password11", sheet: "https://link-to-krishnagiri-sheet" },
-    "hosur": { email: "hosur@sggctn.com", password: "password12", sheet: "https://link-to-hosur-sheet" }
-  };
-
-  function loginBranch(branchKey){
-    const email = prompt("Enter Email ID:");
-    const password = prompt("Enter Password:");
-
-    if(branches[branchKey].email === email && branches[branchKey].password === password){
-      sessionStorage.setItem("loggedBranch", branchKey);
-      window.location.href = "branch-dashboard.html";
-    } else {
-      alert("Invalid login! You cannot access other branch data.");
-    }
-  }
-
-  const ho = { email: "sggcpldm@gmail.com", password: "Zoominpro6@#" };
-  function loginHO() {
-    const email = prompt("Enter HO Email ID:");
-    const password = prompt("Enter Password:");
-    if(email === ho.email && password === ho.password){
-      alert("HO Login Successful! You have access to all branch reports.");
-      window.location.href = "ho-dashboard.html";
-    } else {
-      alert("Invalid HO login!");
-    }
-  }
-
-  // Search Functionality
-  const searchBox = document.getElementById('searchBox');
-  searchBox.addEventListener('keyup', function(){
-    const filter = searchBox.value.toLowerCase();
-    document.querySelectorAll('table tr').forEach((row, index)=>{
-      if(index === 0) return;
-      row.style.display = row.textContent.toLowerCase().includes(filter) ? '' : 'none';
-    });
-  });
-
-  document.getElementById("lastUpdated").textContent = new Date().toLocaleString('en-IN', { dateStyle:'medium', timeStyle:'short' });
 </script>
 
 </body>
 </html>
+
 
 
 

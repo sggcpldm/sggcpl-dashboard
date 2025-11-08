@@ -419,6 +419,111 @@
       <button onclick="loginBranch('hosur')" style="background:#ff6600; color:#fff; border:none; padding:8px 14px; border-radius:6px; cursor:pointer;">Login</button>
     </div>
 
+
+
+    
+<section class="branch-portal">
+  <h2>Branch Financial Reporting Portal</h2>
+
+  <div class="branch-container">
+
+    <!-- Karnataka Branches -->
+    <div class="branch-card karnataka">
+      <h3>Anekal Branch</h3>
+      <p>sggcpl.ank@gmail.com</p>
+      <button onclick="loginBranch('anekal')">Login</button>
+    </div>
+
+    <div class="branch-card karnataka">
+      <h3>Centralize Branch</h3>
+      <p>sggcpl.cb@gmail.com</p>
+      <button onclick="loginBranch('centralize')">Login</button>
+    </div>
+
+    <div class="branch-card karnataka">
+      <h3>Channarayapatna</h3>
+      <p>sggcpl.crp1@gmail.com</p>
+      <button onclick="loginBranch('chanrayapatna')">Login</button>
+    </div>
+
+    <!-- Tamil Nadu Branches -->
+    <div class="branch-card tamilnadu">
+      <h3>Salem Branch</h3>
+      <p>salem@sggctn.com</p>
+      <button onclick="loginBranch('salem')">Login</button>
+    </div>
+
+    <div class="branch-card tamilnadu">
+      <h3>Krishnagiri Branch</h3>
+      <p>krishnagiri@sggctn.com</p>
+      <button onclick="loginBranch('krishnagiri')">Login</button>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.branch-portal {
+  text-align: center;
+  margin: 60px auto;
+  width: 90%;
+}
+.branch-portal h2 {
+  color: #004aad;
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.branch-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.branch-card {
+  width: 260px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+/* Karnataka branch style */
+.branch-card.karnataka {
+  background: #eaf2ff;
+  border: 1px solid #004aad;
+  color: #004aad;
+}
+
+/* Tamil Nadu branch style */
+.branch-card.tamilnadu {
+  background: #fff1e6;
+  border: 1px solid #ff6600;
+  color: #ff6600;
+}
+
+/* Button styling inside card */
+.branch-card button {
+  background: currentColor;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Hover effect for card */
+.branch-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+</style>
+
+
+
+    
   </div>
 </section>
 
@@ -482,6 +587,7 @@
 
 </body>
 </html>
+
 
 
 

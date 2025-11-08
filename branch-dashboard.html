@@ -5,13 +5,70 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Branch Dashboard – SGGCPL</title>
 <style>
-  body { font-family: Arial, sans-serif; background:#f7f9fc; margin:0; padding:0; }
-  header { background:#002b80; color:white; padding:20px; text-align:center; }
-  h1 { margin:0; }
-  .dashboard { max-width:600px; margin:40px auto; background:#fff; padding:20px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
-  a { color:#004aad; text-decoration:none; font-weight:bold; }
-  a:hover { text-decoration:underline; }
-  button { margin-top:20px; background:#004aad; color:white; border:none; padding:10px 15px; border-radius:5px; cursor:pointer; }
+  body { 
+    font-family: Arial, sans-serif; 
+    background:#f7f9fc; 
+    margin:0; 
+    padding:0; 
+  }
+  header { 
+    background:#002b80; 
+    color:white; 
+    padding:20px; 
+    text-align:center; 
+  }
+  h1 { 
+    margin:0; 
+  }
+  .dashboard { 
+    max-width:600px; 
+    margin:40px auto; 
+    background:#fff; 
+    padding:30px; 
+    border-radius:10px; 
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    text-align:center;
+  }
+  .branch-title {
+    font-size:22px; 
+    color:#004aad; 
+    margin-bottom:20px;
+  }
+  table {
+    width:100%;
+    border-collapse:collapse;
+    margin-bottom:25px;
+  }
+  th, td {
+    text-align:left;
+    padding:10px 12px;
+    border-bottom:1px solid #ddd;
+    font-size:15px;
+  }
+  th {
+    background:#004aad;
+    color:#fff;
+  }
+  a {
+    color:#004aad; 
+    text-decoration:none; 
+    font-weight:bold; 
+  }
+  a:hover {
+    text-decoration:underline;
+  }
+  button { 
+    background:#004aad; 
+    color:white; 
+    border:none; 
+    padding:10px 20px; 
+    border-radius:5px; 
+    cursor:pointer; 
+    font-size:15px;
+  }
+  button:hover { 
+    background:#003580; 
+  }
 </style>
 </head>
 <body>
@@ -21,38 +78,45 @@
 </header>
 
 <div class="dashboard" id="branchContent">
-  <!-- Content will be injected by JS -->
+  <!-- Branch content loads here -->
 </div>
 
 <script>
 const branchesReports = {
-  anekal: { weekly:"https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing", monthly:"https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing", annual:"#"},
-  centralize: { weekly:"https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", monthly:"#", annual:"#"},
-  chanrayapatna: { weekly:"https://docs.google.com/spreadsheets/d/1iQsZsnC4Wf7CBytGYhvpIosYyFmERrgL/edit?usp=sharing", monthly:"#", annual:"#"},
-  davanagere: { weekly:"#", monthly:"#", annual:"#"},
-  harihara: { weekly:"#", monthly:"#", annual:"#"},
-  hassan: { weekly:"#", monthly:"#", annual:"#"},
-  mysore: { weekly:"#", monthly:"#", annual:"#"},
-  vijayanagar: { weekly:"#", monthly:"#", annual:"#"},
-  gulbarga: { weekly:"#", monthly:"#", annual:"#"},
-  salem: { weekly:"#", monthly:"#", annual:"#"},
-  krishnagiri: { weekly:"#", monthly:"#", annual:"#"},
-  hosur: { weekly:"#", monthly:"#", annual:"#"}
+  anekal: { 
+    weekly:"https://docs.google.com/spreadsheets/d/18m7bO2J_GoSoNJsUMryixtbnJLx5g08n/edit?usp=sharing", 
+    monthly:"https://docs.google.com/spreadsheets/d/1csNqX9YL4nJ8U7ujsmx0mhMqho-cyVyt/edit?usp=sharing", 
+    annual:"#"
+  },
+  centralize: { weekly:"#", monthly:"#", annual:"#" },
+  chanrayapatna: { weekly:"#", monthly:"#", annual:"#" },
+  davanagere: { weekly:"#", monthly:"#", annual:"#" },
+  harihara: { weekly:"#", monthly:"#", annual:"#" },
+  hassan: { weekly:"#", monthly:"#", annual:"#" },
+  mysore: { weekly:"#", monthly:"#", annual:"#" },
+  vijayanagar: { weekly:"#", monthly:"#", annual:"#" },
+  gulbarga: { weekly:"#", monthly:"#", annual:"#" },
+  salem: { weekly:"#", monthly:"#", annual:"#" },
+  krishnagiri: { weekly:"#", monthly:"#", annual:"#" },
+  hosur: { weekly:"#", monthly:"#", annual:"#" }
 };
 
 const branchKey = sessionStorage.getItem("loggedBranch");
 
 if(!branchKey || !branchesReports[branchKey]){
-  document.getElementById('branchContent').innerHTML = `<p>⚠️ No branch logged in. Please <a href="index.html">login here</a>.</p>`;
+  document.getElementById('branchContent').innerHTML = `
+    <p style="font-size:16px;">⚠️ No branch logged in. Please <a href="index.html">login here</a>.</p>
+  `;
 } else {
   const report = branchesReports[branchKey];
   document.getElementById('branchContent').innerHTML = `
-    <h2>${branchKey.charAt(0).toUpperCase() + branchKey.slice(1)} Branch Reports</h2>
-    <ul>
-      <li>Weekly Report: ${report.weekly !== "#" ? `<a href="${report.weekly}" target="_blank">Open</a>` : "Not Available"}</li>
-      <li>Monthly Report: ${report.monthly !== "#" ? `<a href="${report.monthly}" target="_blank">Open</a>` : "Not Available"}</li>
-      <li>Annual Report: ${report.annual !== "#" ? `<a href="${report.annual}" target="_blank">Open</a>` : "Not Available"}</li>
-    </ul>
+    <div class="branch-title">${branchKey.charAt(0).toUpperCase() + branchKey.slice(1)} Branch Reports</div>
+    <table>
+      <tr><th>Report Type</th><th>Open Link</th></tr>
+      <tr><td>Weekly Report</td><td>${report.weekly !== "#" ? `<a href="${report.weekly}" target="_blank">Open</a>` : "Not Available"}</td></tr>
+      <tr><td>Monthly Report</td><td>${report.monthly !== "#" ? `<a href="${report.monthly}" target="_blank">Open</a>` : "Not Available"}</td></tr>
+      <tr><td>Annual Report</td><td>${report.annual !== "#" ? `<a href="${report.annual}" target="_blank">Open</a>` : "Not Available"}</td></tr>
+    </table>
     <button onclick="logout()">Logout</button>
   `;
 }

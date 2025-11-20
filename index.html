@@ -15,6 +15,30 @@
     <p>Online Reports Management Dashboard</p>
   </header>
 
+<!-- Dashboard Metrics Section -->
+<section class="dashboard-metrics" style="width:90%; margin:30px auto; display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
+  
+  <div class="metric-card" style="flex:1 1 200px; background:#004aad; color:white; padding:20px; border-radius:12px; text-align:center; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+    <h3>Branches Logged In This Week</h3>
+    <p id="branchesLogged" style="font-size:28px; font-weight:bold;">0</p>
+  </div>
+
+  <div class="metric-card" style="flex:1 1 200px; background:#00b894; color:white; padding:20px; border-radius:12px; text-align:center; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+    <h3>Reports Submitted On Time</h3>
+    <p id="reportsOnTime" style="font-size:28px; font-weight:bold;">0</p>
+  </div>
+
+  <div class="metric-card" style="flex:1 1 200px; background:#fdcb6e; color:white; padding:20px; border-radius:12px; text-align:center; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+    <h3>Reports Pending</h3>
+    <p id="reportsPending" style="font-size:28px; font-weight:bold;">0</p>
+  </div>
+
+  <div class="metric-card" style="flex:1 1 200px; background:#d63031; color:white; padding:20px; border-radius:12px; text-align:center; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+    <h3>Overdue Reports</h3>
+    <p id="reportsOverdue" style="font-size:28px; font-weight:bold;">0</p>
+  </div>
+
+</section>
 
 
   <meta charset="UTF-8">
@@ -478,10 +502,43 @@
   });
 
   document.getElementById("lastUpdated").textContent = new Date().toLocaleString('en-IN', { dateStyle:'medium', timeStyle:'short' });
+
+  // Mock data – replace with actual data from Google Sheets / database later
+const branchStatus = {
+  "anekal": { loggedIn: true, reportsSubmitted: 5, reportsDue: 0 },
+  "centralize": { loggedIn: true, reportsSubmitted: 4, reportsDue: 1 },
+  "chanrayapatna": { loggedIn: false, reportsSubmitted: 0, reportsDue: 5 },
+  "davanagere": { loggedIn: true, reportsSubmitted: 5, reportsDue: 0 },
+  "harihara": { loggedIn: true, reportsSubmitted: 4, reportsDue: 1 },
+  "hassan": { loggedIn: false, reportsSubmitted: 0, reportsDue: 5 },
+  "mysore": { loggedIn: true, reportsSubmitted: 5, reportsDue: 0 },
+  "vijayanagar": { loggedIn: true, reportsSubmitted: 5, reportsDue: 0 },
+  "gulbarga": { loggedIn: false, reportsSubmitted: 2, reportsDue: 3 },
+  "salem": { loggedIn: true, reportsSubmitted: 5, reportsDue: 0 },
+  "krishnagiri": { loggedIn: false, reportsSubmitted: 0, reportsDue: 5 },
+  "hosur": { loggedIn: true, reportsSubmitted: 5, reportsDue: 0 }
+};
+
+function updateDashboardMetrics() {
+  const branchesLogged = Object.values(branchStatus).filter(b => b.loggedIn).length;
+  const reportsOnTime = Object.values(branchStatus).reduce((sum, b) => sum + b.reportsSubmitted, 0);
+  const reportsPending = Object.values(branchStatus).reduce((sum, b) => sum + b.reportsDue, 0);
+  const reportsOverdue = Object.values(branchStatus).filter(b => b.reportsDue > 0).length;
+
+  document.getElementById('branchesLogged').textContent = branchesLogged;
+  document.getElementById('reportsOnTime').textContent = reportsOnTime;
+  document.getElementById('reportsPending').textContent = reportsPending;
+  document.getElementById('reportsOverdue').textContent = reportsOverdue;
+}
+
+// Initialize dashboard metrics
+updateDashboardMetrics();
+
 </script>
 
 </body>
 </html>
+
 
 
 

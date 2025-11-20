@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SGGCPL – Reports Management Dashboard</title>
-  <style>
+  <style> 
     /* Your existing CSS styles here */
   </style>
 </head>
@@ -536,8 +536,61 @@ updateDashboardMetrics();
 
 </script>
 
+
+  <!-- Branch Comparison Chart Section -->
+<section style="width:90%; margin:50px auto; text-align:center;">
+  <h2 style="color:#004aad; font-size:26px; margin-bottom:20px;">Branch-Wise Comparison</h2>
+  <p style="font-size:16px; color:#333; margin-bottom:30px;">
+    Compare branch performance: report submissions and pending tickets.
+  </p>
+
+  <canvas id="branchComparisonChart" style="max-width:100%; height:400px;"></canvas>
+</section>
+
+<!-- Chart.js library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const branchNames = Object.keys(branchStatus);
+  const reportsSubmitted = branchNames.map(b => branchStatus[b].reportsSubmitted);
+  const reportsPending = branchNames.map(b => branchStatus[b].reportsDue);
+
+  const ctx = document.getElementById('branchComparisonChart').getContext('2d');
+  const branchChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: branchNames.map(name => name.charAt(0).toUpperCase() + name.slice(1)),
+      datasets: [
+        {
+          label: 'Reports Submitted',
+          data: reportsSubmitted,
+          backgroundColor: '#00b894'
+        },
+        {
+          label: 'Reports Pending',
+          data: reportsPending,
+          backgroundColor: '#d63031'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'top', labels: { font: { size:14 } } },
+        tooltip: { mode: 'index', intersect: false }
+      },
+      interaction: { mode: 'nearest', intersect: true },
+      scales: {
+        y: { beginAtZero: true, title: { display: true, text: 'Number of Reports' } },
+        x: { title: { display: true, text: 'Branches' } }
+      }
+    }
+  });
+</script>
+
 </body>
 </html>
+
 
 
 
